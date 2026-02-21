@@ -2,10 +2,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FloatingCTA from "./components/FloatingCTA";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Mentors from "./pages/Mentors";
+import Locations from "./pages/Locations";
 import Thanks from "./pages/Thanks";
 
 export default function App() {
@@ -28,10 +31,13 @@ export default function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/mentors" element={<Mentors />} />
+            <Route path="/locations" element={<Locations />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
+      <FloatingCTA />
       <Footer />
     </div>
   );

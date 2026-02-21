@@ -11,8 +11,8 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
         alt={site.brand}
         className="shrink-0"
         style={{
-          width: compact ? 175 : 220,
-          height: compact ? 34 : 44,
+          width: compact ? 240 : 300,
+          height: compact ? 44 : 56,
           objectFit: "contain",
         }}
         onError={(e) => {

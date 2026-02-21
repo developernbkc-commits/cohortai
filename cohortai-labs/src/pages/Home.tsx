@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck, Users, Workflow } from "lucide-react";
 import Container from "../components/Container";
 import GlowBg from "../components/GlowBg";
+import HeroSlider from "../components/HeroSlider";
 import Button from "../components/Button";
 import SectionTitle from "../components/SectionTitle";
 import { site } from "../lib/site";
@@ -39,7 +40,7 @@ export default function Home() {
                 with mentor-led cohorts and real projects.
               </h1>
 
-              <p className="mt-4 text-slate-600 text-base sm:text-lg max-w-xl">
+              <p className="mt-4 text-slate-700 text-base sm:text-lg max-w-xl">
                 {site.brand} delivers a premium learning experience for beginners, business owners, and tech professionals.
                 Choose your track, build deliverables, and leave with confidence.
               </p>
@@ -58,53 +59,60 @@ export default function Home() {
                   <div key={s.label} className="card rounded-2xl p-4 ">
                     <s.icon className="text-cyan-200" size={18} />
                     <div className="mt-3 text-sm font-semibold">{s.value}</div>
-                    <div className="text-xs text-slate-600 mt-1">{s.label}</div>
+                    <div className="text-xs text-slate-700 mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <div className="card rounded-3xl p-6 ">
-                <div className="text-sm text-slate-700">Hybrid learning experience</div>
-                <div className="mt-2 text-2xl font-semibold text-slate-950">Online + Offline Cohorts</div>
-                <p className="mt-2 text-slate-600 text-sm">
-                  Live mentor sessions, guided labs, and structured reviews. Choose weekend or weekday batches.
-                </p>
+  className="relative"
+  initial={{ opacity: 0, scale: 0.98 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
+>
+  <HeroSlider />
 
-                <div className="mt-6 grid gap-4">
-                  <div className="rounded-2xl bg-white/70 border border-slate-200/80 p-4">
-                    <div className="text-xs text-slate-600">What you get</div>
-                    <ul className="mt-2 text-sm text-slate-200 grid gap-2">
-                      <li>• Templates, toolkits, and practice exercises</li>
-                      <li>• Weekly submissions + review rubric</li>
-                      <li>• Portfolio-ready deliverables</li>
-                      <li>• Community + accountability pods</li>
-                    </ul>
-                  </div>
+  <div className="mt-6 card card-3d rounded-3xl p-6">
+    <div className="text-sm text-slate-700">Hybrid learning experience</div>
+    <div className="mt-2 text-2xl font-semibold text-slate-950">Online + Offline Cohorts</div>
+    <p className="mt-2 text-slate-700 text-sm">
+      Live mentor sessions, guided labs, and structured reviews. Choose weekend or weekday batches.
+    </p>
 
-                  <div className="rounded-2xl bg-gradient-to-r from-cyan-300/15 via-violet-300/10 to-emerald-300/15 border border-slate-700/60 p-4">
-                    <div className="text-xs text-slate-700">Fast start</div>
-                    <div className="mt-1 text-sm text-slate-950 font-semibold">
-                      Next cohort begins {site.startDate}
-                    </div>
-                    <div className="mt-1 text-xs text-slate-600">
-                      DM “AI” or call {site.phone} to reserve a seat.
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className="mt-6 grid gap-4">
+      <div className="rounded-2xl bg-white/70 border border-slate-200/80 p-4">
+        <div className="text-xs text-slate-600">What you get</div>
+        <ul className="mt-2 text-sm text-slate-800 grid gap-2">
+          <li>• Templates, toolkits, and practice exercises</li>
+          <li>• Weekly submissions + review rubric</li>
+          <li>• Portfolio-ready deliverables</li>
+          <li>• Community + accountability pods</li>
+        </ul>
+      </div>
 
-              <div className="absolute -z-10 inset-0 blur-3xl opacity-40 animate-floaty"
-                   style={{ background: "radial-gradient(circle at 60% 40%, rgba(34,211,238,0.22), transparent 55%), radial-gradient(circle at 30% 70%, rgba(167,139,250,0.20), transparent 55%)" }}
-              />
-            </motion.div>
+      <div className="rounded-2xl bg-gradient-to-r from-cyan-300/15 via-violet-300/10 to-emerald-300/15 border border-slate-200/80 p-4">
+        <div className="text-xs text-slate-700">Fast start</div>
+        <div className="mt-1 text-sm text-slate-950 font-semibold">
+          Next cohort begins 2 March 2026
+        </div>
+        <div className="mt-1 text-sm text-slate-700">
+          WhatsApp “AI” or call {site.phone} to reserve a seat.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    className="absolute -z-10 inset-0 blur-3xl opacity-40 animate-floaty"
+    style={{
+      background:
+        "radial-gradient(circle at 60% 40%, rgba(34,211,238,0.16), transparent 55%), radial-gradient(circle at 30% 70%, rgba(167,139,250,0.14), transparent 55%)",
+    }}
+  />
+</motion.div>
+>
           </div>
         </Container>
       </section>

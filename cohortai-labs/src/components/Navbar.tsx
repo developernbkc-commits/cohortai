@@ -10,6 +10,8 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
   { to: "/about", label: "About" },
+  { to: "/mentors", label: "Mentors" },
+  { to: "/locations", label: "Locations" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -20,7 +22,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="bg-white/75 backdrop-blur-xl border-b border-slate-200/70">
         <Container>
-          <div className="h-16 flex items-center justify-between">
+          <div className="h-[72px] flex items-center justify-between">
             <Link to="/" className="group">
               <Logo compact />
             </Link>
@@ -40,6 +42,10 @@ export default function Navbar() {
                   {n.label}
                 </NavLink>
               ))}
+              <a href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer"
+                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-950 bg-white/85 hover:bg-white border border-slate-200/80 shadow-[0_18px_55px_rgba(15,23,42,0.10)]">
+                WhatsApp
+              </a>
               <a
                 href={`tel:${site.phone}`}
                 className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
@@ -76,6 +82,10 @@ export default function Navbar() {
                       {n.label}
                     </NavLink>
                   ))}
+                  <a href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer"
+                    className="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-slate-950 bg-white/85 hover:bg-white border border-slate-200/80 shadow-[0_18px_55px_rgba(15,23,42,0.10)]">
+                    WhatsApp
+                  </a>
                   <a
                     href={`tel:${site.phone}`}
                     className="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 accent-ring"

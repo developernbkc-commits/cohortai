@@ -4,7 +4,27 @@ export const site = {
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
   logoUrl: "https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true",
   imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
-  images: {
+  // Manage batches without redeploy: update schedule.json in the images repo
+  scheduleUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/schedule.json",
+  scheduleFallback: {
+    updatedAt: "2026-02-21",
+    byCity: {
+      Hyderabad: "2 March 2026",
+      Pune: "TBD",
+      Vijayawada: "TBD",
+      Guntur: "TBD",
+      Vizag: "TBD"
+    }
+  },
+  heroSlides: [
+  // Upload these files to the images repo (same folder as logo)
+  { file: "hero_slide_01.jpg", headline: "Mentor-led AI cohorts", sub: "Hands-on learning with reviews and accountability." },
+  { file: "hero_slide_02.jpg", headline: "Online + Offline hybrid", sub: "Weekend & weekday batches across key cities." },
+  { file: "hero_slide_03.jpg", headline: "Next batch starts 2 March 2026", sub: "DM “AI” to reserve your seat." }
+],
+
+images: {
+
     hero: "hero_lab_classroom_01.jpg",
     heroAlt: "hero_hybrid_learning_01.jpg",
     tracks: {
@@ -33,7 +53,7 @@ export const site = {
   startDate: "2 March 2026",
   phone: "8374617625",
   whatsapp: "8374617625",
-  cities: ["Hyderabad", "Vijayawada", "Guntur"],
+  cities: ["Hyderabad", "Pune", "Vijayawada", "Guntur", "Vizag"],
   tracks: [
     {
       name: "Everyday AI",
@@ -63,7 +83,17 @@ export const site = {
     { price: "₹30,000", title: "Portfolio + Interview", duration: "6–8 weeks", highlight: "For serious outcomes", includes: ["Portfolio polish", "Mock interviews (Tech)", "Case studies (Business)"] },
     { price: "₹35,000", title: "Flagship Premium Cohort", duration: "8–10 weeks", highlight: "Maximum support", includes: ["Capstone + demo day", "1:1 review slot", "Placement/business support session"] },
   ],
-  faqs: [
+  ctas: {
+  primaryLabel: "Get batch schedule",
+  primaryHref: "/contact",
+  whatsappLabel: "WhatsApp us",
+  whatsappHref: "https://wa.me/91" + "8374617625",
+  demoLabel: "Book a free demo",
+  demoHref: "/contact#lead"
+},
+
+faqs: [
+
     { q: "Is this beginner-friendly?", a: "Yes. We have an Everyday AI track designed for non-technical learners, plus guided labs and step-by-step practice." },
     { q: "Do you offer online and offline training?", a: "Yes. We run hybrid cohorts: online sessions plus offline classroom options (city-wise schedule)." },
     { q: "What makes CohortAI Labs different?", a: "Mentor-led cohorts, real deliverables, structured reviews, and a clear learning ladder from ₹5k to ₹35k." },

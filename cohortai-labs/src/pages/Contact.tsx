@@ -39,7 +39,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <form
+            <form id="lead"
               name="lead"
               method="POST"
               data-netlify="true"
