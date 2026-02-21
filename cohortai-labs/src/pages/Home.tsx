@@ -71,7 +71,6 @@ export default function Home() {
   whileInView={{ opacity: 1, scale: 1 }}
   viewport={{ once: true, amount: 0.3 }}
   transition={{ duration: 0.5, ease: "easeOut" }}
->
   <HeroSlider />
 
   <div className="mt-6 card card-3d rounded-3xl p-6">
@@ -112,7 +111,6 @@ export default function Home() {
     }}
   />
 </motion.div>
->
           </div>
         </Container>
       </section>
