@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .glass {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    backdrop-filter: blur(14px);
+  }
+  .ring-soft {
+    box-shadow:
+      0 0 0 1px rgba(148, 163, 184, 0.18),
+      0 30px 120px rgba(0,0,0,0.55);
+  }
+  .neon-edge {
+    box-shadow:
+      0 0 0 1px rgba(34, 211, 238, 0.25),
+      0 0 40px rgba(167, 139, 250, 0.20),
+      0 0 70px rgba(16, 185, 129, 0.12);
+  }
+}
