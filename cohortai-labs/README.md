@@ -1,40 +1,31 @@
-# CohortAI Labs — Premium Netlify Website (Drop-in Repo)
+# CohortAI Labs — Premium Netlify Website (Pearl / Light Theme)
 
-This is a modern, animated, conversion-focused website for **CohortAI Labs** built with:
-**React + TypeScript + Vite + Tailwind + Framer Motion**.
+Built with **React + TypeScript + Vite + Tailwind + Framer Motion**.
 
-> **Important:** This is a SPA app and **will look blank if you double-click `index.html`** (file://).
-> Run it with the dev server or build + preview (steps below).
-
-## Local run
+## Run
 ```bash
 npm install
 npm run dev
 ```
-Then open the URL shown in terminal (usually `http://localhost:5173`).
 
-## Build & preview (like production)
-```bash
-npm run build
-npm run preview
-```
-
-## Deploy to Netlify
+## Deploy (Netlify)
 - Build command: `npm run build`
 - Publish directory: `dist`
-- SPA routing is already configured via `netlify.toml`.
 
-## Logo / Images
-- Put your logo in `public/` (recommended) and set `site.logoUrl` in `src/lib/site.ts`.
-  - Example: `logoUrl: "/logo.svg"` or `"/logo.png"`
-- If you insist on hosting assets outside the repo, use a **direct raw file URL** (e.g., GitHub raw URL), not a ChatGPT conversation link.
+## Logo + Images (no redeploy workflow)
+Configured in `src/lib/site.ts`:
+- `logoUrl`: https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true
+- `imageBaseUrl`: https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/
 
-## Netlify Forms
-Contact form uses Netlify Forms:
-- No backend needed.
-- Submissions appear in Netlify dashboard under **Forms**.
+Upload these files to your images repo (same names), and the live site will automatically show them:
+- hero_lab_classroom_01.jpg
+- hero_hybrid_learning_01.jpg
+- track_everyday_ai_01.jpg
+- track_business_ai_01.jpg
+- track_tech_data_ai_01.jpg
+- pricing_ladder_3d_cards_01.jpg
+- mentor_profile_01.jpg, mentor_profile_02.jpg, mentor_profile_03.jpg
+- learner_avatar_01.jpg, learner_avatar_02.jpg, learner_avatar_03.jpg
+- gallery_class_01.jpg, gallery_class_02.jpg, gallery_online_01.jpg, gallery_projects_01.jpg
 
-## Edit business info
-`src/lib/site.ts`
-
-© CohortAI Labs
+Note: after replacing an image, you may need a hard refresh due to browser caching.

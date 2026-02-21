@@ -2,7 +2,34 @@ export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
-  logoUrl: "/logo.svg",
+  logoUrl: "https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true",
+  imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
+  images: {
+    hero: "hero_lab_classroom_01.jpg",
+    heroAlt: "hero_hybrid_learning_01.jpg",
+    tracks: {
+      everyday: "track_everyday_ai_01.jpg",
+      business: "track_business_ai_01.jpg",
+      tech: "track_tech_data_ai_01.jpg"
+    },
+    ladder: "pricing_ladder_3d_cards_01.jpg",
+    mentors: [
+      "mentor_profile_01.jpg",
+      "mentor_profile_02.jpg",
+      "mentor_profile_03.jpg"
+    ],
+    testimonials: [
+      "learner_avatar_01.jpg",
+      "learner_avatar_02.jpg",
+      "learner_avatar_03.jpg"
+    ],
+    gallery: [
+      "gallery_class_01.jpg",
+      "gallery_class_02.jpg",
+      "gallery_online_01.jpg",
+      "gallery_projects_01.jpg"
+    ]
+  },
   startDate: "2 March 2026",
   phone: "8374617625",
   whatsapp: "8374617625",

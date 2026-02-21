@@ -23,14 +23,14 @@ export default function About() {
         </Container>
       </section>
 
-      <section className="py-14 border-t border-slate-800/60">
+      <section className="py-14 border-t border-slate-200/70">
         <Container>
           <div className="grid gap-6 md:grid-cols-2">
             {points.map((p) => (
-              <div key={p.title} className="glass rounded-3xl p-6 ring-soft">
+              <div key={p.title} className="card card-3d rounded-3xl p-6 ">
                 <p.icon className="text-cyan-200" size={20} />
-                <div className="mt-3 text-lg font-semibold text-white">{p.title}</div>
-                <div className="mt-2 text-sm text-slate-400">{p.desc}</div>
+                <div className="mt-3 text-lg font-semibold text-slate-950">{p.title}</div>
+                <div className="mt-2 text-sm text-slate-600">{p.desc}</div>
               </div>
             ))}
           </div>

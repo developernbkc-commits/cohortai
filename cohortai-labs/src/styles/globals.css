@@ -2,27 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; }
+:root { color-scheme: light; }
 * { -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
-  .glass {
-    background: rgba(15, 23, 42, 0.55);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    backdrop-filter: blur(14px);
+
+  .pearl-bg {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(34,211,238,0.18), transparent 45%),
+      radial-gradient(circle at 82% 22%, rgba(167,139,250,0.16), transparent 45%),
+      radial-gradient(circle at 35% 95%, rgba(16,185,129,0.12), transparent 50%),
+      linear-gradient(180deg, #ffffff 0%, #f3f5fb 55%, #f8f9fd 100%);
   }
-  .ring-soft {
+
+  .card {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     box-shadow:
-      0 0 0 1px rgba(148, 163, 184, 0.18),
-      0 30px 120px rgba(0,0,0,0.55);
+      0 1px 0 rgba(15, 23, 42, 0.04),
+      0 18px 55px rgba(15, 23, 42, 0.10);
+    backdrop-filter: blur(10px);
   }
-  .neon-edge {
+
+  .card-3d {
+    transform: translateZ(0);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    will-change: transform;
+  }
+  .card-3d:hover {
+    transform: translateY(-6px) scale(1.01);
     box-shadow:
-      0 0 0 1px rgba(34, 211, 238, 0.25),
-      0 0 40px rgba(167, 139, 250, 0.20),
-      0 0 70px rgba(16, 185, 129, 0.12);
+      0 1px 0 rgba(15, 23, 42, 0.05),
+      0 26px 80px rgba(15, 23, 42, 0.16);
+    border-color: rgba(34, 211, 238, 0.25);
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(15,23,42,0.10);
+    box-shadow: 0 10px 25px rgba(15,23,42,0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .accent-ring {
+    box-shadow:
+      0 0 0 1px rgba(34, 211, 238, 0.18),
+      0 0 35px rgba(34, 211, 238, 0.12),
+      0 0 55px rgba(167, 139, 250, 0.10);
   }
 }

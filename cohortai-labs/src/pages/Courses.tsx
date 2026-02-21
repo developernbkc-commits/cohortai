@@ -24,7 +24,7 @@ export default function Courses() {
         </Container>
       </section>
 
-      <section className="py-14 border-t border-slate-800/60">
+      <section className="py-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle
             eyebrow="Tracks"
@@ -37,7 +37,7 @@ export default function Courses() {
         </Container>
       </section>
 
-      <section className="py-14 border-t border-slate-800/60">
+      <section className="py-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle
             eyebrow="Pricing"

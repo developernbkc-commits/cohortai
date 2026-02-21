@@ -1,20 +1,27 @@
+import React from "react";
 import { site } from "../lib/site";
+import { imgUrl } from "../lib/images";
 
 export default function Logo({ compact = false }: { compact?: boolean }) {
-  const size = compact ? 28 : 34;
-  const wordmarkHeight = compact ? 24 : 28;
-
+  const src = site.logoUrl ? imgUrl(site.logoUrl) : "/logo.svg";
   return (
     <div className="flex items-center gap-3">
       <img
-        src={site.logoUrl || "/logo.svg"}
+        src={src}
         alt={site.brand}
         className="shrink-0"
-        style={{ width: compact ? 140 : 160, height: compact ? 36 : 40, objectFit: "contain" }}
+        style={{
+          width: compact ? 175 : 220,
+          height: compact ? 34 : 44,
+          objectFit: "contain",
+        }}
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).src = "/logo.svg";
+        }}
       />
       {!compact && (
-        <div className="leading-tight">
-          <div className="text-xs text-slate-400">{site.tagline}</div>
+        <div className="leading-tight hidden sm:block">
+          <div className="text-xs text-slate-600">{site.tagline}</div>
         </div>
       )}
     </div>
