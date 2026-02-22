@@ -1,7 +1,7 @@
 export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
-  buildVersion: "v4.5-2026-02-22",
+  buildVersion: "v4.6-2026-02-22",
   // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
   logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
