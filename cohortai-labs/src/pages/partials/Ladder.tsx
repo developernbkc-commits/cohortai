@@ -25,7 +25,7 @@ export default function Ladder() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-2 text-sm text-slate-200">
+          <div className="mt-5 grid gap-2 text-sm text-slate-800">
             {s.includes.map((i) => (
               <div key={i}>• {i}</div>
             ))}
