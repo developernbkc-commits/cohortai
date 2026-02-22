@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Quiz from "./pages/Quiz";
 import Mentors from "./pages/Mentors";
 import Locations from "./pages/Locations";
 import Thanks from "./pages/Thanks";
@@ -29,6 +30,7 @@ export default function App() {
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/quiz" element={<Quiz />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentors" element={<Mentors />} />

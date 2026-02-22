@@ -14,6 +14,7 @@ import Ladder from "./partials/Ladder";
 import Testimonials from "./partials/Testimonials";
 import FAQ from "./partials/FAQ";
 import CTA from "./partials/CTA";
+import GalleryStrip from "../components/GalleryStrip";
 
 const stat = [
   { icon: Users, label: "Cohort model", value: "Small batches" },
@@ -168,6 +169,8 @@ export default function Home() {
           </div>
         </Container>
       </section>
+
+      <GalleryStrip />
 
       {/* Testimonials */}
       <section className="py-14 border-t border-slate-200/70">

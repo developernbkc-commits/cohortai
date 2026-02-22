@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="pb-10 text-xs text-slate-500">
-          © {new Date().getFullYear()} {site.brand}. All rights reserved.
+          © {new Date().getFullYear()} {site.brand}. All rights reserved. • <span className="font-mono">Build: {(site as any).buildVersion}</span>
         </div>
       </Container>
     </footer>

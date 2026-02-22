@@ -17,14 +17,14 @@ export default function Testimonials() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="text-sm font-semibold text-slate-950">Learner stories</div>
-          <div className="text-xs text-slate-600 mt-1">What people say about CohortAI Labs</div>
+          <div className="text-xs text-slate-800 mt-1">What people say about CohortAI Labs</div>
         </div>
         <Quote className="text-cyan-200" size={20} />
       </div>
 
       <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} className="mt-6">
         <div className="text-lg text-slate-950 leading-relaxed">“{cur.quote}”</div>
-        <div className="mt-4 text-sm text-slate-600">— {cur.name}</div>
+        <div className="mt-4 text-sm text-slate-800">— {cur.name}</div>
       </motion.div>
 
       <div className="mt-6 flex items-center gap-2">

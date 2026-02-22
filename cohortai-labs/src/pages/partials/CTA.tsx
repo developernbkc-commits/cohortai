@@ -9,11 +9,11 @@ export default function CTA() {
         <div className="card card-3d rounded-[28px] p-8 sm:p-10 ">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Ready to start?</div>
+              <div className="text-xs tracking-[0.22em] uppercase text-slate-800">Ready to start?</div>
               <div className="mt-2 text-3xl font-semibold text-slate-950 text-balance">
                 Reserve your seat for the {site.startDate} cohort.
               </div>
-              <div className="mt-3 text-slate-600">
+              <div className="mt-3 text-slate-800">
                 DM “AI” on WhatsApp or submit the contact form for a recommended starting level.
               </div>
             </div>

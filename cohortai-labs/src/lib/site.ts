@@ -1,8 +1,11 @@
 export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
+  buildVersion: "v4.5-2026-02-22",
+  // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
+  logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
-  logoUrl: "https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true",
+  logoUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/cohortai_labs_logo.png",
   imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
   // Manage batches without redeploy: update schedule.json in the images repo
   scheduleUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/schedule.json",

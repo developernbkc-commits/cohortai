@@ -29,12 +29,12 @@ export default function Contact() {
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
             <div className="card card-3d rounded-3xl p-6 ">
               <div className="text-sm font-semibold text-slate-950">Contact details</div>
-              <div className="mt-3 text-sm text-slate-600 grid gap-2">
+              <div className="mt-3 text-sm text-slate-800 grid gap-2">
                 <div>Locations: {site.cities.join(" • ")}</div>
                 <div>Batches start: {site.startDate}</div>
                 <div>Tracks: Everyday AI • Business AI • Tech & Data AI</div>
               </div>
-              <div className="mt-6 rounded-2xl bg-white/70 border border-slate-200/80 p-4 text-sm text-slate-700">
+              <div className="mt-6 rounded-2xl bg-white/70 border border-slate-200/80 p-4 text-sm text-slate-800">
                 Tip: Share your background and goal—career switch, business growth, or productivity—so we can recommend the right level.
               </div>
             </div>
@@ -56,27 +56,27 @@ export default function Contact() {
 
               <div className="grid gap-4">
                 <div>
-                  <label className="text-xs text-slate-600">Full name</label>
+                  <label className="text-xs text-slate-800">Full name</label>
                   <input
                     name="name"
                     required
-                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs text-slate-600">Phone</label>
+                    <label className="text-xs text-slate-800">Phone</label>
                     <input
                       name="phone"
                       required
-                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                       placeholder="10-digit number"
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-slate-600">City</label>
+                    <label className="text-xs text-slate-800">City</label>
                     <select
                       name="city"
                       className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
@@ -92,7 +92,7 @@ export default function Contact() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs text-slate-600">Track</label>
+                    <label className="text-xs text-slate-800">Track</label>
                     <select
                       name="track"
                       className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
@@ -104,7 +104,7 @@ export default function Contact() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-slate-600">Preferred mode</label>
+                    <label className="text-xs text-slate-800">Preferred mode</label>
                     <select
                       name="mode"
                       className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
@@ -118,11 +118,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs text-slate-600">Goal</label>
+                  <label className="text-xs text-slate-800">Goal</label>
                   <textarea
                     name="goal"
                     rows={4}
-                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                     placeholder="Example: career switch, business growth, productivity, portfolio projects..."
                   />
                 </div>

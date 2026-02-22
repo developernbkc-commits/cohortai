@@ -44,13 +44,13 @@ export default function TrackFinder() {
           <Sparkles size={18} className="text-cyan-200" />
           Track Finder
         </div>
-        <div className="mt-2 text-sm text-slate-600">
+        <div className="mt-2 text-sm text-slate-800">
           Pick your background, goal, and budget. We’ll recommend a starting point.
         </div>
 
         <div className="mt-6 grid gap-6">
           <div>
-            <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Background</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-slate-800">Background</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {(["Beginner / Non-tech", "Business / Self-employed", "Tech / IT"] as Persona[]).map((p) => (
                 <button
@@ -65,7 +65,7 @@ export default function TrackFinder() {
           </div>
 
           <div>
-            <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Goal</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-slate-800">Goal</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {(["Career upgrade", "Business growth", "Productivity"] as Goal[]).map((g) => (
                 <button
@@ -81,7 +81,7 @@ export default function TrackFinder() {
 
           <div>
             <div className="flex items-center justify-between">
-              <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Budget</div>
+              <div className="text-xs tracking-[0.22em] uppercase text-slate-800">Budget</div>
               <div className="text-sm text-slate-950 font-semibold">₹{budget.toLocaleString("en-IN")}</div>
             </div>
             <input
@@ -107,16 +107,16 @@ export default function TrackFinder() {
         </div>
 
         <div className="mt-5 rounded-2xl bg-white/70 border border-slate-200/80 p-4">
-          <div className="text-xs text-slate-600">Best track</div>
+          <div className="text-xs text-slate-800">Best track</div>
           <div className="mt-1 text-lg font-semibold text-slate-950">{rec.track}</div>
         </div>
 
         <div className="mt-3 rounded-2xl bg-white/70 border border-slate-200/80 p-4">
-          <div className="text-xs text-slate-600">Start from</div>
+          <div className="text-xs text-slate-800">Start from</div>
           <div className="mt-1 text-sm font-semibold text-slate-950">{rec.start}</div>
         </div>
 
-        <div className="mt-3 text-sm text-slate-600">{rec.note}</div>
+        <div className="mt-3 text-sm text-slate-800">{rec.note}</div>
 
         <a
           href="/contact"

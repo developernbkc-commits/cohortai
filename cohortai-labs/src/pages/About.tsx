@@ -30,7 +30,7 @@ export default function About() {
               <div key={p.title} className="card card-3d rounded-3xl p-6 ">
                 <p.icon className="text-cyan-200" size={20} />
                 <div className="mt-3 text-lg font-semibold text-slate-950">{p.title}</div>
-                <div className="mt-2 text-sm text-slate-600">{p.desc}</div>
+                <div className="mt-2 text-sm text-slate-800">{p.desc}</div>
               </div>
             ))}
           </div>

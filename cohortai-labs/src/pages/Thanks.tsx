@@ -7,9 +7,9 @@ export default function Thanks() {
     <div className="py-20">
       <Container>
         <div className="card card-3d rounded-3xl p-10  max-w-2xl">
-          <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Submitted</div>
+          <div className="text-xs tracking-[0.22em] uppercase text-slate-800">Submitted</div>
           <h1 className="mt-2 text-3xl font-semibold text-slate-950">Thanks! We’ll contact you soon.</h1>
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 text-slate-800">
             If you want faster help, WhatsApp us now. Batches start {site.startDate}.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">

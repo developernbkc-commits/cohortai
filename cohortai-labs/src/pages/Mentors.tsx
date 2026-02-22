@@ -33,8 +33,8 @@ export default function Mentors() {
                   <img src={imgUrl(m)} alt={`Mentor ${idx + 1}`} className="h-48 w-full object-cover" />
                 </div>
                 <div className="mt-4 text-lg font-semibold text-slate-950">Senior Mentor {idx + 1}</div>
-                <div className="mt-1 text-sm text-slate-700">20+ years industry experience • Mentor reviews • Practical projects</div>
-                <div className="mt-4 text-sm text-slate-700">
+                <div className="mt-1 text-sm text-slate-800">20+ years industry experience • Mentor reviews • Practical projects</div>
+                <div className="mt-4 text-sm text-slate-800">
                   Placeholder bio: add specialization, company background, and focus area (Everyday / Business / Tech & Data).
                 </div>
               </div>

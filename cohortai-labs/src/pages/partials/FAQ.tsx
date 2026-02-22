@@ -14,9 +14,9 @@ export default function FAQ() {
           <div key={f.q} className="card card-3d rounded-3xl  overflow-hidden">
             <button className="w-full flex items-center justify-between gap-4 p-5 text-left" onClick={() => setOpen(isOpen ? null : idx)}>
               <div className="text-sm sm:text-base font-semibold text-slate-950">{f.q}</div>
-              <ChevronDown size={18} className={cn("text-slate-600 transition", isOpen && "rotate-180")} />
+              <ChevronDown size={18} className={cn("text-slate-800 transition", isOpen && "rotate-180")} />
             </button>
-            {isOpen && <div className="px-5 pb-5 text-sm text-slate-600">{f.a}</div>}
+            {isOpen && <div className="px-5 pb-5 text-sm text-slate-800">{f.a}</div>}
           </div>
         );
       })}

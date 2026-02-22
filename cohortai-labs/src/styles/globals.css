@@ -53,3 +53,7 @@ html { scroll-behavior: smooth; }
       0 0 55px rgba(167, 139, 250, 0.10);
   }
 }
+
+body { color: rgb(15 23 42); }
+
+::selection { background: rgba(34,211,238,0.25); }

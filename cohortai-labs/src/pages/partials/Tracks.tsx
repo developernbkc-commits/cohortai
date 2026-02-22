@@ -35,7 +35,7 @@ export default function Tracks() {
           </div>
           <div className="mt-4 text-xs text-slate-800">{t.who}</div>
           <div className="mt-4 text-sm text-slate-800">{t.outcome}</div>
-          <ul className="mt-5 grid gap-2 text-sm text-slate-200">
+          <ul className="mt-5 grid gap-2 text-sm text-slate-800">
             {t.bullets.map((b) => (
               <li key={b}>• {b}</li>
             ))}

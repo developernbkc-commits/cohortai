@@ -31,10 +31,10 @@ export default function Locations() {
             {site.cities.map((c) => (
               <div key={c} className="card card-3d rounded-3xl p-6">
                 <div className="text-lg font-semibold text-slate-950">{c}</div>
-                <div className="mt-2 text-sm text-slate-700">
+                <div className="mt-2 text-sm text-slate-800">
                   Next batch: <span className="font-semibold text-slate-950">{schedule.byCity?.[c] || "TBD"}</span>
                 </div>
-                <div className="mt-4 text-sm text-slate-700">
+                <div className="mt-4 text-sm text-slate-800">
                   Placeholder: add offline center address, landmark, timings, and classroom capacity.
                 </div>
                 <div className="mt-6 flex gap-3">
@@ -48,12 +48,12 @@ export default function Locations() {
           </div>
 
           <div className="mt-10 card card-3d rounded-3xl p-8">
-            <div className="text-xs tracking-[0.22em] uppercase text-slate-600">How to update schedule</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-slate-800">How to update schedule</div>
             <div className="mt-2 text-2xl font-semibold text-slate-950">Edit schedule.json in Git</div>
-            <p className="mt-3 text-slate-700">
+            <p className="mt-3 text-slate-800">
               Update this file in your images repo: <span className="font-mono">{site.scheduleUrl}</span>.
             </p>
-            <pre className="mt-4 overflow-auto rounded-2xl border border-slate-200/80 bg-white/70 p-4 text-xs text-slate-700">
+            <pre className="mt-4 overflow-auto rounded-2xl border border-slate-200/80 bg-white/70 p-4 text-xs text-slate-800">
 {`{
   "updatedAt": "2026-02-21",
   "byCity": {

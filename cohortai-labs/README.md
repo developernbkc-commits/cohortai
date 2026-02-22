@@ -1,4 +1,4 @@
-# CohortAI Labs — Premium Netlify Website (Pearl Theme + Hero Slider)
+# CohortAI Labs — Premium Netlify Website (Pearl Theme + Slider + Interactivity)
 
 ## Run
 ```bash
@@ -6,39 +6,18 @@ npm install
 npm run dev
 ```
 
-## Deploy to Netlify
+## Deploy (Netlify)
 - Build command: `npm run build`
 - Publish directory: `dist`
 
-## Your logo (already wired)
-https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true
+## What’s improved in this build
+- Much larger logo in navbar + drop-shadow + chip background (better visibility)
+- Animated top navigation (slide-in + active underline)
+- Hero slider now has padding around images to prevent rounded-corner clipping
+- Added `/quiz` (2-minute assessment with score + badge + WhatsApp share link)
+- Added a home gallery strip driven by placeholder images (`site.images.gallery`)
+- Increased text contrast in many sections for readability
 
-## Images repo (no redeploy)
-Base:
-https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/
+## If logo still looks “small”
+Your PNG likely contains extra transparent padding. Fix by uploading a tightly-cropped logo PNG (same URL) to your images repo.
 
-Upload these hero slider images:
-- hero_slide_01.jpg
-- hero_slide_02.jpg
-- hero_slide_03.jpg  (recommended: artwork saying “Next Batch Starts 2 March 2026”)
-
-## Schedule (update without redeploy)
-Create/update:
-- schedule.json
-
-URL:
-https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/schedule.json
-
-Example:
-```json
-{
-  "updatedAt": "2026-02-21",
-  "byCity": {
-    "Hyderabad": "2 March 2026",
-    "Pune": "TBD",
-    "Vijayawada": "TBD",
-    "Guntur": "TBD",
-    "Vizag": "TBD"
-  }
-}
-```
