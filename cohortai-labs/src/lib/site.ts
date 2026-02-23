@@ -3,7 +3,7 @@ export const site = {
   tagline: "AI Coaching | Online + Offline",
   publicSiteUrl: "https://www.itprofessional.pro",
   adminKey: "cohortai-admin-2026",
-  buildVersion: "v4.12-2026-02-23",
+  buildVersion: "v4.15-2026-02-24",
   // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
   logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
@@ -60,6 +60,19 @@ images: {
   email: "info.cohortai.labs@itprofessional.pro",
   whatsapp: "8374617625",
   cities: ["Hyderabad", "Pune", "Vijayawada", "Guntur", "Vizag"],
+  seatAvailability: [
+    { city: "Hyderabad", seatsLeft: 12, batch: "2 March 2026", mode: "Online + Offline", status: "open" },
+    { city: "Pune", seatsLeft: 16, batch: "March 2026", mode: "Online + Offline", status: "priority" },
+    { city: "Vijayawada", seatsLeft: 14, batch: "March 2026", mode: "Hybrid", status: "open" },
+    { city: "Guntur", seatsLeft: 10, batch: "March 2026", mode: "Hybrid", status: "fast-filling" },
+    { city: "Vizag", seatsLeft: 18, batch: "March 2026", mode: "Hybrid", status: "open" },
+  ],
+  leadMagnet: {
+    title: "Free AI Readiness Checklist",
+    subtitle: "Talk to a friendly advisor and get a track suggestion, budget fit, and next batch options.",
+    ctaLabel: "Book Free Counselling",
+    ctaHref: "/recommendation",
+  },
   tracks: [
     {
       name: "Everyday AI",

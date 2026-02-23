@@ -9,12 +9,15 @@ import HeroSlider from "../components/HeroSlider";
 import { useSchedule } from "../lib/schedule";
 
 import TrackFinder from "./partials/TrackFinder";
+import GamifiedJourney from "./partials/GamifiedJourney";
 import Tracks from "./partials/Tracks";
 import Ladder from "./partials/Ladder";
 import Testimonials from "./partials/Testimonials";
 import FAQ from "./partials/FAQ";
 import CTA from "./partials/CTA";
 import GalleryStrip from "../components/GalleryStrip";
+import SeatAvailabilityPanel from "../components/SeatAvailabilityPanel";
+import LeadCounsellingBanner from "../components/LeadCounsellingBanner";
 import { Helmet } from "react-helmet-async";
 import { canonical, seoDefaults } from "../lib/seo";
 import { useLocation } from "react-router-dom";
@@ -152,6 +155,10 @@ const schedule = useSchedule();
                 </div>
               </div>
 
+              <div className="mt-6">
+                <SeatAvailabilityPanel compact />
+              </div>
+
               <div
                 className="absolute -z-10 inset-0 blur-3xl opacity-40 animate-floaty"
                 style={{
@@ -175,6 +182,27 @@ const schedule = useSchedule();
           <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <TrackFinder />
           </div>
+        </Container>
+      </section>
+
+{/* Gamification / Engagement */}
+<section className="py-14 border-t border-slate-200/70">
+  <Container>
+    <SectionTitle
+      eyebrow="Fun + engagement"
+      title="Gamified learning that keeps people motivated"
+      desc="We combine mentor guidance with milestones, badges, and challenge-style progress so learners stay consistent and confident."
+    />
+    <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
+      <GamifiedJourney />
+    </div>
+  </Container>
+</section>
+
+      {/* Friendly counselling + conversion */}
+      <section className="py-14 border-t border-slate-200/70">
+        <Container>
+          <LeadCounsellingBanner />
         </Container>
       </section>
 
@@ -202,6 +230,19 @@ const schedule = useSchedule();
           />
           <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <Ladder />
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 border-t border-slate-200/70">
+        <Container>
+          <SectionTitle
+            eyebrow="Availability"
+            title="Plan ahead with city-wise batch availability"
+            desc="Use this to shortlist cities and then confirm exact timings with our team."
+          />
+          <div className="mt-8">
+            <SeatAvailabilityPanel />
           </div>
         </Container>
       </section>
