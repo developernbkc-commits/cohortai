@@ -3,7 +3,7 @@ export const site = {
   tagline: "AI Coaching | Online + Offline",
   publicSiteUrl: "https://www.itprofessional.pro",
   adminKey: "cohortai-admin-2026",
-  buildVersion: "v4.10-2026-02-23",
+  buildVersion: "v4.11-2026-02-23",
   // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
   logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)

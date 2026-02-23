@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Recommendation from "./pages/Recommendation";
 import AdminSchedule from "./pages/AdminSchedule";
 import Quiz from "./pages/Quiz";
 import Mentors from "./pages/Mentors";
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/admin/schedule" element={<AdminSchedule />} />
             <Route path="/mentors" element={<Mentors />} />
             <Route path="/locations" element={<Locations />} />

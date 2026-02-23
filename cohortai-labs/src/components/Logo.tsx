@@ -4,13 +4,10 @@ import { imgUrl } from "../lib/images";
 
 export default function Logo({ compact = false }: { compact?: boolean }) {
   const src = site.logoUrl ? imgUrl(site.logoUrl) : "/logo.svg";
-
-  // If your logo PNG has transparent padding, "cover" will visually zoom it.
-  // If you upload a tightly-cropped logo PNG, switch to "contain".
   const fit: "cover" | "contain" = "cover";
 
-  const w = compact ? 340 : 420;
-  const h = compact ? 64 : 78;
+  const w = compact ? 360 : 440;
+  const h = compact ? 66 : 80;
 
   return (
     <div className="flex items-center">
@@ -23,7 +20,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
           height: h,
           objectFit: fit,
           objectPosition: "left center",
-          filter: "drop-shadow(0 10px 16px rgba(15,23,42,0.14))",
+          filter: "drop-shadow(0 10px 18px rgba(0,0,0,0.35))",
         }}
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).src = "/logo.svg";
