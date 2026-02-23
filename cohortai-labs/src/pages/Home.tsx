@@ -25,6 +25,13 @@ const stat = [
   { icon: ShieldCheck, label: "Mentor reviews", value: "Structured feedback" },
 ];
 
+const trustStrip = [
+  { k: "Delivery mode", v: "Online + Offline" },
+  { k: "Mentors", v: "Industry experienced" },
+  { k: "Formats", v: "Weekday + Weekend" },
+  { k: "Tracks", v: "Beginner • Business • Tech" },
+];
+
 export default function Home() {
   
   const location = useLocation();
@@ -46,13 +53,16 @@ const schedule = useSchedule();
   </Helmet>
 
       {/* HERO */}
-      <section className="relative pt-14 sm:pt-20 pb-10">
+      <section className="relative pt-14 sm:pt-20 pb-10 overflow-hidden">
         <GlowBg />
         <Container>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div className="relative grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div className="pointer-events-none absolute inset-x-0 -top-4 h-40 mesh-lines rounded-3xl" />
+            <div className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-cyan-300/20 blur-3xl" />
+            <div className="pointer-events-none absolute right-8 top-4 h-52 w-52 rounded-full bg-violet-300/18 blur-3xl" />
             {/* Left */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/70 px-4 py-2 text-xs text-slate-700 chip">
+            <div className="hero-pane p-6 sm:p-7 lg:p-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-2 text-xs text-slate-700 chip relative z-[1]">
                 <Sparkles size={14} className="text-cyan-700" />
                 <span>
                   Next batch <span className="text-slate-950 font-semibold">{nextHyd}</span> •{" "}
@@ -82,7 +92,16 @@ const schedule = useSchedule();
                 </Button>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {trustStrip.map((item) => (
+                  <div key={item.k} className="hero-proof-item p-3">
+                    <div className="text-[11px] uppercase tracking-[0.18em] text-slate-600">{item.k}</div>
+                    <div className="mt-1 text-sm font-semibold text-slate-950">{item.v}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {stat.map((s) => (
                   <div key={s.label} className="card card-3d rounded-2xl p-4">
                     <s.icon className="text-cyan-700" size={18} />
@@ -95,7 +114,7 @@ const schedule = useSchedule();
 
             {/* Right */}
             <motion.div
-              className="relative"
+              className="relative lg:pt-2"
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -153,7 +172,7 @@ const schedule = useSchedule();
             title="Not sure which AI track fits you?"
             desc="Answer a few quick questions and we’ll recommend the best starting point."
           />
-          <div className="mt-8">
+          <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <TrackFinder />
           </div>
         </Container>
@@ -167,7 +186,7 @@ const schedule = useSchedule();
             title="Designed for beginners, business owners, and tech professionals"
             desc="Pick the track that matches your background and goals—then build deliverables with mentor reviews."
           />
-          <div className="mt-8">
+          <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <Tracks />
           </div>
         </Container>
@@ -181,7 +200,7 @@ const schedule = useSchedule();
             title="Start small, then level up with projects and reviews"
             desc="Transparent pricing from ₹5,000 to ₹35,000. Each step adds outcomes, reviews, and portfolio depth."
           />
-          <div className="mt-8">
+          <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <Ladder />
           </div>
         </Container>
@@ -197,7 +216,7 @@ const schedule = useSchedule();
             title="What learners love about cohort-based learning"
             desc="A premium learning experience that stays focused on outcomes and accountability."
           />
-          <div className="mt-8">
+          <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <Testimonials />
           </div>
         </Container>
@@ -207,7 +226,7 @@ const schedule = useSchedule();
       <section className="py-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle eyebrow="FAQ" title="Quick answers" desc="If you have more questions, message us and we’ll guide you." />
-          <div className="mt-8">
+          <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
             <FAQ />
           </div>
         </Container>

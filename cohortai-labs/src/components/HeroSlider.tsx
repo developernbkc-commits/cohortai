@@ -31,7 +31,7 @@ export default function HeroSlider() {
     <div className="card card-3d rounded-3xl border border-slate-200/80 shadow-[0_26px_80px_rgba(15,23,42,0.14)] overflow-hidden">
       {/* Image */}
       <div className="relative bg-white p-4 pt-6">
-        <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
           <AnimatePresence mode="wait">
             <motion.img
               key={cur.file || String(i)}
@@ -48,6 +48,8 @@ export default function HeroSlider() {
               }}
             />
           </AnimatePresence>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/6 via-transparent to-white/10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/35 to-transparent" />
         </div>
 
         {/* Dots */}
@@ -66,8 +68,8 @@ export default function HeroSlider() {
       </div>
 
       {/* Content below image */}
-      <div className="bg-white/70 backdrop-blur border-t border-slate-200/70 px-6 py-5">
-        <div className="text-sm text-slate-800">CohortAI Labs</div>
+      <div className="relative bg-white/78 backdrop-blur border-t border-slate-200/70 px-6 py-5">
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs text-slate-700"><span className="h-2 w-2 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-emerald-400" />CohortAI Labs</div>
         <div className="mt-1 text-xl sm:text-2xl font-semibold text-slate-950">{cur.headline}</div>
         <div className="mt-2 text-sm text-slate-800 leading-relaxed">{cur.sub}</div>
 

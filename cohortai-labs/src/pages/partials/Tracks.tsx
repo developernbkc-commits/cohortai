@@ -41,7 +41,7 @@ export default function Tracks() {
             ))}
           </ul>
 
-          <Link to="/contact" className="mt-6 inline-flex text-sm font-semibold text-slate-900 hover:text-cyan-100 transition">
+          <Link to="/recommendation" className="mt-6 inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_10px_24px_rgba(15,23,42,0.06)] hover:border-cyan-200 hover:bg-white transition">
             Get a recommendation
           </Link>
         </motion.div>
