@@ -3,7 +3,7 @@ export const site = {
   tagline: "AI Coaching | Online + Offline",
   publicSiteUrl: "https://www.itprofessional.pro",
   adminKey: "cohortai-admin-2026",
-  buildVersion: "v4.15-2026-02-24",
+  buildVersion: "v4.16-2026-02-23",
   // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
   logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
@@ -68,6 +68,9 @@ images: {
     { city: "Vizag", seatsLeft: 18, batch: "March 2026", mode: "Hybrid", status: "open" },
   ],
   leadMagnet: {
+    challengePdfTitle: "7-Day AI Starter Challenge PDF",
+    challengePdfSubtitle: "Get a beginner-friendly day-by-day challenge with tasks, prompts, and a WhatsApp check-in option.",
+    challengePdfFormName: "cohortai-7day-ai-challenge",
     title: "Free AI Readiness Checklist",
     subtitle: "Talk to a friendly advisor and get a track suggestion, budget fit, and next batch options.",
     ctaLabel: "Book Free Counselling",
