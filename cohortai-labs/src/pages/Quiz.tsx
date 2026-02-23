@@ -71,20 +71,19 @@ const [answers, setAnswers] = React.useState<number[]>(Array(questions.length).f
   }
 
   return (
-    
-<Helmet>
-  <title>AI Track Assessment | CohortAI Labs</title>
-  <meta name="description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="AI Track Assessment | CohortAI Labs" />
-  <meta property="og:description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
 <div>
+  <Helmet>
+    <title>AI Track Assessment | CohortAI Labs</title>
+    <meta name="description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
+    <link rel="canonical" href={canonical(location.pathname)} />
+    <meta property="og:title" content="AI Track Assessment | CohortAI Labs" />
+    <meta property="og:description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical(location.pathname)} />
+    <meta property="og:image" content={seoDefaults.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </Helmet>
+
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle

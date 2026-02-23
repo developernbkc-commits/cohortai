@@ -5,38 +5,51 @@ import Button from "../components/Button";
 import { Helmet } from "react-helmet-async";
 import { canonical, seoDefaults } from "../lib/seo";
 import { useLocation } from "react-router-dom";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export default function Contact() {
-  
   const location = useLocation();
-return (
-    
-<Helmet>
-  <title>Contact | CohortAI Labs</title>
-  <meta name="description" content="Contact CohortAI Labs for batch schedule and guidance call. WhatsApp, call, or email info.cohortai.labs@itprofessional.pro." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="Contact | CohortAI Labs" />
-  <meta property="og:description" content="Contact CohortAI Labs for batch schedule and guidance call. WhatsApp, call, or email info.cohortai.labs@itprofessional.pro." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
+  const email = (site as any).email || "info.cohortai.labs@itprofessional.pro";
 
-<div>
+  return (
+    <div>
+      <Helmet>
+        <title>Contact | CohortAI Labs</title>
+        <meta
+          name="description"
+          content="Contact CohortAI Labs for batch schedule and guidance call. WhatsApp, call, or email info.cohortai.labs@itprofessional.pro."
+        />
+        <link rel="canonical" href={canonical(location.pathname)} />
+        <meta property="og:title" content="Contact | CohortAI Labs" />
+        <meta
+          property="og:description"
+          content="Get batch schedule, timings, and track recommendation. WhatsApp, call, or email CohortAI Labs."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical(location.pathname)} />
+        <meta property="og:image" content={seoDefaults.ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle
             eyebrow="Contact"
             title="Get a batch schedule + recommended starting level"
-            desc="Fill the form and we’ll contact you. Or WhatsApp / call for faster help."
+            desc="Fill the form and we’ll contact you. Or WhatsApp / call / email for faster help."
           />
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer">
+              <MessageCircle className="mr-2" size={18} />
               WhatsApp +91 {site.whatsapp}
             </Button>
             <Button href={`tel:${site.phone}`} variant="secondary">
-              Email: <a className="underline" href="mailto:info.cohortai.labs@itprofessional.pro">info.cohortai.labs@itprofessional.pro</a><br/>Call {site.phone}
+              <Phone className="mr-2" size={18} />
+              Call {site.phone}
+            </Button>
+            <Button href={`mailto:${email}`} variant="secondary">
+              <Mail className="mr-2" size={18} />
+              Email {email}
             </Button>
           </div>
         </Container>
@@ -45,25 +58,27 @@ return (
       <section className="pb-16">
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="card card-3d rounded-3xl p-6 ">
+            <div className="card card-3d rounded-3xl p-6">
               <div className="text-sm font-semibold text-slate-950">Contact details</div>
               <div className="mt-3 text-sm text-slate-800 grid gap-2">
                 <div>Locations: {site.cities.join(" • ")}</div>
-                <div>Batches start: {site.startDate}</div>
+                <div>Next batch: {site.startDate}</div>
                 <div>Tracks: Everyday AI • Business AI • Tech & Data AI</div>
+                <div>Email: {email}</div>
               </div>
               <div className="mt-6 rounded-2xl bg-white/70 border border-slate-200/80 p-4 text-sm text-slate-800">
                 Tip: Share your background and goal—career switch, business growth, or productivity—so we can recommend the right level.
               </div>
             </div>
 
-            <form id="lead"
+            <form
+              id="lead"
               name="lead"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
               action="/thanks"
-              className="card card-3d rounded-3xl p-6 "
+              className="card card-3d rounded-3xl p-6"
             >
               <input type="hidden" name="form-name" value="lead" />
               <p className="hidden">
@@ -101,7 +116,9 @@ return (
                       defaultValue={site.cities[0]}
                     >
                       {site.cities.map((c) => (
-                        <option key={c} value={c}>{c}</option>
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
                       ))}
                       <option value="Online">Online</option>
                     </select>
@@ -117,7 +134,9 @@ return (
                       defaultValue="Everyday AI"
                     >
                       {site.tracks.map((t) => (
-                        <option key={t.name} value={t.name}>{t.name}</option>
+                        <option key={t.name} value={t.name}>
+                          {t.name}
+                        </option>
                       ))}
                     </select>
                   </div>

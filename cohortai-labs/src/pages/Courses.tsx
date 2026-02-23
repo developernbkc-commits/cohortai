@@ -12,20 +12,19 @@ export default function Courses() {
   
   const location = useLocation();
 return (
-    
-<Helmet>
-  <title>Courses | CohortAI Labs</title>
-  <meta name="description" content="Explore CohortAI Labs course ladder from INR 5,000 to 35,000 across Everyday AI, Business AI, and Tech & Data AI tracks." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="Courses | CohortAI Labs" />
-  <meta property="og:description" content="Explore CohortAI Labs course ladder from INR 5,000 to 35,000 across Everyday AI, Business AI, and Tech & Data AI tracks." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
 <div>
+  <Helmet>
+    <title>Courses | CohortAI Labs</title>
+    <meta name="description" content="Explore CohortAI Labs course ladder from INR 5,000 to 35,000 across Everyday AI, Business AI, and Tech & Data AI tracks." />
+    <link rel="canonical" href={canonical(location.pathname)} />
+    <meta property="og:title" content="Courses | CohortAI Labs" />
+    <meta property="og:description" content="Explore CohortAI Labs course ladder from INR 5,000 to 35,000 across Everyday AI, Business AI, and Tech & Data AI tracks." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical(location.pathname)} />
+    <meta property="og:image" content={seoDefaults.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </Helmet>
+
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle

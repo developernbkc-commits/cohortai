@@ -12,20 +12,19 @@ export default function Mentors() {
   const location = useLocation();
 const mentors = site.images?.mentors || [];
   return (
-    
-<Helmet>
-  <title>Mentors | CohortAI Labs</title>
-  <meta name="description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="Mentors | CohortAI Labs" />
-  <meta property="og:description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
 <div>
+  <Helmet>
+    <title>Mentors | CohortAI Labs</title>
+    <meta name="description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
+    <link rel="canonical" href={canonical(location.pathname)} />
+    <meta property="og:title" content="Mentors | CohortAI Labs" />
+    <meta property="og:description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical(location.pathname)} />
+    <meta property="og:image" content={seoDefaults.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </Helmet>
+
       <section className="pt-12 pb-8">
         <Container>
           <SectionTitle

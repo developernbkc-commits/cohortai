@@ -32,20 +32,19 @@ const schedule = useSchedule();
   const nextHyd = schedule.byCity?.Hyderabad || "2 March 2026";
 
   return (
-    
-<Helmet>
-  <title>CohortAI Labs | AI Coaching in Hyderabad, Pune, Vijayawada, Guntur & Vizag</title>
-  <meta name="description" content="Mentor-led AI cohorts with real projects and structured reviews. Online + Offline coaching. Next batch starts 2 March 2026." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="CohortAI Labs | AI Coaching in Hyderabad, Pune, Vijayawada, Guntur & Vizag" />
-  <meta property="og:description" content="Mentor-led AI cohorts with real projects and structured reviews. Online + Offline coaching. Next batch starts 2 March 2026." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
 <div className="relative">
+  <Helmet>
+    <title>CohortAI Labs | AI Coaching in Hyderabad, Pune, Vijayawada, Guntur & Vizag</title>
+    <meta name="description" content="Mentor-led AI cohorts with real projects and structured reviews. Online + Offline coaching. Next batch starts 2 March 2026." />
+    <link rel="canonical" href={canonical(location.pathname)} />
+    <meta property="og:title" content="CohortAI Labs | AI Coaching in Hyderabad, Pune, Vijayawada, Guntur & Vizag" />
+    <meta property="og:description" content="Mentor-led AI cohorts with real projects and structured reviews. Online + Offline coaching. Next batch starts 2 March 2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical(location.pathname)} />
+    <meta property="og:image" content={seoDefaults.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </Helmet>
+
       {/* HERO */}
       <section className="relative pt-14 sm:pt-20 pb-10">
         <GlowBg />

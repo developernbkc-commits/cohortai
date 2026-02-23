@@ -37,10 +37,11 @@ export default function Footer() {
               <a className="hover:text-slate-950" href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer">
                 WhatsApp: +91 {site.whatsapp}
               </a>
+              <a className="hover:text-slate-950" href={`mailto:${(site as any).email || "info.cohortai.labs@itprofessional.pro"}`}>Email: {(site as any).email || "info.cohortai.labs@itprofessional.pro"}</a>
               <div>Locations: {site.cities.join(" • ")}</div>
 
               <div className="mt-2">
-                <div className="text-xs text-slate-600">Next batches (editable via schedule.json)</div>
+                <div className="text-xs text-slate-600">Next batches (updated regularly)</div>
                 <div className="mt-1 grid gap-1">
                   {cities.map((c) => (
                     <div key={c} className="text-sm">

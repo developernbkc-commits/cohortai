@@ -7,8 +7,10 @@ import "./styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
       <App />
     </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>
 );

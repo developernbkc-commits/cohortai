@@ -10,27 +10,26 @@ const points = [
   { icon: GraduationCap, title: "Senior mentorship", desc: "Industry-experienced mentors focus on practical skills and clarity." },
   { icon: CheckCircle2, title: "Deliverables", desc: "Every module produces outputs you can show, reuse, or demo." },
   { icon: Timer, title: "Cohort accountability", desc: "Small batches, weekly reviews, and progress tracking." },
-  { icon: MapPin, title: "Hybrid access", desc: "Online + offline options across Hyderabad, Vijayawada, and Guntur." },
+  { icon: MapPin, title: "Hybrid access", desc: "Online + offline options across Hyderabad, Pune, Vijayawada, Guntur, and Vizag." },
 ];
 
 export default function About() {
   
   const location = useLocation();
 return (
-    
-<Helmet>
-  <title>About | CohortAI Labs</title>
-  <meta name="description" content="CohortAI Labs delivers premium AI coaching with mentor-led cohorts, accountability, and portfolio-ready deliverables." />
-  <link rel="canonical" href={canonical(location.pathname)} />
-  <meta property="og:title" content="About | CohortAI Labs" />
-  <meta property="og:description" content="CohortAI Labs delivers premium AI coaching with mentor-led cohorts, accountability, and portfolio-ready deliverables." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical(location.pathname)} />
-  <meta property="og:image" content={seoDefaults.ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
 <div>
+  <Helmet>
+    <title>About | CohortAI Labs</title>
+    <meta name="description" content="CohortAI Labs delivers premium AI coaching with mentor-led cohorts, accountability, and portfolio-ready deliverables." />
+    <link rel="canonical" href={canonical(location.pathname)} />
+    <meta property="og:title" content="About | CohortAI Labs" />
+    <meta property="og:description" content="CohortAI Labs delivers premium AI coaching with mentor-led cohorts, accountability, and portfolio-ready deliverables." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical(location.pathname)} />
+    <meta property="og:image" content={seoDefaults.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </Helmet>
+
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle
