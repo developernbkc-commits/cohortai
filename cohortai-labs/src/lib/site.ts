@@ -1,7 +1,9 @@
 export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
-  buildVersion: "v4.7-2026-02-22",
+  publicSiteUrl: "https://www.itprofessional.pro",
+  adminKey: "cohortai-admin-2026",
+  buildVersion: "v4.9-2026-02-23",
   // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
   logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
@@ -55,6 +57,7 @@ images: {
   },
   startDate: "2 March 2026",
   phone: "8374617625",
+  email: "info.cohortai.labs@itprofessional.pro",
   whatsapp: "8374617625",
   cities: ["Hyderabad", "Pune", "Vijayawada", "Guntur", "Vizag"],
   tracks: [

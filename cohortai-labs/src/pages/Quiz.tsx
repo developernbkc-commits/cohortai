@@ -3,6 +3,9 @@ import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import { site } from "../lib/site";
+import { Helmet } from "react-helmet-async";
+import { canonical, seoDefaults } from "../lib/seo";
+import { useLocation } from "react-router-dom";
 
 type Q = { q: string; options: { label: string; score: number }[] };
 
@@ -56,7 +59,9 @@ function badge(score: number) {
 }
 
 export default function Quiz() {
-  const [answers, setAnswers] = React.useState<number[]>(Array(questions.length).fill(-1));
+  
+  const location = useLocation();
+const [answers, setAnswers] = React.useState<number[]>(Array(questions.length).fill(-1));
   const done = answers.every((a) => a >= 0);
   const total = done ? answers.reduce((a, b) => a + b, 0) : 0;
   const b = badge(total);
@@ -66,7 +71,20 @@ export default function Quiz() {
   }
 
   return (
-    <div>
+    
+<Helmet>
+  <title>AI Track Assessment | CohortAI Labs</title>
+  <meta name="description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
+  <link rel="canonical" href={canonical(location.pathname)} />
+  <meta property="og:title" content="AI Track Assessment | CohortAI Labs" />
+  <meta property="og:description" content="Take a quick 2-minute assessment to find your best AI track. Get a score and recommended starting point." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical(location.pathname)} />
+  <meta property="og:image" content={seoDefaults.ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+</Helmet>
+
+<div>
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle

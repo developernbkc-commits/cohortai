@@ -2,10 +2,28 @@ import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import { site } from "../lib/site";
 import Button from "../components/Button";
+import { Helmet } from "react-helmet-async";
+import { canonical, seoDefaults } from "../lib/seo";
+import { useLocation } from "react-router-dom";
 
 export default function Contact() {
-  return (
-    <div>
+  
+  const location = useLocation();
+return (
+    
+<Helmet>
+  <title>Contact | CohortAI Labs</title>
+  <meta name="description" content="Contact CohortAI Labs for batch schedule and guidance call. WhatsApp, call, or email info.cohortai.labs@itprofessional.pro." />
+  <link rel="canonical" href={canonical(location.pathname)} />
+  <meta property="og:title" content="Contact | CohortAI Labs" />
+  <meta property="og:description" content="Contact CohortAI Labs for batch schedule and guidance call. WhatsApp, call, or email info.cohortai.labs@itprofessional.pro." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical(location.pathname)} />
+  <meta property="og:image" content={seoDefaults.ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+</Helmet>
+
+<div>
       <section className="pt-12 pb-10">
         <Container>
           <SectionTitle
@@ -18,7 +36,7 @@ export default function Contact() {
               WhatsApp +91 {site.whatsapp}
             </Button>
             <Button href={`tel:${site.phone}`} variant="secondary">
-              Call {site.phone}
+              Email: <a className="underline" href="mailto:info.cohortai.labs@itprofessional.pro">info.cohortai.labs@itprofessional.pro</a><br/>Call {site.phone}
             </Button>
           </div>
         </Container>

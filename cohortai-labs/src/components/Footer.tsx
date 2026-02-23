@@ -30,7 +30,8 @@ export default function Footer() {
           </div>
 
           <div className="text-sm">
-            <div className="font-semibold text-slate-950 mb-3">Get in touch</div>
+            <div className="font-semibold text-slate-950 mb-3">Get in touch
+            </div>
             <div className="grid gap-2 text-slate-700">
               <a className="hover:text-slate-950" href={`tel:${site.phone}`}>Call: {site.phone}</a>
               <a className="hover:text-slate-950" href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer">

@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="bg-white/85 backdrop-blur-xl border-b border-slate-200/70">
         <Container>
-          <div className="h-[92px] flex items-center justify-between gap-4">
+          <div className="h-[104px] flex items-center justify-between gap-4">
             <Link to="/" className="group">
               <Logo compact />
             </Link>

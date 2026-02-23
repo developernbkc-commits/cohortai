@@ -3,11 +3,29 @@ import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import { site } from "../lib/site";
 import { imgUrl } from "../lib/images";
+import { Helmet } from "react-helmet-async";
+import { canonical, seoDefaults } from "../lib/seo";
+import { useLocation } from "react-router-dom";
 
 export default function Mentors() {
-  const mentors = site.images?.mentors || [];
+  
+  const location = useLocation();
+const mentors = site.images?.mentors || [];
   return (
-    <div>
+    
+<Helmet>
+  <title>Mentors | CohortAI Labs</title>
+  <meta name="description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
+  <link rel="canonical" href={canonical(location.pathname)} />
+  <meta property="og:title" content="Mentors | CohortAI Labs" />
+  <meta property="og:description" content="Meet CohortAI Labs mentors—experienced industry professionals guiding learners with structured reviews and practical labs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical(location.pathname)} />
+  <meta property="og:image" content={seoDefaults.ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+</Helmet>
+
+<div>
       <section className="pt-12 pb-8">
         <Container>
           <SectionTitle

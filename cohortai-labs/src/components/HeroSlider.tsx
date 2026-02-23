@@ -28,46 +28,29 @@ export default function HeroSlider() {
   const cur = items[i];
 
   return (
-    <div className="card card-3d rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_26px_80px_rgba(15,23,42,0.14)]">
-      <div className="relative">
-        <div className="bg-white p-4 pt-6">
-          <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={cur.file || String(i)}
-                src={cur.file ? imgUrl(cur.file) : PLACEHOLDER_IMG}
-                alt=""
-                className="h-full w-full"
-                style={{ objectFit: cur.fit || (i === 2 ? "contain" : "cover"), objectPosition: "center" }}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.99 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = PLACEHOLDER_IMG;
-                }}
-              />
-            </AnimatePresence>
-          </div>
+    <div className="card card-3d rounded-3xl border border-slate-200/80 shadow-[0_26px_80px_rgba(15,23,42,0.14)] overflow-hidden">
+      {/* Image */}
+      <div className="relative bg-white p-4 pt-6">
+        <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={cur.file || String(i)}
+              src={cur.file ? imgUrl(cur.file) : PLACEHOLDER_IMG}
+              alt=""
+              className="h-full w-full"
+              style={{ objectFit: cur.fit || (i === 2 ? "contain" : "cover"), objectPosition: "center" }}
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.99 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = PLACEHOLDER_IMG;
+              }}
+            />
+          </AnimatePresence>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-white/92 via-white/18 to-transparent pointer-events-none" />
-
-        <div className="absolute bottom-6 left-6 right-6">
-          <div className="card rounded-2xl px-5 py-5">
-            <div className="text-sm text-slate-800">CohortAI Labs</div>
-            <div className="mt-1 text-xl sm:text-2xl font-semibold text-slate-950">{cur.headline}</div>
-            <div className="mt-2 text-sm text-slate-800 leading-relaxed">{cur.sub}</div>
-
-            <div className="mt-4 flex flex-col sm:flex-row gap-3">
-              <Button href={(site as any).ctas?.primaryHref || "/contact"}>{(site as any).ctas?.primaryLabel || "Get batch schedule"}</Button>
-              <Button href={(site as any).ctas?.demoHref || "/contact#lead"} variant="secondary">
-                {(site as any).ctas?.demoLabel || "Book a free demo"}
-              </Button>
-            </div>
-          </div>
-        </div>
-
+        {/* Dots */}
         <div className="absolute top-5 right-6 flex gap-2">
           {items.map((_, idx) => (
             <button
@@ -79,6 +62,22 @@ export default function HeroSlider() {
               aria-label={`Slide ${idx + 1}`}
             />
           ))}
+        </div>
+      </div>
+
+      {/* Content below image */}
+      <div className="bg-white/70 backdrop-blur border-t border-slate-200/70 px-6 py-5">
+        <div className="text-sm text-slate-800">CohortAI Labs</div>
+        <div className="mt-1 text-xl sm:text-2xl font-semibold text-slate-950">{cur.headline}</div>
+        <div className="mt-2 text-sm text-slate-800 leading-relaxed">{cur.sub}</div>
+
+        <div className="mt-4 flex flex-col sm:flex-row gap-3">
+          <Button href={(site as any).ctas?.primaryHref || "/contact"}>
+            {(site as any).ctas?.primaryLabel || "Get batch schedule"}
+          </Button>
+          <Button href={(site as any).ctas?.demoHref || "/contact#lead"} variant="secondary">
+            {(site as any).ctas?.demoLabel || "Book a free demo"}
+          </Button>
         </div>
       </div>
     </div>
