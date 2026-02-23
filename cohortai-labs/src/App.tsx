@@ -11,6 +11,7 @@ import AdminSchedule from "./pages/AdminSchedule";
 import Quiz from "./pages/Quiz";
 import Mentors from "./pages/Mentors";
 import Locations from "./pages/Locations";
+import Enterprise from "./pages/Enterprise";
 import Thanks from "./pages/Thanks";
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/admin/schedule" element={<AdminSchedule />} />
             <Route path="/mentors" element={<Mentors />} />
             <Route path="/locations" element={<Locations />} />
+            <Route path="/enterprise" element={<Enterprise />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>

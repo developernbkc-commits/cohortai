@@ -13,6 +13,7 @@ const nav = [
   { to: "/quiz", label: "Assessment" },
   { to: "/about", label: "About" },
   { to: "/mentors", label: "Mentors" },
+  { to: "/enterprise", label: "Enterprise" },
   { to: "/locations", label: "Locations" },
   { to: "/contact", label: "Contact" },
 ];
