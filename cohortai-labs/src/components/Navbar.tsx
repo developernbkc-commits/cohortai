@@ -40,7 +40,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
     >
-      <div className="bg-slate-950/92 backdrop-blur-xl border-b border-white/10">
+      <div className="bg-slate-950 border-b border-white/10 shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
         <Container>
           <div className="h-[104px] flex items-center justify-between gap-4">
             <Link to="/" className="group shrink-0">
@@ -54,7 +54,7 @@ export default function Navbar() {
                   to={n.to}
                   className={({ isActive }) =>
                     cn(
-                      "relative text-slate-200 hover:text-white transition",
+                      "relative text-white/85 hover:text-white transition",
                       isActive && "text-white font-semibold"
                     )
                   }
@@ -77,7 +77,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setCompanyOpen((v) => !v)}
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-full px-3 py-2 text-slate-200 hover:text-white hover:bg-white/5 transition",
+                    "inline-flex items-center gap-1 rounded-full px-3 py-2 text-white/85 hover:text-white hover:bg-white/5 transition",
                     companyOpen && "bg-white/5 text-white"
                   )}
                   aria-label="Company menu"
@@ -100,7 +100,7 @@ export default function Navbar() {
                           to={n.to}
                           className={({ isActive }) =>
                             cn(
-                              "block px-4 py-3 text-sm text-slate-200 hover:text-white hover:bg-white/5",
+                              "block px-4 py-3 text-sm text-white/85 hover:text-white hover:bg-white/5",
                               isActive && "text-white font-semibold bg-white/5"
                             )
                           }
@@ -117,7 +117,7 @@ export default function Navbar() {
                 href={`https://wa.me/91${site.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10"
+                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-white/12 hover:bg-white/16 border border-white/12"
               >
                 WhatsApp
               </a>
@@ -134,7 +134,7 @@ export default function Navbar() {
             </nav>
 
             <button
-              className="lg:hidden inline-flex items-center justify-center rounded-xl p-3 text-slate-200 hover:bg-white/5"
+              className="lg:hidden inline-flex items-center justify-center rounded-xl p-3 text-white/85 hover:bg-white/5"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -159,7 +159,7 @@ export default function Navbar() {
                         to={n.to}
                         className={({ isActive }) =>
                           cn(
-                            "px-3 py-3 rounded-xl text-sm text-slate-200 hover:bg-white/5 hover:text-white",
+                            "px-3 py-3 rounded-xl text-sm text-white/85 hover:bg-white/5 hover:text-white",
                             isActive && "bg-white/5 text-white font-semibold"
                           )
                         }
@@ -174,7 +174,7 @@ export default function Navbar() {
                         to={n.to}
                         className={({ isActive }) =>
                           cn(
-                            "px-3 py-3 rounded-xl text-sm text-slate-200 hover:bg-white/5 hover:text-white",
+                            "px-3 py-3 rounded-xl text-sm text-white/85 hover:bg-white/5 hover:text-white",
                             isActive && "bg-white/5 text-white font-semibold"
                           )
                         }
@@ -188,7 +188,7 @@ export default function Navbar() {
                         href={`https://wa.me/91${site.whatsapp}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center justify-center rounded-xl px-3 py-3 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10"
+                        className="inline-flex items-center justify-center rounded-xl px-3 py-3 text-sm font-semibold text-white bg-white/12 hover:bg-white/16 border border-white/12"
                       >
                         WhatsApp
                       </a>
@@ -200,7 +200,7 @@ export default function Navbar() {
                       </a>
                       <a
                         href={`mailto:${email}`}
-                        className="inline-flex items-center justify-center rounded-xl px-3 py-3 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10"
+                        className="inline-flex items-center justify-center rounded-xl px-3 py-3 text-sm font-semibold text-white bg-white/12 hover:bg-white/16 border border-white/12"
                       >
                         Email
                       </a>
