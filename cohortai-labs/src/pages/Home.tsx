@@ -59,7 +59,7 @@ const schedule = useSchedule();
       <section className="relative pt-14 sm:pt-20 pb-10 overflow-hidden">
         <GlowBg />
         <Container>
-          <div className="relative grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div className="relative grid gap-8 xl:gap-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-start">
             <div className="pointer-events-none absolute inset-x-0 -top-4 h-40 mesh-lines rounded-3xl" />
             <div className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-cyan-300/20 blur-3xl" />
             <div className="pointer-events-none absolute right-8 top-4 h-52 w-52 rounded-full bg-violet-300/18 blur-3xl" />
@@ -155,9 +155,6 @@ const schedule = useSchedule();
                 </div>
               </div>
 
-              <div className="mt-6">
-                <SeatAvailabilityPanel compact />
-              </div>
 
               <div
                 className="absolute -z-10 inset-0 blur-3xl opacity-40 animate-floaty"
@@ -168,11 +165,15 @@ const schedule = useSchedule();
               />
             </motion.div>
           </div>
+
+          <div className="mt-8 lg:mt-10">
+            <SeatAvailabilityPanel compact />
+          </div>
         </Container>
       </section>
 
       {/* Track Finder */}
-      <section className="py-14 border-t border-slate-200/70">
+      <section className="pt-12 pb-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle
             eyebrow="Find your path"
