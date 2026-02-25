@@ -1,40 +1,102 @@
-import React from "react";
+import { useEffect, useMemo, useState } from "react";
+import { MessageSquareQuote, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
-const items = [
-  { name: "Working professional", quote: "The cohort structure kept me consistent. Weekly reviews made a huge difference—no more random learning." },
-  { name: "Small business owner", quote: "I finally built a content + follow-up system that saves time every day. Clear steps, real outputs." },
-  { name: "Fresher / student", quote: "I liked the mentor feedback on submissions. I now have projects I can confidently show in interviews." },
-];
+import { fetchTestimonialsPayload, fallbackTestimonials, type TestimonialItem } from "../../lib/testimonialsData";
+
+function StarRow({ rating }: { rating: number }) {
+  return (
+    <div className="flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className={`h-3.5 w-3.5 ${i < rating ? "fill-current text-amber-500" : "text-slate-300"}`} />
+      ))}
+    </div>
+  );
+}
+
+function trackPillClass(track: TestimonialItem["track"]) {
+  switch (track) {
+    case "Everyday AI":
+      return "border-cyan-200 bg-cyan-50 text-cyan-800";
+    case "Business AI":
+      return "border-violet-200 bg-violet-50 text-violet-800";
+    case "Tech & Data AI":
+      return "border-emerald-200 bg-emerald-50 text-emerald-800";
+    case "Enterprise":
+      return "border-slate-300 bg-slate-100 text-slate-800";
+    default:
+      return "border-slate-200 bg-slate-50 text-slate-700";
+  }
+}
 
 export default function Testimonials() {
-  const [i, setI] = React.useState(0);
-  const cur = items[i];
+  const [items, setItems] = useState<TestimonialItem[]>(fallbackTestimonials.items);
+
+  useEffect(() => {
+    let mounted = true;
+    fetchTestimonialsPayload().then((payload) => {
+      if (mounted) setItems(payload.items);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const ordered = useMemo(
+    () => [...items].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))),
+    [items],
+  );
+
+  const stats = useMemo(() => {
+    const total = items.length;
+    const avg = total ? (items.reduce((sum, item) => sum + item.rating, 0) / total).toFixed(1) : "5.0";
+    const trackCount = new Set(items.map((item) => item.track)).size;
+    return { total, avg, trackCount };
+  }, [items]);
 
   return (
-    <div className="card card-3d rounded-3xl p-8 ">
-      <div className="flex items-start justify-between gap-4">
+    <div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="text-sm font-semibold text-slate-950">Learner stories</div>
-          <div className="text-xs text-slate-800 mt-1">What people say about CohortAI Labs</div>
+          <p className="text-sm text-slate-600">Live-loaded from <code className="text-xs bg-slate-100 px-1.5 py-0.5 rounded">public/data/testimonials.json</code></p>
         </div>
-        <Quote className="text-cyan-200" size={20} />
+        <div className="flex flex-wrap gap-2 text-xs">
+          <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">{stats.total}+ testimonials</span>
+          <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">Avg {stats.avg}/5</span>
+          <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">{stats.trackCount} tracks</span>
+        </div>
       </div>
 
-      <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} className="mt-6">
-        <div className="text-lg text-slate-950 leading-relaxed">“{cur.quote}”</div>
-        <div className="mt-4 text-sm text-slate-800">— {cur.name}</div>
-      </motion.div>
+      <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {ordered.map((item, idx) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.28, delay: idx * 0.03 }}
+          >
+            <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <MessageSquareQuote className="h-4 w-4 text-cyan-600" />
+                  <StarRow rating={item.rating} />
+                </div>
+                <span className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${trackPillClass(item.track)}`}>
+                  {item.track}
+                </span>
+              </div>
 
-      <div className="mt-6 flex items-center gap-2">
-        <button className="rounded-xl p-2 bg-white/70 border border-slate-200/80 hover:bg-slate-800/70" onClick={() => setI((v) => (v - 1 + items.length) % items.length)} aria-label="Previous">
-          <ChevronLeft size={18} />
-        </button>
-        <button className="rounded-xl p-2 bg-white/70 border border-slate-200/80 hover:bg-slate-800/70" onClick={() => setI((v) => (v + 1) % items.length)} aria-label="Next">
-          <ChevronRight size={18} />
-        </button>
-        <div className="ml-auto text-xs text-slate-500">{i + 1} / {items.length}</div>
+              <p className="mt-4 text-[15px] leading-7 text-slate-700">“{item.quote}”</p>
+
+              <div className="mt-4 border-t border-slate-100 pt-4">
+                <div className="font-semibold text-slate-900">{item.name}</div>
+                <div className="text-sm text-slate-600">{item.role} • {item.city}</div>
+                {item.source ? <div className="mt-1 text-xs text-slate-500">Source: {item.source}</div> : null}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );

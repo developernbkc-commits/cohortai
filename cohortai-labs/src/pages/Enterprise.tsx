@@ -7,6 +7,7 @@ import { Building2, ClipboardList, ShieldCheck, GraduationCap, Clock, BarChart3,
 import { Helmet } from "react-helmet-async";
 import { canonical, seoDefaults } from "../lib/seo";
 import { useLocation } from "react-router-dom";
+import EnterpriseROIEstimator from "./partials/EnterpriseROIEstimator";
 
 export default function Enterprise() {
   const location = useLocation();
@@ -131,6 +132,10 @@ export default function Enterprise() {
             </div>
           </div>
         </div>
+      </Container>
+
+      <Container>
+        <EnterpriseROIEstimator />
       </Container>
     </div>
   );

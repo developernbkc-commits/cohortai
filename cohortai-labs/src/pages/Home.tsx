@@ -9,10 +9,12 @@ import HeroSlider from "../components/HeroSlider";
 import { useSchedule } from "../lib/schedule";
 
 import TrackFinder from "./partials/TrackFinder";
+import ConversionFunnel from "./partials/ConversionFunnel";
 import GamifiedJourney from "./partials/GamifiedJourney";
 import Tracks from "./partials/Tracks";
 import Ladder from "./partials/Ladder";
 import Testimonials from "./partials/Testimonials";
+import SuccessStories from "./partials/SuccessStories";
 import FAQ from "./partials/FAQ";
 import CTA from "./partials/CTA";
 import GalleryStrip from "../components/GalleryStrip";
@@ -250,6 +252,15 @@ const schedule = useSchedule();
 
       <GalleryStrip />
 
+      {/* Conversion funnel */}
+      <section className="py-14 border-t border-slate-200/70">
+        <Container>
+          <div className="mt-2 rounded-3xl p-4 sm:p-5 section-shell">
+            <ConversionFunnel />
+          </div>
+        </Container>
+      </section>
+
       {/* Testimonials */}
       <section className="py-14 border-t border-slate-200/70">
         <Container>
@@ -259,7 +270,8 @@ const schedule = useSchedule();
             desc="A premium learning experience that stays focused on outcomes and accountability."
           />
           <div className="mt-8 rounded-3xl p-4 sm:p-5 section-shell">
-            <Testimonials />
+            <SuccessStories />
+      <Testimonials />
           </div>
         </Container>
       </section>
