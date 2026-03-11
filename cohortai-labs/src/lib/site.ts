@@ -1,81 +1,12 @@
 export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
-  publicSiteUrl: "https://www.itprofessional.pro",
-  adminKey: "cohortai-admin-2026",
-  buildVersion: "v4.16-2026-02-23",
-  // If your logo PNG has extra transparent padding, use "cover" to visually zoom/crop padding.
-  logoFit: "cover" as const,
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
-  logoUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/cohortai_labs_logo.png",
-  imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
-  // Manage batches without redeploy: update schedule.json in the images repo
-  scheduleUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/schedule.json",
-  scheduleFallback: {
-    updatedAt: "2026-02-21",
-    byCity: {
-      Hyderabad: "2 March 2026",
-      Pune: "TBD",
-      Vijayawada: "TBD",
-      Guntur: "TBD",
-      Vizag: "TBD"
-    }
-  },
-  heroSlides: [
-  // Upload these files to the images repo (same folder as logo)
-  { file: "hero_slide_01.jpg", headline: "Mentor-led AI cohorts", sub: "Hands-on learning with reviews and accountability." },
-  { file: "hero_slide_02.jpg", headline: "Online + Offline hybrid", sub: "Weekend & weekday batches across key cities." },
-  { file: "hero_slide_03.jpg", headline: "Next batch starts 2 March 2026", sub: "DM “AI” to reserve your seat." }
-],
-
-images: {
-
-    hero: "hero_lab_classroom_01.jpg",
-    heroAlt: "hero_hybrid_learning_01.jpg",
-    tracks: {
-      everyday: "track_everyday_ai_01.jpg",
-      business: "track_business_ai_01.jpg",
-      tech: "track_tech_data_ai_01.jpg"
-    },
-    ladder: "pricing_ladder_3d_cards_01.jpg",
-    mentors: [
-      "mentor_profile_01.jpg",
-      "mentor_profile_02.jpg",
-      "mentor_profile_03.jpg"
-    ],
-    testimonials: [
-      "learner_avatar_01.jpg",
-      "learner_avatar_02.jpg",
-      "learner_avatar_03.jpg"
-    ],
-    gallery: [
-      "gallery_class_01.jpg",
-      "gallery_class_02.jpg",
-      "gallery_online_01.jpg",
-      "gallery_projects_01.jpg"
-    ]
-  },
-  startDate: "2 March 2026",
+  logoUrl: "/logo.svg",
+  startDate: "22 March 2026",
   phone: "8374617625",
-  email: "info.cohortai.labs@itprofessional.pro",
   whatsapp: "8374617625",
-  cities: ["Hyderabad", "Pune", "Vijayawada", "Guntur", "Vizag"],
-  seatAvailability: [
-    { city: "Hyderabad", seatsLeft: 12, batch: "2 March 2026", mode: "Online + Offline", status: "open" },
-    { city: "Pune", seatsLeft: 16, batch: "March 2026", mode: "Online + Offline", status: "priority" },
-    { city: "Vijayawada", seatsLeft: 14, batch: "March 2026", mode: "Hybrid", status: "open" },
-    { city: "Guntur", seatsLeft: 10, batch: "March 2026", mode: "Hybrid", status: "fast-filling" },
-    { city: "Vizag", seatsLeft: 18, batch: "March 2026", mode: "Hybrid", status: "open" },
-  ],
-  leadMagnet: {
-    challengePdfTitle: "7-Day AI Starter Challenge PDF",
-    challengePdfSubtitle: "Get a beginner-friendly day-by-day challenge with tasks, prompts, and a WhatsApp check-in option.",
-    challengePdfFormName: "cohortai-7day-ai-challenge",
-    title: "Free AI Readiness Checklist",
-    subtitle: "Talk to a friendly advisor and get a track suggestion, budget fit, and next batch options.",
-    ctaLabel: "Book Free Counselling",
-    ctaHref: "/recommendation",
-  },
+  cities: ["Hyderabad", "Vijayawada", "Guntur"],
   tracks: [
     {
       name: "Everyday AI",
@@ -105,17 +36,7 @@ images: {
     { price: "₹30,000", title: "Portfolio + Interview", duration: "6–8 weeks", highlight: "For serious outcomes", includes: ["Portfolio polish", "Mock interviews (Tech)", "Case studies (Business)"] },
     { price: "₹35,000", title: "Flagship Premium Cohort", duration: "8–10 weeks", highlight: "Maximum support", includes: ["Capstone + demo day", "1:1 review slot", "Placement/business support session"] },
   ],
-  ctas: {
-  primaryLabel: "Get batch schedule",
-  primaryHref: "/contact",
-  whatsappLabel: "WhatsApp us",
-  whatsappHref: "https://wa.me/91" + "8374617625",
-  demoLabel: "Book a free demo",
-  demoHref: "/contact#lead"
-},
-
-faqs: [
-
+  faqs: [
     { q: "Is this beginner-friendly?", a: "Yes. We have an Everyday AI track designed for non-technical learners, plus guided labs and step-by-step practice." },
     { q: "Do you offer online and offline training?", a: "Yes. We run hybrid cohorts: online sessions plus offline classroom options (city-wise schedule)." },
     { q: "What makes CohortAI Labs different?", a: "Mentor-led cohorts, real deliverables, structured reviews, and a clear learning ladder from ₹5k to ₹35k." },
