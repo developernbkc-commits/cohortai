@@ -65,20 +65,20 @@ export default function Register() {
       <section className="pb-16">
         <Container>
           <div className="grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
-            <form onSubmit={onSubmit} className="glass rounded-3xl p-6 ring-soft">
+            <form onSubmit={onSubmit} className="glass-pearl rounded-3xl p-6 ring-soft">
               <div className="grid gap-3 md:grid-cols-4">
                 {steps.map((s, idx) => (
-                  <div key={s.label} className={cn("rounded-2xl border p-4", idx <= step ? "border-cyan-200/40 bg-slate-900/80" : "border-slate-800/60 bg-slate-950/40")}>
-                    <s.icon size={18} className="text-cyan-200" />
-                    <div className="mt-3 text-sm font-semibold text-white">{s.label}</div>
-                    <div className="mt-1 text-xs text-slate-400">Step {idx + 1}</div>
+                  <div key={s.label} className={cn("rounded-2xl border p-4", idx <= step ? "border-cyan-200/70 bg-white shadow-sm" : "border-slate-200/70 bg-white/70")}>
+                    <s.icon size={18} className="text-cyan-700" />
+                    <div className="mt-3 text-sm font-semibold text-slate-950">{s.label}</div>
+                    <div className="mt-1 text-xs text-slate-600">Step {idx + 1}</div>
                   </div>
                 ))}
               </div>
 
               <div className="mt-8">
-                <div className="text-sm font-semibold text-white">1. Choose your course stack</div>
-                <div className="mt-2 text-sm text-slate-400">Learners can combine business, everyday, and tech modules into a personalized path. Pricing rolls up automatically and can accept promo or referral logic later.</div>
+                <div className="text-sm font-semibold text-slate-950">1. Choose your course stack</div>
+                <div className="mt-2 text-sm text-slate-600">Learners can combine business, everyday, and tech modules into a personalized path. Pricing rolls up automatically and can accept promo or referral logic later.</div>
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
                   {modules.map((module) => {
                     const active = selected.includes(module.id);
@@ -89,18 +89,18 @@ export default function Register() {
                         onClick={() => toggle(module.id)}
                         className={cn(
                           "text-left rounded-3xl border p-5 transition",
-                          active ? "border-cyan-200/50 bg-slate-900/80 neon-edge" : "border-slate-800/60 bg-slate-950/40 hover:bg-slate-900/60"
+                          active ? "border-cyan-300 bg-white neon-edge shadow-sm" : "border-slate-200 bg-white/80 hover:bg-white"
                         )}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div>
-                            <div className="text-xs tracking-[0.2em] uppercase text-slate-400">{module.track}</div>
-                            <div className="mt-2 text-lg font-semibold text-white">{module.title}</div>
+                            <div className="text-xs tracking-[0.2em] uppercase text-slate-600">{module.track}</div>
+                            <div className="mt-2 text-lg font-semibold text-slate-950">{module.title}</div>
                           </div>
-                          <div className="rounded-full border border-slate-700/60 px-3 py-1 text-xs text-slate-300">{module.level}</div>
+                          <div className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">{module.level}</div>
                         </div>
-                        <div className="mt-2 text-sm text-slate-400">{module.duration} • ₹{module.price.toLocaleString("en-IN")}</div>
-                        <ul className="mt-4 grid gap-2 text-sm text-slate-200">
+                        <div className="mt-2 text-sm text-slate-600">{module.duration} • ₹{module.price.toLocaleString("en-IN")}</div>
+                        <ul className="mt-4 grid gap-2 text-sm text-slate-700">
                           {module.outcomes.map((item) => <li key={item}>• {item}</li>)}
                         </ul>
                       </button>
@@ -133,13 +133,13 @@ export default function Register() {
                 </div>
               </div>
 
-              <div className="mt-8 rounded-3xl border border-emerald-200/20 bg-emerald-300/10 p-5">
+              <div className="mt-8 rounded-3xl border border-emerald-200 bg-emerald-50/90 p-5">
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="text-emerald-200 shrink-0" size={20} />
+                  <ShieldCheck className="text-emerald-700 shrink-0" size={20} />
                   <div>
-                    <div className="text-sm font-semibold text-white">Backend-ready behavior</div>
-                    <div className="mt-2 text-sm text-slate-300">
-                      With Supabase + Resend configured, submission will create the learner profile, registration, registration items, and an internal alert email to <span className="font-semibold text-white">registrations@itprofessional.pro</span>. Payment verification and final enrollment mail remain a controlled admin workflow.
+                    <div className="text-sm font-semibold text-slate-950">Backend-ready behavior</div>
+                    <div className="mt-2 text-sm text-slate-700">
+                      With Supabase + Resend configured, submission will create the learner profile, registration, registration items, and an internal alert email to <span className="font-semibold text-slate-950">registrations@itprofessional.pro</span>. Payment verification and final enrollment mail remain a controlled admin workflow.
                     </div>
                   </div>
                 </div>
@@ -149,18 +149,18 @@ export default function Register() {
                 <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge disabled:opacity-70">
                   {submitting ? "Submitting..." : "Create registration"}
                 </button>
-                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white border border-slate-700/60 bg-slate-900/60">
+                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-900 border border-slate-300 bg-white/85">
                   Review payment stage
                 </button>
               </div>
 
               {submitted && (
-                <div className={`mt-6 rounded-3xl border p-5 ${submitted.error ? "border-amber-300/50 bg-amber-50 text-amber-900" : "border-cyan-200/30 bg-slate-900/80 text-white"}`}>
+                <div className={`mt-6 rounded-3xl border p-5 ${submitted.error ? "border-amber-300/50 bg-amber-50 text-amber-900" : "border-cyan-200 bg-cyan-50 text-slate-950"}`}>
                   <div className="flex items-center gap-3 text-lg font-semibold">
-                    <CheckCircle2 className={submitted.error ? "text-amber-700" : "text-emerald-200"} />
+                    <CheckCircle2 className={submitted.error ? "text-amber-700" : "text-emerald-700"} />
                     {submitted.error ? "Remote save failed" : "Registration captured successfully"}
                   </div>
-                  <div className={`mt-3 text-sm ${submitted.error ? "text-amber-900" : "text-slate-300"}`}>
+                  <div className={`mt-3 text-sm ${submitted.error ? "text-amber-900" : "text-slate-700"}`}>
                     {submitted.error
                       ? `The payload was preserved in fallback mode. Once the backend credentials are fixed, retry submission. Error: ${submitted.error}`
                       : submitted.mode === "remote"
@@ -168,7 +168,7 @@ export default function Register() {
                       : "The record was stored locally as a safe fallback. Wire Supabase and Resend to move this into the real admissions queue."}
                   </div>
                   {submitted.paymentUrl && (
-                    <a href={submitted.paymentUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-2xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+                    <a href={submitted.paymentUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">
                       Open payment link
                     </a>
                   )}
@@ -177,27 +177,27 @@ export default function Register() {
             </form>
 
             <div className="space-y-6">
-              <div className="glass rounded-3xl p-6 ring-soft">
-                <div className="text-sm font-semibold text-white">Selected modules</div>
+              <div className="glass-pearl rounded-3xl p-6 ring-soft">
+                <div className="text-sm font-semibold text-slate-950">Selected modules</div>
                 <div className="mt-4 grid gap-3">
                   {modules.filter((m) => selected.includes(m.id)).map((item) => (
-                    <div key={item.id} className="rounded-2xl border border-slate-800/60 bg-slate-900/60 p-4">
-                      <div className="text-sm font-semibold text-white">{item.title}</div>
-                      <div className="mt-1 text-xs text-slate-400">{item.track} • {item.duration}</div>
-                      <div className="mt-3 text-sm text-cyan-200">₹{item.price.toLocaleString("en-IN")}</div>
+                    <div key={item.id} className="rounded-2xl border border-slate-200 bg-white p-4">
+                      <div className="text-sm font-semibold text-slate-950">{item.title}</div>
+                      <div className="mt-1 text-xs text-slate-600">{item.track} • {item.duration}</div>
+                      <div className="mt-3 text-sm text-cyan-700">₹{item.price.toLocaleString("en-IN")}</div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 space-y-2 border-t border-slate-800/60 pt-4 text-sm">
-                  <div className="flex items-center justify-between text-slate-400"><span>Subtotal</span><span>₹{total.toLocaleString("en-IN")}</span></div>
-                  <div className="flex items-center justify-between text-emerald-200"><span>Promo preview</span><span>- ₹{promoDiscount.toLocaleString("en-IN")}</span></div>
-                  <div className="flex items-center justify-between text-white text-xl font-semibold"><span>Estimated payable</span><span>₹{payable.toLocaleString("en-IN")}</span></div>
+                <div className="mt-5 space-y-2 border-t border-slate-200 pt-4 text-sm">
+                  <div className="flex items-center justify-between text-slate-600"><span>Subtotal</span><span>₹{total.toLocaleString("en-IN")}</span></div>
+                  <div className="flex items-center justify-between text-emerald-700"><span>Promo preview</span><span>- ₹{promoDiscount.toLocaleString("en-IN")}</span></div>
+                  <div className="flex items-center justify-between text-slate-950 text-xl font-semibold"><span>Estimated payable</span><span>₹{payable.toLocaleString("en-IN")}</span></div>
                 </div>
               </div>
 
-              <div className="glass rounded-3xl p-6 ring-soft">
-                <div className="text-sm font-semibold text-white">Phase B live backend behavior</div>
-                <ul className="mt-4 grid gap-3 text-sm text-slate-300">
+              <div className="glass-pearl rounded-3xl p-6 ring-soft">
+                <div className="text-sm font-semibold text-slate-950">Phase B live backend behavior</div>
+                <ul className="mt-4 grid gap-3 text-sm text-slate-700">
                   <li>• Create or reuse learner profile</li>
                   <li>• Save registration + module bundle in Postgres</li>
                   <li>• Record promo/referral intent for future pricing rules</li>
@@ -216,10 +216,10 @@ export default function Register() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <div className="text-xs text-slate-400">{label}</div>
+      <div className="text-xs text-slate-600">{label}</div>
       <div className="mt-2">{children}</div>
     </label>
   );
 }
 
-const inputClass = "w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white";
+const inputClass = "w-full rounded-2xl bg-white/85 border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-100";

@@ -11,34 +11,30 @@ import Register from "./pages/Register";
 import AdminConsole from "./pages/AdminConsole";
 import Platform from "./pages/Platform";
 import Reviews from "./pages/Reviews";
+import Quiz from "./pages/Quiz";
+import Recommendation from "./pages/Recommendation";
 import StickyBar from "./components/StickyBar";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const location = useLocation();
-
   return (
-    <div className="min-h-screen font-display">
+    <div className="min-h-screen font-display page-shell">
       <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait">
-        <motion.main
-          key={location.pathname}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.28, ease: "easeOut" }}
-          className="pt-16"
-        >
+        <motion.main key={location.pathname} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.28, ease: "easeOut" }} className="pt-16">
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/admin" element={<AdminConsole />} />
             <Route path="/platform" element={<Platform />} />
-            <Route path="/reviews" element={<Reviews />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>

@@ -38,8 +38,3 @@ Contact form uses Netlify Forms:
 `src/lib/site.ts`
 
 © CohortAI Labs
-
-
-## Phase B backend wiring
-This version includes real backend abstraction points for Supabase Edge Functions and Resend.
-Copy `.env.example` into your deployment environment (Netlify + Supabase secrets) before expecting remote submissions to work.

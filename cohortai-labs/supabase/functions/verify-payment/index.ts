@@ -1,7 +1,8 @@
-// Payment webhook function placeholder.
-// Enterprise guidance:
-// - verify provider signatures
-// - mark payment status immutably
-// - write audit logs
-// - never auto-enroll without admin review gate
+// Placeholder webhook / verification function
+// Responsibilities:
+// 1. Verify Razorpay signature / webhook secret
+// 2. Update payment row
+// 3. Move registration to paid_review_pending
+// 4. Write audit log entry
+
 export {};

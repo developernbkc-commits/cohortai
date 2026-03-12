@@ -1,22 +1,23 @@
 import { site } from "../lib/site";
 
-export default function Logo({ compact = false }: { compact?: boolean }) {
-  const size = compact ? 28 : 34;
-  const wordmarkHeight = compact ? 24 : 28;
+type LogoProps = {
+  compact?: boolean;
+  size?: "nav" | "hero" | "footer";
+  className?: string;
+};
+
+export default function Logo({ compact = false, size = "nav", className = "" }: LogoProps) {
+  const width = compact ? 220 : size === "hero" ? 360 : size === "footer" ? 260 : 280;
+  const height = compact ? 72 : size === "hero" ? 96 : size === "footer" ? 84 : 88;
 
   return (
-    <div className="flex items-center gap-3">
+    <div className={`flex items-center ${className}`.trim()}>
       <img
         src={site.logoUrl || "/logo.svg"}
         alt={site.brand}
-        className="shrink-0"
-        style={{ width: compact ? 140 : 160, height: compact ? 36 : 40, objectFit: "contain" }}
+        className="shrink-0 object-contain object-left drop-shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
+        style={{ width, height }}
       />
-      {!compact && (
-        <div className="leading-tight">
-          <div className="text-xs text-slate-400">{site.tagline}</div>
-        </div>
-      )}
     </div>
   );
 }
