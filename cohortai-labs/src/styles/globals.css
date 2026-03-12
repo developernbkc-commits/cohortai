@@ -2,54 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
+:root { color-scheme: dark; }
 * { -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
+body { background: #07111f; color: #e5eefb; }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
 
-  .pearl-bg {
+  .premium-bg {
     background:
-      radial-gradient(circle at 18% 12%, rgba(34,211,238,0.18), transparent 45%),
-      radial-gradient(circle at 82% 22%, rgba(167,139,250,0.16), transparent 45%),
-      radial-gradient(circle at 35% 95%, rgba(16,185,129,0.12), transparent 50%),
-      linear-gradient(180deg, #ffffff 0%, #f3f5fb 55%, #f8f9fd 100%);
+      radial-gradient(circle at 18% 12%, rgba(34,211,238,0.14), transparent 24%),
+      radial-gradient(circle at 82% 16%, rgba(124,92,255,0.20), transparent 26%),
+      radial-gradient(circle at 50% 120%, rgba(95,240,214,0.12), transparent 38%),
+      linear-gradient(180deg, #030816 0%, #07111f 42%, #081528 100%);
+  }
+
+  .section-divider {
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
   }
 
   .card {
-    background: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, rgba(9,17,32,0.86), rgba(11,20,36,0.72));
+    border: 1px solid rgba(148, 163, 184, 0.14);
     box-shadow:
-      0 1px 0 rgba(15, 23, 42, 0.04),
-      0 18px 55px rgba(15, 23, 42, 0.10);
-    backdrop-filter: blur(10px);
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 16px 50px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(0,0,0,0.1);
+    backdrop-filter: blur(14px);
   }
 
   .card-3d {
     transform: translateZ(0);
-    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
     will-change: transform;
   }
+
   .card-3d:hover {
-    transform: translateY(-6px) scale(1.01);
+    transform: translateY(-8px) scale(1.012);
+    border-color: rgba(95, 240, 214, 0.26);
     box-shadow:
-      0 1px 0 rgba(15, 23, 42, 0.05),
-      0 26px 80px rgba(15, 23, 42, 0.16);
-    border-color: rgba(34, 211, 238, 0.25);
+      0 1px 0 rgba(255,255,255,0.05) inset,
+      0 30px 90px rgba(0, 0, 0, 0.42),
+      0 0 55px rgba(95,240,214,0.08);
   }
 
   .chip {
-    background: rgba(255,255,255,0.75);
-    border: 1px solid rgba(15,23,42,0.10);
-    box-shadow: 0 10px 25px rgba(15,23,42,0.08);
+    background: rgba(8, 19, 36, 0.74);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.22);
     backdrop-filter: blur(10px);
   }
 
   .accent-ring {
     box-shadow:
-      0 0 0 1px rgba(34, 211, 238, 0.18),
-      0 0 35px rgba(34, 211, 238, 0.12),
-      0 0 55px rgba(167, 139, 250, 0.10);
+      0 0 0 1px rgba(95,240,214,0.18),
+      0 0 35px rgba(95,240,214,0.14),
+      0 0 55px rgba(124,92,255,0.12);
+  }
+
+  .neon-edge {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.12) inset,
+      0 15px 40px rgba(52, 211, 153, 0.18),
+      0 0 42px rgba(124,92,255,0.18);
+  }
+
+  .mesh-line {
+    background-image: linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
+    background-size: 34px 34px;
   }
 }

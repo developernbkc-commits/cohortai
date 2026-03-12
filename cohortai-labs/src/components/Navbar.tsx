@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, Sparkles, X } from "lucide-react";
 import React from "react";
 import { cn } from "../lib/utils";
 import Container from "./Container";
@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="bg-white/75 backdrop-blur-xl border-b border-slate-200/70">
+      <div className="border-b border-slate-800/80 bg-[#030816]/78 backdrop-blur-xl">
         <Container>
           <div className="h-16 flex items-center justify-between">
             <Link to="/" className="group">
@@ -32,8 +32,8 @@ export default function Navbar() {
                   to={n.to}
                   className={({ isActive }) =>
                     cn(
-                      "text-slate-700 hover:text-slate-950 transition",
-                      isActive && "text-slate-950"
+                      "text-slate-300 hover:text-white transition",
+                      isActive && "text-white"
                     )
                   }
                 >
@@ -41,15 +41,23 @@ export default function Navbar() {
                 </NavLink>
               ))}
               <a
-                href={`tel:${site.phone}`}
-                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
+                href={`https://wa.me/91${site.whatsapp}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-900 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
               >
-                Call {site.phone}
+                <Sparkles size={16} /> WhatsApp
+              </a>
+              <a
+                href={`tel:${site.phone}`}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white border border-slate-700 bg-white/5 hover:bg-white/10 transition"
+              >
+                <Phone size={16} /> Call
               </a>
             </nav>
 
             <button
-              className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100"
+              className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-300 hover:bg-slate-800/80"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -68,20 +76,15 @@ export default function Navbar() {
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
                         cn(
-                          "px-3 py-3 rounded-xl text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-950",
-                          isActive && "bg-slate-100 text-slate-950"
+                          "px-3 py-3 rounded-xl text-sm text-slate-300 hover:bg-white/5 hover:text-white",
+                          isActive && "bg-white/5 text-white"
                         )
                       }
                     >
                       {n.label}
                     </NavLink>
                   ))}
-                  <a
-                    href={`tel:${site.phone}`}
-                    className="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 accent-ring"
-                  >
-                    Call {site.phone}
-                  </a>
+                  <a href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 accent-ring">WhatsApp</a>
                 </div>
               </div>
             </div>

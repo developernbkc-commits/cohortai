@@ -1,4 +1,3 @@
-import React from "react";
 import { site } from "../lib/site";
 import { imgUrl } from "../lib/images";
 
@@ -21,7 +20,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
       />
       {!compact && (
         <div className="leading-tight hidden sm:block">
-          <div className="text-xs text-slate-600">{site.tagline}</div>
+          <div className="text-xs text-slate-400">{site.tagline}</div>
         </div>
       )}
     </div>

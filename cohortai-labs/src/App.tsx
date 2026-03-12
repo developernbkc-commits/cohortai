@@ -12,7 +12,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen font-display pearl-bg">
+    <div className="min-h-screen font-display premium-bg text-slate-100">
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
