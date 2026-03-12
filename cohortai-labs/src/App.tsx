@@ -10,6 +10,7 @@ import Thanks from "./pages/Thanks";
 import Register from "./pages/Register";
 import AdminConsole from "./pages/AdminConsole";
 import Platform from "./pages/Platform";
+import Reviews from "./pages/Reviews";
 import StickyBar from "./components/StickyBar";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -17,7 +18,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen font-display page-shell">
+    <div className="min-h-screen font-display">
       <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait">
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/admin" element={<AdminConsole />} />
             <Route path="/platform" element={<Platform />} />
+            <Route path="/reviews" element={<Reviews />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>

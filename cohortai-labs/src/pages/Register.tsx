@@ -4,26 +4,51 @@ import SectionTitle from "../components/SectionTitle";
 import { modules } from "../lib/catalog";
 import { CheckCircle2, CircleDollarSign, Layers3, ShieldCheck, UserRound } from "lucide-react";
 import { cn } from "../lib/utils";
+import { submitRegistration } from "../lib/api";
 
 const steps = [
   { icon: Layers3, label: "Choose modules" },
-  { icon: UserRound, label: "Your details" },
-  { icon: CircleDollarSign, label: "UPI payment" },
-  { icon: CheckCircle2, label: "Admin approval" },
+  { icon: UserRound, label: "Learner details" },
+  { icon: CircleDollarSign, label: "Payment intent" },
+  { icon: CheckCircle2, label: "Admin review" },
 ];
+
+const initialForm = {
+  fullName: "",
+  email: "",
+  phoneCountryCode: "+91",
+  phoneNationalNumber: "",
+  country: "India",
+  preferredMode: "Weekend online",
+  learnerGoal: "",
+  promoCode: "",
+  referralCode: "",
+  leadSource: "Website homepage",
+};
 
 export default function Register() {
   const [selected, setSelected] = React.useState<string[]>(["foundation-ai", "career-kit"]);
   const [step, setStep] = React.useState(0);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState<null | { mode: string; paymentUrl?: string; error?: string }>(null);
+  const [form, setForm] = React.useState(initialForm);
 
-  const total = modules
-    .filter((m) => selected.includes(m.id))
-    .reduce((sum, item) => sum + item.price, 0);
+  const total = modules.filter((m) => selected.includes(m.id)).reduce((sum, item) => sum + item.price, 0);
+  const promoDiscount = form.promoCode.trim() ? Math.min(2000, Math.round(total * 0.1)) : 0;
+  const payable = Math.max(0, total - promoDiscount);
 
   const toggle = (id: string) => {
     setSelected((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   };
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    const result = await submitRegistration({ ...form, modules: selected });
+    setSubmitting(false);
+    setSubmitted({ mode: result.mode, paymentUrl: result.data?.paymentUrl, error: result.error });
+    if (result.ok) setStep(3);
+  }
 
   return (
     <div>
@@ -31,8 +56,8 @@ export default function Register() {
         <Container>
           <SectionTitle
             eyebrow="Self-registration"
-            title="Let learners mix, match, and register without manual back-and-forth"
-            desc="This upgraded flow captures learner data, supports modular course selection, creates a payment-ready registration, and then pushes the record into admin review for batch allocation."
+            title="Let learners mix, match, register, and move into a real admissions workflow"
+            desc="Phase B wires this registration flow for real backend persistence. It now captures learner details, global phone code, modules, promo/referral codes, and lead source so the record can enter admissions review cleanly."
           />
         </Container>
       </section>
@@ -40,7 +65,7 @@ export default function Register() {
       <section className="pb-16">
         <Container>
           <div className="grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
-            <div className="glass rounded-3xl p-6 ring-soft">
+            <form onSubmit={onSubmit} className="glass rounded-3xl p-6 ring-soft">
               <div className="grid gap-3 md:grid-cols-4">
                 {steps.map((s, idx) => (
                   <div key={s.label} className={cn("rounded-2xl border p-4", idx <= step ? "border-cyan-200/40 bg-slate-900/80" : "border-slate-800/60 bg-slate-950/40")}>
@@ -51,104 +76,105 @@ export default function Register() {
                 ))}
               </div>
 
-              {!submitted ? (
-                <>
-                  <div className="mt-8">
-                    <div className="text-sm font-semibold text-white">1. Choose your course stack</div>
-                    <div className="mt-2 text-sm text-slate-400">Learners can combine business, everyday, and tech modules into a personalized path. Pricing rolls up automatically.</div>
-                    <div className="mt-5 grid gap-4 md:grid-cols-2">
-                      {modules.map((module) => {
-                        const active = selected.includes(module.id);
-                        return (
-                          <button
-                            type="button"
-                            key={module.id}
-                            onClick={() => toggle(module.id)}
-                            className={cn(
-                              "text-left rounded-3xl border p-5 transition",
-                              active ? "border-cyan-200/50 bg-slate-900/80 neon-edge" : "border-slate-800/60 bg-slate-950/40 hover:bg-slate-900/60"
-                            )}
-                          >
-                            <div className="flex items-start justify-between gap-3">
-                              <div>
-                                <div className="text-xs tracking-[0.2em] uppercase text-slate-400">{module.track}</div>
-                                <div className="mt-2 text-lg font-semibold text-white">{module.title}</div>
-                              </div>
-                              <div className="rounded-full border border-slate-700/60 px-3 py-1 text-xs text-slate-300">{module.level}</div>
-                            </div>
-                            <div className="mt-2 text-sm text-slate-400">{module.duration} • ₹{module.price.toLocaleString("en-IN")}</div>
-                            <ul className="mt-4 grid gap-2 text-sm text-slate-200">
-                              {module.outcomes.map((item) => (
-                                <li key={item}>• {item}</li>
-                              ))}
-                            </ul>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="mt-8 grid gap-4 md:grid-cols-2">
-                    <div>
-                      <label className="text-xs text-slate-400">Full name</label>
-                      <input className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white" placeholder="Learner full name" />
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400">Email</label>
-                      <input className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white" placeholder="name@example.com" />
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400">Phone</label>
-                      <input className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white" placeholder="10-digit mobile" />
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400">Preferred format</label>
-                      <select className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white">
-                        <option>Weekend online</option>
-                        <option>Weekday evening online</option>
-                        <option>Offline classroom</option>
-                        <option>Hybrid</option>
-                      </select>
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="text-xs text-slate-400">Goals / customization note</label>
-                      <textarea rows={4} className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white" placeholder="Example: I want business content automation plus a beginner Python foundation for freelancing." />
-                    </div>
-                  </div>
-
-                  <div className="mt-8 rounded-3xl border border-emerald-200/20 bg-emerald-300/10 p-5">
-                    <div className="flex items-start gap-3">
-                      <ShieldCheck className="text-emerald-200 shrink-0" size={20} />
-                      <div>
-                        <div className="text-sm font-semibold text-white">UPI payment + admin approval flow</div>
-                        <div className="mt-2 text-sm text-slate-300">
-                          On production, this step should create a registration record, generate a UPI payment link, verify the payment via webhook, and move the learner into the admissions review queue. Enrollment email goes only after admin assigns the learner to a batch and slot.
+              <div className="mt-8">
+                <div className="text-sm font-semibold text-white">1. Choose your course stack</div>
+                <div className="mt-2 text-sm text-slate-400">Learners can combine business, everyday, and tech modules into a personalized path. Pricing rolls up automatically and can accept promo or referral logic later.</div>
+                <div className="mt-5 grid gap-4 md:grid-cols-2">
+                  {modules.map((module) => {
+                    const active = selected.includes(module.id);
+                    return (
+                      <button
+                        type="button"
+                        key={module.id}
+                        onClick={() => toggle(module.id)}
+                        className={cn(
+                          "text-left rounded-3xl border p-5 transition",
+                          active ? "border-cyan-200/50 bg-slate-900/80 neon-edge" : "border-slate-800/60 bg-slate-950/40 hover:bg-slate-900/60"
+                        )}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <div className="text-xs tracking-[0.2em] uppercase text-slate-400">{module.track}</div>
+                            <div className="mt-2 text-lg font-semibold text-white">{module.title}</div>
+                          </div>
+                          <div className="rounded-full border border-slate-700/60 px-3 py-1 text-xs text-slate-300">{module.level}</div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                        <div className="mt-2 text-sm text-slate-400">{module.duration} • ₹{module.price.toLocaleString("en-IN")}</div>
+                        <ul className="mt-4 grid gap-2 text-sm text-slate-200">
+                          {module.outcomes.map((item) => <li key={item}>• {item}</li>)}
+                        </ul>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <button onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge">
-                      Continue to payment
-                    </button>
-                    <button onClick={() => setSubmitted(true)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white border border-slate-700/60 bg-slate-900/60">
-                      Demo complete registration
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="mt-8 rounded-3xl border border-cyan-200/30 bg-slate-900/80 p-6">
-                  <div className="flex items-center gap-3 text-white">
-                    <CheckCircle2 className="text-emerald-200" />
-                    <div className="text-lg font-semibold">Registration captured successfully</div>
-                  </div>
-                  <div className="mt-3 text-sm text-slate-300">
-                    The learner record is now marked as <span className="text-white font-semibold">Paid / Pending admin review</span>. Next step is batch allocation, counselor notes, and the enrollment confirmation email from the admin console.
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <Field label="Full name"><input value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className={inputClass} required placeholder="Learner full name" /></Field>
+                <Field label="Email"><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} required type="email" placeholder="name@example.com" /></Field>
+                <Field label="Country code"><input value={form.phoneCountryCode} onChange={(e) => setForm({ ...form, phoneCountryCode: e.target.value })} className={inputClass} required placeholder="+91" /></Field>
+                <Field label="Phone number"><input value={form.phoneNationalNumber} onChange={(e) => setForm({ ...form, phoneNationalNumber: e.target.value })} className={inputClass} required placeholder="8374617625" /></Field>
+                <Field label="Country"><input value={form.country} onChange={(e) => setForm({ ...form, country: e.target.value })} className={inputClass} required placeholder="India" /></Field>
+                <Field label="Preferred format">
+                  <select value={form.preferredMode} onChange={(e) => setForm({ ...form, preferredMode: e.target.value })} className={inputClass}>
+                    <option>Weekend online</option>
+                    <option>Weekday evening online</option>
+                    <option>Offline classroom</option>
+                    <option>Hybrid</option>
+                  </select>
+                </Field>
+                <Field label="Promo code"><input value={form.promoCode} onChange={(e) => setForm({ ...form, promoCode: e.target.value.toUpperCase() })} className={inputClass} placeholder="WELCOME10" /></Field>
+                <Field label="Referral code"><input value={form.referralCode} onChange={(e) => setForm({ ...form, referralCode: e.target.value.toUpperCase() })} className={inputClass} placeholder="FRIEND-ABC123" /></Field>
+                <div className="md:col-span-2">
+                  <Field label="Lead source"><input value={form.leadSource} onChange={(e) => setForm({ ...form, leadSource: e.target.value })} className={inputClass} placeholder="Homepage, WhatsApp, campaign, counselor..." /></Field>
+                </div>
+                <div className="md:col-span-2">
+                  <Field label="Goals / customization note"><textarea value={form.learnerGoal} onChange={(e) => setForm({ ...form, learnerGoal: e.target.value })} rows={4} className={inputClass} placeholder="Example: I want business content automation plus a beginner Python foundation for freelancing." /></Field>
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-3xl border border-emerald-200/20 bg-emerald-300/10 p-5">
+                <div className="flex items-start gap-3">
+                  <ShieldCheck className="text-emerald-200 shrink-0" size={20} />
+                  <div>
+                    <div className="text-sm font-semibold text-white">Backend-ready behavior</div>
+                    <div className="mt-2 text-sm text-slate-300">
+                      With Supabase + Resend configured, submission will create the learner profile, registration, registration items, and an internal alert email to <span className="font-semibold text-white">registrations@itprofessional.pro</span>. Payment verification and final enrollment mail remain a controlled admin workflow.
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge disabled:opacity-70">
+                  {submitting ? "Submitting..." : "Create registration"}
+                </button>
+                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white border border-slate-700/60 bg-slate-900/60">
+                  Review payment stage
+                </button>
+              </div>
+
+              {submitted && (
+                <div className={`mt-6 rounded-3xl border p-5 ${submitted.error ? "border-amber-300/50 bg-amber-50 text-amber-900" : "border-cyan-200/30 bg-slate-900/80 text-white"}`}>
+                  <div className="flex items-center gap-3 text-lg font-semibold">
+                    <CheckCircle2 className={submitted.error ? "text-amber-700" : "text-emerald-200"} />
+                    {submitted.error ? "Remote save failed" : "Registration captured successfully"}
+                  </div>
+                  <div className={`mt-3 text-sm ${submitted.error ? "text-amber-900" : "text-slate-300"}`}>
+                    {submitted.error
+                      ? `The payload was preserved in fallback mode. Once the backend credentials are fixed, retry submission. Error: ${submitted.error}`
+                      : submitted.mode === "remote"
+                      ? "The learner record is now in the live admissions queue and the internal registration email should have been triggered."
+                      : "The record was stored locally as a safe fallback. Wire Supabase and Resend to move this into the real admissions queue."}
+                  </div>
+                  {submitted.paymentUrl && (
+                    <a href={submitted.paymentUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-2xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+                      Open payment link
+                    </a>
+                  )}
+                </div>
               )}
-            </div>
+            </form>
 
             <div className="space-y-6">
               <div className="glass rounded-3xl p-6 ring-soft">
@@ -162,20 +188,21 @@ export default function Register() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 flex items-center justify-between border-t border-slate-800/60 pt-4">
-                  <div className="text-sm text-slate-400">Estimated total</div>
-                  <div className="text-xl font-semibold text-white">₹{total.toLocaleString("en-IN")}</div>
+                <div className="mt-5 space-y-2 border-t border-slate-800/60 pt-4 text-sm">
+                  <div className="flex items-center justify-between text-slate-400"><span>Subtotal</span><span>₹{total.toLocaleString("en-IN")}</span></div>
+                  <div className="flex items-center justify-between text-emerald-200"><span>Promo preview</span><span>- ₹{promoDiscount.toLocaleString("en-IN")}</span></div>
+                  <div className="flex items-center justify-between text-white text-xl font-semibold"><span>Estimated payable</span><span>₹{payable.toLocaleString("en-IN")}</span></div>
                 </div>
               </div>
 
               <div className="glass rounded-3xl p-6 ring-soft">
-                <div className="text-sm font-semibold text-white">Production behavior</div>
+                <div className="text-sm font-semibold text-white">Phase B live backend behavior</div>
                 <ul className="mt-4 grid gap-3 text-sm text-slate-300">
-                  <li>• Save learner + course bundle into the database</li>
-                  <li>• Create a UPI payment link against that registration</li>
-                  <li>• Mark payment status from webhook verification</li>
-                  <li>• Send admin task to review documents and assign batch</li>
-                  <li>• Trigger final enrollment email after slot allocation</li>
+                  <li>• Create or reuse learner profile</li>
+                  <li>• Save registration + module bundle in Postgres</li>
+                  <li>• Record promo/referral intent for future pricing rules</li>
+                  <li>• Trigger internal email to registrations inbox</li>
+                  <li>• Keep payment + final enrollment as admin-controlled steps</li>
                 </ul>
               </div>
             </div>
@@ -185,3 +212,14 @@ export default function Register() {
     </div>
   );
 }
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <div className="text-xs text-slate-400">{label}</div>
+      <div className="mt-2">{children}</div>
+    </label>
+  );
+}
+
+const inputClass = "w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white";

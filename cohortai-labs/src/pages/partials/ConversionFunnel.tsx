@@ -4,35 +4,35 @@ import { motion } from "framer-motion";
 const steps = [
   {
     step: "Step 1",
-    title: "Discover the right track",
-    desc: "Use the AI Advisor to match background, goal, budget, and learning mode to a realistic starting point.",
-    href: "/#advisor",
-    cta: "Open AI Advisor",
+    title: "Find your best starting track",
+    desc: "Use the smart Track Finder to get a practical recommendation based on background, goal, and budget.",
     icon: Sparkles,
+    href: "/assessment",
+    cta: "Use Track Finder",
   },
   {
     step: "Step 2",
-    title: "Talk to a counsellor",
-    desc: "Get clarity on batches, outcomes, timings, and the shortest path to visible deliverables.",
-    href: "/contact",
-    cta: "Book counselling",
+    title: "Friendly counselling call",
+    desc: "Our team explains batches, timings, outcomes, and helps learners choose the right path without pressure.",
     icon: MessageCircle,
+    href: "/recommendation",
+    cta: "Talk to counsellor",
   },
   {
     step: "Step 3",
-    title: "Choose schedule and format",
-    desc: "Select weekday or weekend and online, offline, or hybrid learning based on your lifestyle.",
-    href: "/courses",
-    cta: "Compare programs",
+    title: "Choose schedule + format",
+    desc: "Pick weekday/weekend and online/offline preference. We confirm availability and next cohort options.",
     icon: ClipboardList,
+    href: "/locations",
+    cta: "See locations",
   },
   {
     step: "Step 4",
-    title: "Enter cohort and build proof",
-    desc: "Start mentor-led sessions, earn streaks, ship assignments, and graduate with real evidence of learning.",
-    href: "/register",
-    cta: "Reserve your seat",
+    title: "Start cohort and build outcomes",
+    desc: "Begin mentor-led sessions, submit assignments, get feedback, and leave with real deliverables.",
     icon: Trophy,
+    href: "/courses",
+    cta: "Explore courses",
   },
 ] as const;
 
@@ -43,10 +43,10 @@ export default function ConversionFunnel() {
         <div>
           <div className="text-[11px] tracking-[0.32em] text-slate-600 uppercase">Enrollment funnel</div>
           <h3 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight text-slate-950">
-            A low-friction path from curiosity to enrollment
+            A structured path from interest to enrollment
           </h3>
           <p className="mt-2 text-slate-600 max-w-3xl leading-7">
-            Each step reduces doubt, increases confidence, and gives the learner a clear next action instead of leaving them to guess.
+            This improves conversions and trust because users know exactly what happens next: recommendation → counselling → schedule → cohort.
           </p>
         </div>
         <a
@@ -70,7 +70,7 @@ export default function ConversionFunnel() {
               transition={{ duration: 0.32, delay: idx * 0.05 }}
               className="h-full"
             >
-              <div className="h-full rounded-2xl border border-slate-200/80 bg-white/92 p-5 shadow-sm interactive-card">
+              <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
                 <div className="flex items-center justify-between gap-2">
                   <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] tracking-[0.22em] text-slate-700 uppercase">
                     {step.step}
@@ -81,7 +81,10 @@ export default function ConversionFunnel() {
                 </div>
                 <h4 className="mt-4 text-lg font-semibold text-slate-900 leading-tight">{step.title}</h4>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{step.desc}</p>
-                <a href={step.href} className="mt-4 inline-flex items-center text-sm font-semibold text-slate-900 hover:text-cyan-700 transition">
+                <a
+                  href={step.href}
+                  className="mt-4 inline-flex items-center text-sm font-semibold text-slate-900 hover:text-cyan-700 transition"
+                >
                   {step.cta}
                   <ArrowRight className="h-4 w-4 ml-1.5" />
                 </a>
@@ -89,6 +92,13 @@ export default function ConversionFunnel() {
             </motion.div>
           );
         })}
+      </div>
+
+      <div className="mt-5 rounded-2xl border border-cyan-100 bg-gradient-to-r from-cyan-50/70 via-violet-50/50 to-emerald-50/70 p-4 sm:p-5">
+        <p className="text-xs tracking-[0.28em] text-slate-600 uppercase">Operations note</p>
+        <p className="mt-2 text-sm sm:text-base leading-7 text-slate-700">
+          Your counselling / sales team can mirror this exact flow in WhatsApp and calls for a consistent, professional lead experience.
+        </p>
       </div>
     </div>
   );
