@@ -1,7 +1,8 @@
 import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import { site } from "../lib/site";
-import { CheckCircle2, GraduationCap, MapPin, Timer, Trophy, Sparkles } from "lucide-react";
+import { CheckCircle2, GraduationCap, MapPin, Timer, Trophy, Sparkles, Handshake, Rocket, Shield } from "lucide-react";
+import SuccessStories from "./partials/SuccessStories";
 
 const points = [
   { icon: GraduationCap, title: "Senior mentorship", desc: "Industry-experienced mentors focus on practical skills, business context, and clarity." },
@@ -9,13 +10,19 @@ const points = [
   { icon: Timer, title: "Cohort accountability", desc: "Small batches, weekly reviews, and progress tracking keep learners moving forward." },
   { icon: MapPin, title: "Hybrid access", desc: "Online + offline options across Hyderabad, Vijayawada, and Guntur." },
   { icon: Trophy, title: "Gamified momentum", desc: "XP, streaks, badges, and milestones increase completion and make learning feel dynamic." },
-  { icon: Sparkles, title: "Premium positioning", desc: "The site and offer structure are being shaped to feel high-trust, premium, and conversion-ready." },
+  { icon: Sparkles, title: "Premium positioning", desc: "The experience is being shaped to feel high-trust, premium, and conversion-ready." },
+];
+
+const principles = [
+  { icon: Handshake, title: "Trust before pressure", desc: "We lead with clarity, proof, and guided discovery—not noisy sales tactics." },
+  { icon: Rocket, title: "Outcomes before complexity", desc: "Learners should see what they will build, unlock, or improve at every stage." },
+  { icon: Shield, title: "Premium, but human", desc: "The brand should feel polished and aspirational while still approachable for beginners." },
 ];
 
 export default function About() {
   return (
     <div className="page-shell">
-      <section className="pt-14 pb-10">
+      <section className="pt-16 pb-10">
         <Container>
           <SectionTitle
             eyebrow="About"
@@ -38,6 +45,23 @@ export default function About() {
           </div>
         </Container>
       </section>
+
+      <section className="py-14 section-divider">
+        <Container>
+          <SectionTitle eyebrow="Brand principles" title="How the brand should feel to a learner, parent, or enterprise buyer" desc="These principles guide the design, messaging, and conversion flow in later phases." />
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {principles.map((item) => (
+              <div key={item.title} className="glass rounded-3xl p-6 interactive-card ring-soft">
+                <item.icon className="text-cyan-300" size={20} />
+                <div className="mt-4 text-xl font-semibold text-white">{item.title}</div>
+                <div className="mt-2 text-sm leading-7 text-slate-300">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <SuccessStories />
     </div>
   );
 }

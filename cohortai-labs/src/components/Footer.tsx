@@ -9,7 +9,7 @@ export default function Footer() {
       <Container>
         <div className="py-10 grid gap-8 md:grid-cols-3">
           <div className="space-y-3">
-            <Logo />
+            <Logo size="footer" />
             <p className="text-sm text-slate-600 max-w-sm leading-7">
               Mentor-led cohorts. Real projects. Hybrid learning. Built for beginners and professionals alike.
             </p>

@@ -1,18 +1,22 @@
 import { site } from "../lib/site";
 
-export default function Logo({ compact = false }: { compact?: boolean }) {
+type LogoProps = {
+  compact?: boolean;
+  size?: "nav" | "hero" | "footer";
+  className?: string;
+};
+
+export default function Logo({ compact = false, size = "nav", className = "" }: LogoProps) {
+  const width = compact ? 220 : size === "hero" ? 360 : size === "footer" ? 260 : 280;
+  const height = compact ? 72 : size === "hero" ? 96 : size === "footer" ? 84 : 88;
+
   return (
-    <div className="flex items-center">
+    <div className={`flex items-center ${className}`.trim()}>
       <img
         src={site.logoUrl || "/logo.svg"}
         alt={site.brand}
-        className="shrink-0 drop-shadow-[0_12px_30px_rgba(15,23,42,0.12)]"
-        style={{
-          width: compact ? 220 : 280,
-          height: compact ? 58 : 72,
-          objectFit: "contain",
-          objectPosition: "left center",
-        }}
+        className="shrink-0 object-contain object-left drop-shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
+        style={{ width, height }}
       />
     </div>
   );
