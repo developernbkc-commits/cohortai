@@ -13,7 +13,7 @@ export default function Button({
   const styles =
     variant === "primary"
       ? "text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 neon-edge"
-      : "text-white bg-white/5 hover:bg-white/10 border border-slate-700/80";
+      : "text-slate-900 bg-white/86 hover:bg-white border border-slate-200 premium-outline";
 
   return (
     <a href={href} className={cn(base, styles, className)} {...rest}>

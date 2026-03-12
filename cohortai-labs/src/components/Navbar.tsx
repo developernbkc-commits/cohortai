@@ -18,9 +18,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-slate-800/80 bg-[#030816]/78 backdrop-blur-xl">
+      <div className="border-b border-slate-200/70 bg-[#f7f5f0]/82 backdrop-blur-xl shadow-[0_10px_35px_rgba(15,23,42,0.04)]">
         <Container>
-          <div className="h-16 flex items-center justify-between">
+          <div className="h-20 flex items-center justify-between gap-4">
             <Link to="/" className="group">
               <Logo compact />
             </Link>
@@ -32,8 +32,8 @@ export default function Navbar() {
                   to={n.to}
                   className={({ isActive }) =>
                     cn(
-                      "text-slate-300 hover:text-white transition",
-                      isActive && "text-white"
+                      "relative text-slate-700 hover:text-slate-950 transition after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:rounded-full after:bg-gradient-to-r after:from-cyan-400 after:via-violet-400 after:to-emerald-400 after:transition-all hover:after:w-full",
+                      isActive && "text-slate-950 after:w-full"
                     )
                   }
                 >
@@ -44,20 +44,20 @@ export default function Navbar() {
                 href={`https://wa.me/91${site.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-900 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
               >
                 <Sparkles size={16} /> WhatsApp
               </a>
               <a
                 href={`tel:${site.phone}`}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white border border-slate-700 bg-white/5 hover:bg-white/10 transition"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-slate-900 border border-slate-200 bg-white/85 hover:bg-white transition premium-outline"
               >
                 <Phone size={16} /> Call
               </a>
             </nav>
 
             <button
-              className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-300 hover:bg-slate-800/80"
+              className="md:hidden inline-flex items-center justify-center rounded-xl p-2.5 text-slate-700 hover:bg-white/70 premium-outline"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -76,8 +76,8 @@ export default function Navbar() {
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
                         cn(
-                          "px-3 py-3 rounded-xl text-sm text-slate-300 hover:bg-white/5 hover:text-white",
-                          isActive && "bg-white/5 text-white"
+                          "px-3 py-3 rounded-xl text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-950",
+                          isActive && "bg-slate-50 text-slate-950"
                         )
                       }
                     >

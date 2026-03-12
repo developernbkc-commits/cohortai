@@ -16,25 +16,25 @@ export default function Testimonials() {
     <div className="card card-3d rounded-3xl p-8">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold text-white">Learner stories</div>
+          <div className="text-sm font-semibold text-slate-950">Learner stories</div>
           <div className="text-xs text-slate-500 mt-1">What people say about CohortAI Labs</div>
         </div>
-        <Quote className="text-cyan-300" size={20} />
+        <Quote className="text-cyan-700" size={20} />
       </div>
 
-      <div className="mt-5 flex gap-1 text-amber-300">{Array.from({ length: 5 }).map((_, idx) => <Star key={idx} size={16} fill="currentColor" />)}</div>
+      <div className="mt-5 flex gap-1 text-amber-400">{Array.from({ length: 5 }).map((_, idx) => <Star key={idx} size={16} fill="currentColor" />)}</div>
 
       <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} className="mt-6">
-        <div className="text-lg text-white leading-relaxed">“{cur.quote}”</div>
-        <div className="mt-4 text-sm text-slate-400">— {cur.name}</div>
-        <div className="mt-4 inline-flex rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-xs text-emerald-200">{cur.stat}</div>
+        <div className="text-lg text-slate-950 leading-relaxed">“{cur.quote}”</div>
+        <div className="mt-4 text-sm text-slate-600">— {cur.name}</div>
+        <div className="mt-4 inline-flex rounded-full border border-emerald-300/30 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">{cur.stat}</div>
       </motion.div>
 
       <div className="mt-6 flex items-center gap-2">
-        <button className="rounded-xl p-2 bg-white/5 border border-slate-700/80 hover:bg-white/10" onClick={() => setI((v) => (v - 1 + items.length) % items.length)} aria-label="Previous">
+        <button className="rounded-xl p-2 bg-white border border-slate-200 hover:bg-slate-50" onClick={() => setI((v) => (v - 1 + items.length) % items.length)} aria-label="Previous">
           <ChevronLeft size={18} />
         </button>
-        <button className="rounded-xl p-2 bg-white/5 border border-slate-700/80 hover:bg-white/10" onClick={() => setI((v) => (v + 1) % items.length)} aria-label="Next">
+        <button className="rounded-xl p-2 bg-white border border-slate-200 hover:bg-slate-50" onClick={() => setI((v) => (v + 1) % items.length)} aria-label="Next">
           <ChevronRight size={18} />
         </button>
         <div className="ml-auto text-xs text-slate-500">{i + 1} / {items.length}</div>

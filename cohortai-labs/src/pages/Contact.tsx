@@ -1,9 +1,14 @@
+import React from "react";
 import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import { site } from "../lib/site";
 import Button from "../components/Button";
 
+const goals = ["Career switch", "Business growth", "Productivity"]; 
+
 export default function Contact() {
+  const [goal, setGoal] = React.useState(goals[0]);
+
   return (
     <div>
       <section className="pt-12 pb-10">
@@ -20,35 +25,39 @@ export default function Contact() {
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
             <div className="card card-3d rounded-3xl p-6">
-              <div className="text-sm font-semibold text-white">Contact details</div>
-              <div className="mt-3 text-sm text-slate-400 grid gap-2">
+              <div className="text-sm font-semibold text-slate-950">Contact details</div>
+              <div className="mt-3 text-sm text-slate-600 grid gap-2">
                 <div>Locations: {site.cities.join(" • ")}</div>
                 <div>Batches start: {site.startDate}</div>
                 <div>Tracks: Everyday AI • Business AI • Tech & Data AI</div>
               </div>
-              <div className="mt-6 rounded-2xl bg-white/5 border border-slate-700/80 p-4 text-sm text-slate-300">
-                Tip: Share your background and goal—career switch, business growth, or productivity—so we can recommend the right level.
+              <div className="mt-6 rounded-2xl bg-slate-950 p-4 text-sm text-slate-200">
+                Tell us your goal to get a more tailored callback suggestion.
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {goals.map((item) => <button key={item} onClick={() => setGoal(item)} className={`rounded-full px-4 py-2 text-sm ${goal === item ? "bg-white text-slate-950 premium-outline" : "chip text-slate-700"}`}>{item}</button>)}
               </div>
             </div>
 
             <form name="lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" className="card card-3d rounded-3xl p-6">
               <input type="hidden" name="form-name" value="lead" />
+              <input type="hidden" name="selected_goal" value={goal} />
               <p className="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
 
               <div className="grid gap-4">
                 <div>
                   <label className="text-xs text-slate-500">Full name</label>
-                  <input name="name" required className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" placeholder="Your name" />
+                  <input name="name" required className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" placeholder="Your name" />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="text-xs text-slate-500">Phone</label>
-                    <input name="phone" required className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" placeholder="10-digit number" />
+                    <input name="phone" required className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" placeholder="10-digit number" />
                   </div>
                   <div>
                     <label className="text-xs text-slate-500">City</label>
-                    <select name="city" className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue={site.cities[0]}>
+                    <select name="city" className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue={site.cities[0]}>
                       {site.cities.map((c) => <option key={c} value={c}>{c}</option>)}
                       <option value="Online">Online</option>
                     </select>
@@ -58,13 +67,13 @@ export default function Contact() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="text-xs text-slate-500">Track</label>
-                    <select name="track" className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue="Everyday AI">
+                    <select name="track" className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue="Everyday AI">
                       {site.tracks.map((t) => <option key={t.name} value={t.name}>{t.name}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-xs text-slate-500">Preferred mode</label>
-                    <select name="mode" className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue="Hybrid">
+                    <select name="mode" className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue="Hybrid">
                       <option>Hybrid</option><option>Online</option><option>Offline</option>
                     </select>
                   </div>
@@ -72,7 +81,7 @@ export default function Contact() {
 
                 <div>
                   <label className="text-xs text-slate-500">Goal</label>
-                  <textarea name="goal" rows={4} className="mt-2 w-full rounded-2xl bg-white/5 border border-slate-700/80 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" placeholder="Example: career switch, business growth, productivity, portfolio projects..." />
+                  <textarea name="goal" rows={4} className="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300/30" defaultValue={goal} placeholder="Example: career switch, business growth, productivity, portfolio projects..." />
                 </div>
 
                 <button type="submit" className="mt-2 inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring">Submit</button>
