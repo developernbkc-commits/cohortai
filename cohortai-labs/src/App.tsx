@@ -7,12 +7,18 @@ import Courses from "./pages/Courses";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Thanks from "./pages/Thanks";
+import Register from "./pages/Register";
+import AdminConsole from "./pages/AdminConsole";
+import Platform from "./pages/Platform";
+import StickyBar from "./components/StickyBar";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen font-display premium-bg text-slate-100">
+    <div className="min-h-screen font-display page-shell">
+      <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
@@ -28,11 +34,15 @@ export default function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/admin" element={<AdminConsole />} />
+            <Route path="/platform" element={<Platform />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <StickyBar />
     </div>
   );
 }

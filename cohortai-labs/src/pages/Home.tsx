@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Orbit, ShieldCheck, Sparkles, Target, Trophy, Users, Workflow } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Users, Workflow, Database, Wallet, UserCog, MousePointerClick } from "lucide-react";
 import Container from "../components/Container";
 import GlowBg from "../components/GlowBg";
 import Button from "../components/Button";
@@ -11,113 +11,128 @@ import Ladder from "./partials/Ladder";
 import Testimonials from "./partials/Testimonials";
 import FAQ from "./partials/FAQ";
 import CTA from "./partials/CTA";
-import LearningPaths from "./partials/LearningPaths";
-import ProofStrip from "./partials/ProofStrip";
+import GalleryStrip from "../components/GalleryStrip";
+
+const platformCards = [
+  { icon: Database, title: "Admissions data in DB", desc: "Every lead, registration, payment, approval, and batch assignment becomes structured operational data." },
+  { icon: Wallet, title: "UPI-led checkout", desc: "Registrations move into review only after verified payment, reducing manual reconciliation." },
+  { icon: UserCog, title: "RBAC admin console", desc: "Admissions, finance, mentors, and admins get role-aware dashboards and workflows." },
+];
 
 const stat = [
   { icon: Users, label: "Cohort model", value: "Small batches" },
   { icon: Workflow, label: "Hands-on", value: "Real deliverables" },
   { icon: ShieldCheck, label: "Mentor reviews", value: "Structured feedback" },
-  { icon: Trophy, label: "Gamified", value: "XP + streaks" },
+  { icon: MousePointerClick, label: "Interactive journey", value: "Advisor + XP" },
 ];
 
 export default function Home() {
   return (
-    <div className="relative">
-      <section className="relative pt-16 sm:pt-24 pb-14 overflow-hidden hero-surface">
+    <div className="page-shell relative">
+      <section className="relative overflow-hidden pt-16 sm:pt-24 pb-14">
         <GlowBg />
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-xs text-slate-700">
-                <Sparkles size={14} className="text-cyan-300" />
+          <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/70 glass-pearl px-4 py-2 text-xs text-slate-700">
+                <Sparkles size={14} className="text-cyan-600" />
                 <span>
-                  Premium cohort experience • Next batch <span className="text-white font-semibold">{site.startDate}</span>
+                  New premium cohort experience • Next batch <span className="font-semibold text-slate-950">{site.startDate}</span>
                 </span>
               </div>
 
-              <h1 className="mt-6 text-4xl sm:text-6xl font-semibold tracking-[-0.05em] text-white text-balance leading-[0.96] max-w-4xl">
-                Build an <span className="bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 bg-clip-text text-transparent">AI career edge</span> with a lighter, more premium, mentor-led learning system.
+              <h1 className="mt-6 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] text-slate-950 text-balance leading-[0.95]">
+                Build an <span className="bg-gradient-to-r from-cyan-500 via-violet-500 to-emerald-500 bg-clip-text text-transparent">AI career edge</span> with a premium,
+                mentor-led learning system.
               </h1>
 
-              <p className="mt-5 text-slate-300 text-base sm:text-lg max-w-2xl leading-8">
-                {site.brand} blends live cohorts, guided labs, interactive learning paths, and gamified momentum so learners stay engaged, explore every section, and actually finish.
+              <p className="mt-5 max-w-2xl text-base sm:text-xl leading-8 text-slate-600">
+                {site.brand} blends live cohorts, guided labs, interactive learning paths, and gamified momentum so learners stay engaged and actually finish.
               </p>
 
-              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Button href="#advisor">
                   Start AI Advisor <ArrowRight className="ml-2" size={18} />
                 </Button>
-                <Button href="/contact" variant="secondary">
+                <Button href="/contact" variant="secondary" className="!bg-white !text-slate-900 !border-slate-300 hover:!bg-slate-50">
                   Book Free Counselling
                 </Button>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
-                {stat.map((s, idx) => (
-                  <motion.div key={s.label} className="card card-3d rounded-2xl p-4" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}>
-                    <s.icon className="text-cyan-700" size={18} />
+              <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+                {stat.map((s) => (
+                  <div key={s.label} className="glass-pearl interactive-card rounded-3xl p-4 ring-soft">
+                    <s.icon className="text-cyan-600" size={18} />
                     <div className="mt-3 text-sm font-semibold text-slate-950">{s.value}</div>
-                    <div className="text-xs text-slate-500 mt-1">{s.label}</div>
-                  </motion.div>
+                    <div className="mt-1 text-xs text-slate-500">{s.label}</div>
+                  </div>
                 ))}
               </div>
             </div>
 
             <motion.div
-              className="relative min-h-[520px]"
+              className="relative"
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <div className="absolute inset-0 mesh-line rounded-[36px] opacity-25" />
-              <motion.div className="card-dark rounded-[32px] p-6 absolute inset-x-5 top-8 neon-edge"
-                animate={{ y: [0, -10, 0], rotate: [0, 1, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.24em] text-cyan-300/80">3D cohort command center</div>
-                    <div className="mt-2 text-2xl font-semibold text-white">Lead-ready premium experience</div>
+              <div className="glass rounded-[36px] p-7 ring-soft">
+                <div className="text-sm tracking-[0.28em] uppercase text-cyan-300">3D cohort command center</div>
+                <div className="mt-3 text-4xl font-semibold text-white text-balance">Lead-ready premium experience</div>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-[28px] border border-white/10 bg-white/5 p-5 interactive-card">
+                    <div className="text-sm text-slate-400">Conversion stack</div>
+                    <div className="mt-3 text-3xl font-semibold text-white leading-tight">Advisor → Path → Seat booking</div>
+                    <div className="mt-4 h-2 rounded-full bg-white/10 overflow-hidden">
+                      <div className="h-full w-[78%] rounded-full bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300" />
+                    </div>
                   </div>
-                  <Orbit className="text-violet-300" />
+                  <div className="rounded-[28px] border border-white/10 bg-white/5 p-5 interactive-card">
+                    <div className="text-sm text-slate-400">Learner momentum</div>
+                    <div className="mt-3 text-3xl font-semibold text-white leading-tight">XP streaks + unlocks</div>
+                    <div className="mt-5 flex items-center gap-2 text-xs text-slate-300">
+                      <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-emerald-200">7-day challenge</span>
+                      <span className="rounded-full bg-violet-400/15 px-3 py-1 text-violet-200">Milestone badges</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  <button className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-4 text-left transition hover:border-cyan-300/35 hover:-translate-y-1">
-                    <div className="text-xs text-slate-400">Conversion stack</div>
-                    <div className="mt-2 text-white font-semibold">Advisor → Path → Seat booking</div>
-                    <div className="mt-3 h-2 rounded-full bg-slate-800"><div className="h-2 w-[82%] rounded-full bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300" /></div>
-                  </button>
-                  <button className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-4 text-left transition hover:border-violet-300/35 hover:-translate-y-1">
-                    <div className="text-xs text-slate-400">Learner momentum</div>
-                    <div className="mt-2 text-white font-semibold">XP streaks + unlocks</div>
-                    <div className="mt-3 flex gap-2 text-xs text-slate-300"><span className="chip px-3 py-1 rounded-full">7-day challenge</span><span className="chip px-3 py-1 rounded-full">Mentor review</span></div>
-                  </button>
+                <div className="mt-6 rounded-[32px] border border-white/10 bg-slate-950/60 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.28)]">
+                  <div className="text-sm text-emerald-300">Suggested starter plan</div>
+                  <div className="mt-2 text-3xl font-semibold text-white">AI Productivity Pro</div>
+                  <p className="mt-3 max-w-md text-slate-300 leading-7">
+                    For working people who need fast wins, real outputs, and a visible path into higher-value projects.
+                  </p>
+                  <div className="mt-5 grid grid-cols-3 gap-3">
+                    {[
+                      ["Fit", "87%"],
+                      ["Mode", "Hybrid"],
+                      ["Start", "₹10k"],
+                    ].map(([label, value]) => (
+                      <div key={label} className="rounded-2xl bg-white/6 p-4 text-center interactive-card">
+                        <div className="text-xs uppercase tracking-[0.18em] text-slate-400">{label}</div>
+                        <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-              <motion.div className="card-dark absolute right-0 bottom-6 w-[78%] rounded-[28px] p-5"
-                animate={{ y: [0, 10, 0], rotate: [0, -1.5, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
-                <div className="flex items-center gap-3 text-slate-300 text-sm"><Target size={16} className="text-emerald-300" /> Suggested starter plan</div>
-                <div className="mt-3 text-xl font-semibold text-white">AI Productivity Pro</div>
-                <div className="mt-2 text-sm text-slate-400">For working people who need fast wins, real outputs, and a visible path into higher-value projects.</div>
-                <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                  <button className="rounded-2xl bg-white/5 p-3 hover:bg-white/10 transition"><div className="text-xs text-slate-400">Fit</div><div className="text-white font-semibold mt-1">87%</div></button>
-                  <button className="rounded-2xl bg-white/5 p-3 hover:bg-white/10 transition"><div className="text-xs text-slate-400">Mode</div><div className="text-white font-semibold mt-1">Hybrid</div></button>
-                  <button className="rounded-2xl bg-white/5 p-3 hover:bg-white/10 transition"><div className="text-xs text-slate-400">Start</div><div className="text-white font-semibold mt-1">₹10k</div></button>
-                </div>
-              </motion.div>
+              </div>
+
+              <div
+                className="absolute -z-10 inset-0 blur-3xl opacity-60 animate-floaty"
+                style={{ background: "radial-gradient(circle at 60% 40%, rgba(34,211,238,0.22), transparent 55%), radial-gradient(circle at 30% 70%, rgba(167,139,250,0.20), transparent 55%)" }}
+              />
             </motion.div>
           </div>
         </Container>
       </section>
 
-      <ProofStrip />
-
-      <section id="advisor" className="py-16 section-divider">
+      <section id="advisor" className="py-14 section-divider">
         <Container>
           <SectionTitle
-            eyebrow="AI course advisor"
-            title="Interactive advisor that recommends the right track, milestone, and budget band"
-            desc="This section now behaves more like a premium guided consultation than a static selector."
+            eyebrow="Find your path"
+            title="AI advisor with visible recommendations, fit score, and challenge path"
+            desc="This section stays interactive by design: users can click through persona, goal, budget, and mode to get a recommendation they can act on immediately."
           />
           <div className="mt-8">
             <TrackFinder />
@@ -125,25 +140,12 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 section-divider">
-        <Container>
-          <SectionTitle
-            eyebrow="Interactive learning paths"
-            title="Each path feels like a journey, not just a list of modules"
-            desc="Click paths, reveal milestones, and preview outcomes so each learner feels invited into the right journey."
-          />
-          <div className="mt-8">
-            <LearningPaths />
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-16 section-divider">
+      <section className="py-14 section-divider">
         <Container>
           <SectionTitle
             eyebrow="Tracks"
-            title="Designed for beginners, business owners, and tech professionals"
-            desc="Every track card now includes more hover depth and selection behaviour so the page feels active, not read-only."
+            title="Interactive learning paths for beginners, operators, and technical talent"
+            desc="Each card is designed to feel clickable and outcome-led so the page behaves more like a guided journey than a brochure."
           />
           <div className="mt-8">
             <Tracks />
@@ -151,12 +153,12 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 section-divider">
+      <section className="py-14 section-divider">
         <Container>
           <SectionTitle
             eyebrow="Course ladder"
-            title="Transparent pricing with visible progression and milestone value"
-            desc="Use the ladder interactively to compare what unlocks next and which tier suits your budget."
+            title="Start small, then level up with projects, reviews, and portfolio depth"
+            desc="Transparent pricing from ₹5,000 to ₹35,000. Each step adds outcomes, accountability, and premium support."
           />
           <div className="mt-8">
             <Ladder />
@@ -164,12 +166,37 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 section-divider">
+      <GalleryStrip />
+
+      <section className="py-14 section-divider">
+        <Container>
+          <SectionTitle
+            eyebrow="Platform upgrade"
+            title="Ready for registrations, UPI payments, batch operations, and admin workflows"
+            desc="We preserved the useful platform direction from later commits while keeping the baseline sales story intact."
+          />
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {platformCards.map((card) => (
+              <div key={card.title} className="glass-pearl interactive-card rounded-3xl p-6 ring-soft">
+                <card.icon className="text-cyan-600" size={20} />
+                <div className="mt-4 text-lg font-semibold text-slate-950">{card.title}</div>
+                <div className="mt-2 text-sm text-slate-600 leading-7">{card.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button href="/register">Try self-registration</Button>
+            <Button href="/admin" variant="secondary" className="!bg-white !text-slate-900 !border-slate-300 hover:!bg-slate-50">View admin console</Button>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 section-divider">
         <Container>
           <SectionTitle
             eyebrow="Social proof"
-            title="A premium story around outcomes, accountability, and confidence"
-            desc="Rotate stories, compare wins, and keep the section lively so social proof feels earned."
+            title="What learners love about cohort-based learning"
+            desc="A premium learning experience that stays focused on outcomes and accountability."
           />
           <div className="mt-8">
             <Testimonials />
@@ -177,9 +204,13 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 section-divider">
+      <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="FAQ" title="Quick answers" desc="If you have more questions, open each answer and we’ll guide you toward the right next step." />
+          <SectionTitle
+            eyebrow="FAQ"
+            title="Quick answers"
+            desc="If you have more questions, message us and we’ll guide you."
+          />
           <div className="mt-8">
             <FAQ />
           </div>

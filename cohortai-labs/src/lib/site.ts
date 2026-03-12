@@ -30,7 +30,7 @@ export const site = {
       "gallery_projects_01.jpg"
     ]
   },
-  startDate: "2 March 2026",
+  startDate: "22 March 2026",
   phone: "8374617625",
   whatsapp: "8374617625",
   cities: ["Hyderabad", "Vijayawada", "Guntur"],
