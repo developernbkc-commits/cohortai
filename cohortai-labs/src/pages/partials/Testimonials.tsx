@@ -13,25 +13,25 @@ export default function Testimonials() {
   const cur = items[i];
 
   return (
-    <div className="glass rounded-3xl p-8 ring-soft">
+    <div className="card card-3d rounded-3xl p-8 ">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold text-white">Learner stories</div>
-          <div className="text-xs text-slate-400 mt-1">What people say about CohortAI Labs</div>
+          <div className="text-sm font-semibold text-slate-950">Learner stories</div>
+          <div className="text-xs text-slate-600 mt-1">What people say about CohortAI Labs</div>
         </div>
         <Quote className="text-cyan-200" size={20} />
       </div>
 
       <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} className="mt-6">
-        <div className="text-lg text-white leading-relaxed">“{cur.quote}”</div>
-        <div className="mt-4 text-sm text-slate-400">— {cur.name}</div>
+        <div className="text-lg text-slate-950 leading-relaxed">“{cur.quote}”</div>
+        <div className="mt-4 text-sm text-slate-600">— {cur.name}</div>
       </motion.div>
 
       <div className="mt-6 flex items-center gap-2">
-        <button className="rounded-xl p-2 bg-slate-900/70 border border-slate-800/70 hover:bg-slate-800/70" onClick={() => setI((v) => (v - 1 + items.length) % items.length)} aria-label="Previous">
+        <button className="rounded-xl p-2 bg-white/70 border border-slate-200/80 hover:bg-slate-800/70" onClick={() => setI((v) => (v - 1 + items.length) % items.length)} aria-label="Previous">
           <ChevronLeft size={18} />
         </button>
-        <button className="rounded-xl p-2 bg-slate-900/70 border border-slate-800/70 hover:bg-slate-800/70" onClick={() => setI((v) => (v + 1) % items.length)} aria-label="Next">
+        <button className="rounded-xl p-2 bg-white/70 border border-slate-200/80 hover:bg-slate-800/70" onClick={() => setI((v) => (v + 1) % items.length)} aria-label="Next">
           <ChevronRight size={18} />
         </button>
         <div className="ml-auto text-xs text-slate-500">{i + 1} / {items.length}</div>

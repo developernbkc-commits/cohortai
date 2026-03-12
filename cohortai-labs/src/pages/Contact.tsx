@@ -10,13 +10,15 @@ export default function Contact() {
         <Container>
           <SectionTitle
             eyebrow="Contact"
-            title="Admissions help, batch scheduling, and enterprise inquiries"
-            desc="Use this channel for counseling, enterprise cohorts, partnerships, or admissions support. Direct registrations should move through the new self-registration flow."
+            title="Get a batch schedule + recommended starting level"
+            desc="Fill the form and we’ll contact you. Or WhatsApp / call for faster help."
           />
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Button href="/register">Go to self-registration</Button>
-            <Button href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer" variant="secondary">
+            <Button href={`https://wa.me/91${site.whatsapp}`} target="_blank" rel="noreferrer">
               WhatsApp +91 {site.whatsapp}
+            </Button>
+            <Button href={`tel:${site.phone}`} variant="secondary">
+              Call {site.phone}
             </Button>
           </div>
         </Container>
@@ -25,27 +27,27 @@ export default function Contact() {
       <section className="pb-16">
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="glass rounded-3xl p-6 ring-soft">
-              <div className="text-sm font-semibold text-white">Contact details</div>
-              <div className="mt-3 text-sm text-slate-400 grid gap-2">
+            <div className="card card-3d rounded-3xl p-6 ">
+              <div className="text-sm font-semibold text-slate-950">Contact details</div>
+              <div className="mt-3 text-sm text-slate-600 grid gap-2">
                 <div>Locations: {site.cities.join(" • ")}</div>
                 <div>Batches start: {site.startDate}</div>
-                <div>Tracks: Everyday AI • Business AI • Tech & Data AI • Custom bundles</div>
+                <div>Tracks: Everyday AI • Business AI • Tech & Data AI</div>
               </div>
-              <div className="mt-6 rounded-2xl bg-slate-900/70 border border-slate-800/70 p-4 text-sm text-slate-300">
-                Tip: For direct admissions, use self-registration. This form is best for custom programs, corporate training, or support requests.
+              <div className="mt-6 rounded-2xl bg-white/70 border border-slate-200/80 p-4 text-sm text-slate-700">
+                Tip: Share your background and goal—career switch, business growth, or productivity—so we can recommend the right level.
               </div>
             </div>
 
             <form
-              name="admissions-help"
+              name="lead"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
               action="/thanks"
-              className="glass rounded-3xl p-6 ring-soft"
+              className="card card-3d rounded-3xl p-6 "
             >
-              <input type="hidden" name="form-name" value="admissions-help" />
+              <input type="hidden" name="form-name" value="lead" />
               <p className="hidden">
                 <label>
                   Don’t fill this out: <input name="bot-field" />
@@ -54,30 +56,30 @@ export default function Contact() {
 
               <div className="grid gap-4">
                 <div>
-                  <label className="text-xs text-slate-400">Full name</label>
+                  <label className="text-xs text-slate-600">Full name</label>
                   <input
                     name="name"
                     required
-                    className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs text-slate-400">Phone</label>
+                    <label className="text-xs text-slate-600">Phone</label>
                     <input
                       name="phone"
                       required
-                      className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                       placeholder="10-digit number"
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-slate-400">City</label>
+                    <label className="text-xs text-slate-600">City</label>
                     <select
                       name="city"
-                      className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                       defaultValue={site.cities[0]}
                     >
                       {site.cities.map((c) => (
@@ -90,24 +92,22 @@ export default function Contact() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs text-slate-400">Track</label>
+                    <label className="text-xs text-slate-600">Track</label>
                     <select
                       name="track"
-                      className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
-                      defaultValue="Custom bundle"
+                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                      defaultValue="Everyday AI"
                     >
                       {site.tracks.map((t) => (
                         <option key={t.name} value={t.name}>{t.name}</option>
                       ))}
-                      <option value="Custom bundle">Custom bundle</option>
-                      <option value="Corporate cohort">Corporate cohort</option>
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-slate-400">Preferred mode</label>
+                    <label className="text-xs text-slate-600">Preferred mode</label>
                     <select
                       name="mode"
-                      className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                      className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                       defaultValue="Hybrid"
                     >
                       <option>Hybrid</option>
@@ -118,20 +118,20 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs text-slate-400">Goal</label>
+                  <label className="text-xs text-slate-600">Goal</label>
                   <textarea
                     name="goal"
                     rows={4}
-                    className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
+                    className="mt-2 w-full rounded-2xl bg-white/70 border border-slate-200/80 px-4 py-3 text-sm text-slate-950 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-200/30"
                     placeholder="Example: career switch, business growth, productivity, portfolio projects..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-2 inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition neon-edge"
+                  className="mt-2 inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
                 >
-                  Request support
+                  Submit
                 </button>
 
                 <div className="text-xs text-slate-500">

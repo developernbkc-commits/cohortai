@@ -35,27 +35,27 @@ export default function TrackFinder() {
   const rec = recommendation(persona, goal, budget);
 
   const pill =
-    "rounded-full px-4 py-2 text-sm border border-slate-700/60 bg-slate-900/60 hover:bg-slate-800/60 transition";
+    "rounded-full px-4 py-2 text-sm border border-slate-700/60 bg-white/70 hover:bg-slate-800/60 transition";
 
   return (
     <div className="grid gap-6 lg:grid-cols-3">
-      <div className="glass rounded-3xl p-6 ring-soft lg:col-span-2">
-        <div className="text-sm font-semibold text-white flex items-center gap-2">
+      <div className="card card-3d rounded-3xl p-6  lg:col-span-2">
+        <div className="text-sm font-semibold text-slate-950 flex items-center gap-2">
           <Sparkles size={18} className="text-cyan-200" />
           Track Finder
         </div>
-        <div className="mt-2 text-sm text-slate-400">
+        <div className="mt-2 text-sm text-slate-600">
           Pick your background, goal, and budget. We’ll recommend a starting point.
         </div>
 
         <div className="mt-6 grid gap-6">
           <div>
-            <div className="text-xs tracking-[0.22em] uppercase text-slate-400">Background</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Background</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {(["Beginner / Non-tech", "Business / Self-employed", "Tech / IT"] as Persona[]).map((p) => (
                 <button
                   key={p}
-                  className={cn(pill, persona === p && "border-cyan-200/50 text-white")}
+                  className={cn(pill, persona === p && "border-cyan-200/50 text-slate-950")}
                   onClick={() => setPersona(p)}
                 >
                   {p}
@@ -65,12 +65,12 @@ export default function TrackFinder() {
           </div>
 
           <div>
-            <div className="text-xs tracking-[0.22em] uppercase text-slate-400">Goal</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Goal</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {(["Career upgrade", "Business growth", "Productivity"] as Goal[]).map((g) => (
                 <button
                   key={g}
-                  className={cn(pill, goal === g && "border-violet-200/50 text-white")}
+                  className={cn(pill, goal === g && "border-violet-200/50 text-slate-950")}
                   onClick={() => setGoal(g)}
                 >
                   {g}
@@ -81,8 +81,8 @@ export default function TrackFinder() {
 
           <div>
             <div className="flex items-center justify-between">
-              <div className="text-xs tracking-[0.22em] uppercase text-slate-400">Budget</div>
-              <div className="text-sm text-white font-semibold">₹{budget.toLocaleString("en-IN")}</div>
+              <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Budget</div>
+              <div className="text-sm text-slate-950 font-semibold">₹{budget.toLocaleString("en-IN")}</div>
             </div>
             <input
               type="range"
@@ -100,27 +100,27 @@ export default function TrackFinder() {
         </div>
       </div>
 
-      <div className="glass rounded-3xl p-6 ring-soft">
-        <div className="text-sm font-semibold text-white flex items-center gap-2">
+      <div className="card card-3d rounded-3xl p-6 ">
+        <div className="text-sm font-semibold text-slate-950 flex items-center gap-2">
           <CheckCircle2 size={18} className="text-emerald-200" />
           Recommendation
         </div>
 
-        <div className="mt-5 rounded-2xl bg-slate-900/70 border border-slate-800/70 p-4">
-          <div className="text-xs text-slate-400">Best track</div>
-          <div className="mt-1 text-lg font-semibold text-white">{rec.track}</div>
+        <div className="mt-5 rounded-2xl bg-white/70 border border-slate-200/80 p-4">
+          <div className="text-xs text-slate-600">Best track</div>
+          <div className="mt-1 text-lg font-semibold text-slate-950">{rec.track}</div>
         </div>
 
-        <div className="mt-3 rounded-2xl bg-slate-900/70 border border-slate-800/70 p-4">
-          <div className="text-xs text-slate-400">Start from</div>
-          <div className="mt-1 text-sm font-semibold text-white">{rec.start}</div>
+        <div className="mt-3 rounded-2xl bg-white/70 border border-slate-200/80 p-4">
+          <div className="text-xs text-slate-600">Start from</div>
+          <div className="mt-1 text-sm font-semibold text-slate-950">{rec.start}</div>
         </div>
 
-        <div className="mt-3 text-sm text-slate-400">{rec.note}</div>
+        <div className="mt-3 text-sm text-slate-600">{rec.note}</div>
 
         <a
           href="/contact"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition neon-edge"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 hover:opacity-95 transition accent-ring"
         >
           Get batch schedule
         </a>

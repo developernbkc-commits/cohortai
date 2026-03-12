@@ -16,15 +16,15 @@ export default function Courses() {
             desc={`Batches start ${site.startDate}. Choose a track and a level based on your goals.`}
           />
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Button href="/register">Self-register now</Button>
+            <Button href="/contact">Get a batch schedule</Button>
             <Button href={`https://wa.me/91${site.whatsapp}`} variant="secondary" target="_blank" rel="noreferrer">
-WhatsApp us
+              WhatsApp us
             </Button>
           </div>
         </Container>
       </section>
 
-      <section className="py-14 border-t border-slate-800/60">
+      <section className="py-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle
             eyebrow="Tracks"
@@ -37,7 +37,7 @@ WhatsApp us
         </Container>
       </section>
 
-      <section className="py-14 border-t border-slate-800/60">
+      <section className="py-14 border-t border-slate-200/70">
         <Container>
           <SectionTitle
             eyebrow="Pricing"

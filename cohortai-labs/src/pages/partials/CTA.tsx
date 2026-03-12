@@ -4,16 +4,16 @@ import { site } from "../../lib/site";
 
 export default function CTA() {
   return (
-    <section className="py-16 border-t border-slate-800/60">
+    <section className="py-16 border-t border-slate-200/70">
       <Container>
-        <div className="glass rounded-[28px] p-8 sm:p-10 ring-soft">
+        <div className="card card-3d rounded-[28px] p-8 sm:p-10 ">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <div className="text-xs tracking-[0.22em] uppercase text-slate-400">Ready to start?</div>
-              <div className="mt-2 text-3xl font-semibold text-white text-balance">
+              <div className="text-xs tracking-[0.22em] uppercase text-slate-600">Ready to start?</div>
+              <div className="mt-2 text-3xl font-semibold text-slate-950 text-balance">
                 Reserve your seat for the {site.startDate} cohort.
               </div>
-              <div className="mt-3 text-slate-400">
+              <div className="mt-3 text-slate-600">
                 DM “AI” on WhatsApp or submit the contact form for a recommended starting level.
               </div>
             </div>
