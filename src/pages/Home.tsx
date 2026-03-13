@@ -15,6 +15,7 @@ import GalleryStrip from "../components/GalleryStrip";
 import ConversionFunnel from "./partials/ConversionFunnel";
 import SuccessStories from "./partials/SuccessStories";
 import GamifiedJourney from "./partials/GamifiedJourney";
+import AICareerSnapshot from "../components/AICareerSnapshot";
 
 const platformCards = [
   { icon: Database, title: "Admissions data in DB", desc: "Every lead, registration, payment, approval, and batch assignment becomes structured operational data." },
@@ -147,6 +148,14 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </Container>
+      </section>
+
+
+      <section className="py-14 section-divider">
+        <Container>
+          <SectionTitle eyebrow="AI wow factor" title="Show the power of AI before the user even scrolls into the catalogue" desc="This surprise component turns the landing page into an interactive experience. It personalizes a learning path, demonstrates AI-style guidance, and gives the visitor an immediate next step." />
+          <div className="mt-8"><AICareerSnapshot /></div>
         </Container>
       </section>
 

@@ -49,3 +49,12 @@ export function canPublishCoupons(role: AdminRole | null) {
 export function canRequestCoupon(role: AdminRole | null) {
   return role === 'super_admin' || role === 'admissions_admin' || role === 'approver' || role === 'counselor';
 }
+
+export const TEMP_BOOTSTRAP_SUPER_ADMIN = {
+  phone: '9347062487',
+  password: 'Tirupati@038',
+};
+
+export function authenticateBootstrapAdmin(phone: string, password: string, role: AdminRole) {
+  return role === 'super_admin' && phone.replace(/\D/g, '') === TEMP_BOOTSTRAP_SUPER_ADMIN.phone && password === TEMP_BOOTSTRAP_SUPER_ADMIN.password;
+}

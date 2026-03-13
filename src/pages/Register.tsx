@@ -5,6 +5,7 @@ import { modules } from "../lib/catalog";
 import { CheckCircle2, CircleDollarSign, Layers3, ShieldCheck, UserRound } from "lucide-react";
 import { cn } from "../lib/utils";
 import { submitRegistration } from "../lib/api";
+import PhoneInput from "../components/PhoneInput";
 
 const steps = [
   { icon: Layers3, label: "Choose modules" },
@@ -32,6 +33,7 @@ export default function Register() {
   const [submitting, setSubmitting] = React.useState(false);
   const [submitted, setSubmitted] = React.useState<null | { mode: string; paymentUrl?: string; error?: string }>(null);
   const [form, setForm] = React.useState(initialForm);
+  const [validationError, setValidationError] = React.useState("");
 
   const total = modules.filter((m) => selected.includes(m.id)).reduce((sum, item) => sum + item.price, 0);
   const promoDiscount = form.promoCode.trim() ? Math.min(2000, Math.round(total * 0.1)) : 0;
@@ -43,6 +45,15 @@ export default function Register() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setValidationError("");
+    if (!selected.length) {
+      setValidationError("Please choose at least one module before creating the registration.");
+      return;
+    }
+    if (form.phoneNationalNumber.replace(/\D/g, '').length < 7) {
+      setValidationError("Please enter a valid mobile number with country code.");
+      return;
+    }
     setSubmitting(true);
     const result = await submitRegistration({ ...form, modules: selected });
     setSubmitting(false);
@@ -112,8 +123,18 @@ export default function Register() {
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 <Field label="Full name"><input value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className={inputClass} required placeholder="Learner full name" /></Field>
                 <Field label="Email"><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} required type="email" placeholder="name@example.com" /></Field>
-                <Field label="Country code"><input value={form.phoneCountryCode} onChange={(e) => setForm({ ...form, phoneCountryCode: e.target.value })} className={inputClass} required placeholder="+91" /></Field>
-                <Field label="Phone number"><input value={form.phoneNationalNumber} onChange={(e) => setForm({ ...form, phoneNationalNumber: e.target.value })} className={inputClass} required placeholder="8374617625" /></Field>
+                <div className="md:col-span-2">
+                  <PhoneInput
+                    label="Phone / WhatsApp"
+                    countryCode={form.phoneCountryCode}
+                    phoneNumber={form.phoneNationalNumber}
+                    onCountryCodeChange={(value) => setForm({ ...form, phoneCountryCode: value })}
+                    onPhoneNumberChange={(value) => setForm({ ...form, phoneNationalNumber: value })}
+                    onCountryNameChange={(value) => setForm({ ...form, country: value })}
+                    required
+                    helperText="Country defaults to the local region when possible, but the learner can change it."
+                  />
+                </div>
                 <Field label="Country"><input value={form.country} onChange={(e) => setForm({ ...form, country: e.target.value })} className={inputClass} required placeholder="India" /></Field>
                 <Field label="Preferred format">
                   <select value={form.preferredMode} onChange={(e) => setForm({ ...form, preferredMode: e.target.value })} className={inputClass}>
@@ -144,6 +165,10 @@ export default function Register() {
                   </div>
                 </div>
               </div>
+
+{validationError && (
+                <div className="mt-6 rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">{validationError}</div>
+              )}
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge disabled:opacity-70">

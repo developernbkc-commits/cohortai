@@ -4,6 +4,7 @@ import SectionTitle from '../components/SectionTitle';
 import { listCouponRequests, listCouponRequestsFallback, requestCoupon, notifyOps, financePublishCoupon, CouponRequestRecord } from '../lib/opsApi';
 import { BadgeIndianRupee, Mail, Phone, ShieldCheck, Stamp, WalletCards, CheckCircle2, RefreshCw } from 'lucide-react';
 import { canPublishCoupons, canRequestCoupon, getAdminSessionRole } from '../lib/adminAuth';
+import PhoneInput from '../components/PhoneInput';
 
 const financeRules = [
   'Eligible creators: Super Admin, Admissions Admin, Approver, Counselor.',
@@ -30,6 +31,8 @@ export default function CouponGovernance() {
   const [loading, setLoading] = useState(false);
   const [dataMode, setDataMode] = useState<'remote' | 'fallback'>('fallback');
   const [publishingId, setPublishingId] = useState<string | null>(null);
+  const [bindPhoneCountryCode, setBindPhoneCountryCode] = useState('+91');
+  const [bindPhoneNumber, setBindPhoneNumber] = useState('');
 
   const loadItems = async () => {
     setLoading(true);
@@ -50,7 +53,8 @@ export default function CouponGovernance() {
   const submit = async () => {
     setSaving(true);
     setMessage('');
-    const result = await requestCoupon(draft);
+    const payload = draft.bindType === 'phone' ? { ...draft, bindValue: `${bindPhoneCountryCode}${bindPhoneNumber.replace(/\D/g, '')}` } : draft;
+    const result = await requestCoupon(payload);
     if (result.ok) {
       await notifyOps('Coupon request submitted', `Role ${role} requested coupon ${draft.code || '[auto-code]'}.`);
       setMessage(`Coupon request saved in ${result.mode} mode. Finance approval remains mandatory before publishing.`);
@@ -132,12 +136,23 @@ export default function CouponGovernance() {
                   <div className="mt-4 grid gap-3">
                     <input value={draft.code} onChange={(e) => setDraft({ ...draft, code: e.target.value.toUpperCase() })} placeholder="Coupon code" className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950" />
                     <div className="grid gap-3 md:grid-cols-2">
-                      <select value={draft.bindType} onChange={(e) => setDraft({ ...draft, bindType: e.target.value as any })} className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950">
+                      <select value={draft.bindType} onChange={(e) => setDraft({ ...draft, bindType: e.target.value as any, bindValue: e.target.value === 'phone' ? '' : draft.bindValue })} className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950">
                         <option value="email">Bind to email</option>
                         <option value="phone">Bind to phone</option>
                         <option value="open">Open / campaign coupon</option>
                       </select>
-                      <input value={draft.bindValue} onChange={(e) => setDraft({ ...draft, bindValue: e.target.value })} placeholder={draft.bindType === 'phone' ? '+919876543210' : draft.bindType === 'email' ? 'learner@example.com' : 'Optional audience note'} className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950" />
+                      {draft.bindType === 'phone' ? (
+                        <PhoneInput
+                          label="Coupon recipient phone"
+                          countryCode={bindPhoneCountryCode}
+                          phoneNumber={bindPhoneNumber}
+                          onCountryCodeChange={setBindPhoneCountryCode}
+                          onPhoneNumberChange={setBindPhoneNumber}
+                          namePrefix="couponPhone"
+                        />
+                      ) : (
+                        <input value={draft.bindValue} onChange={(e) => setDraft({ ...draft, bindValue: e.target.value })} placeholder={draft.bindType === 'email' ? 'learner@example.com' : 'Optional audience note'} className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950" />
+                      )}
                     </div>
                     <div className="grid gap-3 md:grid-cols-2">
                       <input value={draft.discountLabel} onChange={(e) => setDraft({ ...draft, discountLabel: e.target.value })} placeholder='e.g. ₹5,000 off or 10% off' className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-950" />

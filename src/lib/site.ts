@@ -2,7 +2,7 @@ export const site = {
   brand: "CohortAI Labs",
   tagline: "AI Coaching | Online + Offline",
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
-  logoUrl: "https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true",
+  logoUrl: "/logo.svg",
   imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
   images: {
     hero: "hero_lab_classroom_01.jpg",

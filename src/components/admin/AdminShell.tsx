@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Shield, LayoutDashboard, TicketsPercent, Boxes, CreditCard, CalendarRange, LogOut } from 'lucide-react';
+import { Shield, LayoutDashboard, TicketPercent, Boxes, CreditCard, CalendarRange, LogOut } from 'lucide-react';
 import Logo from '../Logo';
 import { clearAdminSessionRole, getAdminSessionRole, adminRoleOptions } from '../../lib/adminAuth';
 
 const links = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/program-studio', label: 'Programs', icon: Boxes },
-  { to: '/admin/coupons', label: 'Coupons', icon: TicketsPercent },
+  { to: '/admin/coupons', label: 'Coupons', icon: TicketPercent },
   { to: '/admin/payments', label: 'Payments', icon: CreditCard },
   { to: '/admin/registrations', label: 'Registrations', icon: CalendarRange },
 ];

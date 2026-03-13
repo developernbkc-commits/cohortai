@@ -8,9 +8,12 @@ import { Helmet } from "react-helmet-async";
 import { canonical, seoDefaults } from "../lib/seo";
 import { useLocation } from "react-router-dom";
 import EnterpriseROIEstimator from "./partials/EnterpriseROIEstimator";
+import PhoneInput from "../components/PhoneInput";
 
 export default function Enterprise() {
   const location = useLocation();
+  const [phoneCountryCode, setPhoneCountryCode] = React.useState("+91");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
   const email = (site as any).email || "info.cohortai.labs@itprofessional.pro";
 
   return (
@@ -98,7 +101,14 @@ export default function Enterprise() {
               <input required name="name" placeholder="Your name" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
               <input required name="company" placeholder="Company / Organization" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
               <input required type="email" name="email" placeholder="Work email" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
-              <input name="phone" placeholder="Phone (optional)" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
+              <PhoneInput
+                label="Phone (optional)"
+                countryCode={phoneCountryCode}
+                phoneNumber={phoneNumber}
+                onCountryCodeChange={setPhoneCountryCode}
+                onPhoneNumberChange={setPhoneNumber}
+                namePrefix="phone"
+              />
               <input name="team_size" placeholder="Team size (e.g., 25)" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
               <input name="timeline" placeholder="Timeline (e.g., 6 weeks)" className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />
               <textarea name="goals" placeholder="Goals (roles, use-cases, expected outcomes)" rows={4} className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm" />

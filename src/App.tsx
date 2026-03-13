@@ -24,7 +24,7 @@ import RegistrationsOps from "./pages/admin/RegistrationsOps";
 
 export default function App() {
   const location = useLocation();
-  const isAdminSurface = location.pathname.startsWith('/admin');
+  const isAdminSurface = location.pathname === '/admin-access' || location.pathname.startsWith('/admin');
   const mainPadding = isAdminSurface ? '' : 'pt-16';
 
   return (

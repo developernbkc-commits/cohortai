@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import { site } from "../lib/site";
 import Button from "../components/Button";
+import PhoneInput from "../components/PhoneInput";
 
 const intents = [
   "Need course guidance",
@@ -13,6 +14,8 @@ const intents = [
 
 export default function Contact() {
   const [intent, setIntent] = useState<(typeof intents)[number]>("Need course guidance");
+  const [phoneCountryCode, setPhoneCountryCode] = useState("+91");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
     <div>
@@ -82,10 +85,16 @@ export default function Contact() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="text-xs text-slate-300">Phone</label>
-                    <input name="phone" required className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-200/30" placeholder="10-digit number" />
-                  </div>
+                  <PhoneInput
+                    dark
+                    label="Phone / WhatsApp"
+                    countryCode={phoneCountryCode}
+                    phoneNumber={phoneNumber}
+                    onCountryCodeChange={setPhoneCountryCode}
+                    onPhoneNumberChange={setPhoneNumber}
+                    namePrefix="phone"
+                    required
+                  />
                   <div>
                     <label className="text-xs text-slate-300">City</label>
                     <select name="city" className="mt-2 w-full rounded-2xl bg-slate-900/70 border border-slate-800/70 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-200/30" defaultValue={site.cities[0]}>
