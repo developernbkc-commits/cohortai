@@ -8,14 +8,18 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => ({}));
   const supabase = createClient(Deno.env.get('SUPABASE_URL') ?? '', Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '');
 
+  const normalizedDiscountLabel = String(body.discountLabel ?? '').trim();
+  const inferredDiscountType = normalizedDiscountLabel.includes('%') ? 'percent' : 'flat';
+  const inferredDiscountValue = Number(normalizedDiscountLabel.replace(/[^0-9.]/g, '')) || 0;
+
   const payload = {
     requested_by_profile_id: body.requestedByProfileId,
-    requested_by_role_code: body.requestedByRoleCode,
-    coupon_code: body.couponCode,
+    requested_by_role_code: body.requestedByRoleCode ?? body.actorRole ?? 'unknown',
+    coupon_code: body.couponCode ?? body.code,
     bind_type: body.bindType,
     bind_value: body.bindValue,
-    discount_type: body.discountType,
-    discount_value: body.discountValue,
+    discount_type: body.discountType ?? inferredDiscountType,
+    discount_value: body.discountValue ?? inferredDiscountValue,
     target_program_id: body.targetProgramId ?? null,
     finance_status: 'requested',
     publish_after_finance_approval: true,
@@ -33,12 +37,12 @@ Deno.serve(async (req) => {
 
   await supabase.from('audit_logs').insert({
     actor_profile_id: body.requestedByProfileId,
-    actor_role_code: body.requestedByRoleCode,
+    actor_role_code: body.requestedByRoleCode ?? body.actorRole ?? 'unknown',
     entity_type: 'coupon_request',
     entity_id: data.id,
     action: 'create_coupon_request',
     details: payload,
   });
 
-  return new Response(JSON.stringify({ couponRequestId: data.id }), { status: 200 });
+  return new Response(JSON.stringify({ id: data.id, couponRequestId: data.id }), { status: 200 });
 });

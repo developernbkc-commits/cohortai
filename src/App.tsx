@@ -15,8 +15,10 @@ import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
 import ProgramStudio from "./pages/ProgramStudio";
 import CouponGovernance from "./pages/CouponGovernance";
+import AdminAccess from "./pages/AdminAccess";
 import StickyBar from "./components/StickyBar";
 import ScrollToTop from "./components/ScrollToTop";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   const location = useLocation();
@@ -35,9 +37,10 @@ export default function App() {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
-            <Route path="/admin" element={<AdminConsole />} />
-            <Route path="/admin/program-studio" element={<ProgramStudio />} />
-            <Route path="/admin/coupons" element={<CouponGovernance />} />
+            <Route path="/admin-access" element={<AdminAccess />} />
+            <Route path="/admin" element={<ProtectedRoute><AdminConsole /></ProtectedRoute>} />
+            <Route path="/admin/program-studio" element={<ProtectedRoute><ProgramStudio /></ProtectedRoute>} />
+            <Route path="/admin/coupons" element={<ProtectedRoute><CouponGovernance /></ProtectedRoute>} />
             <Route path="/platform" element={<Platform />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
