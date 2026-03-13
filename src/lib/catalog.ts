@@ -66,12 +66,10 @@ export const modules: CourseModule[] = [
 ];
 
 export const adminRoles = [
-  { role: "super_admin", scope: "Full access across admissions, finance, programs, coupons, batches, and RBAC" },
-  { role: "admissions_admin", scope: "Lead intake, applications, counseling notes, queue movement" },
-  { role: "approver", scope: "Operational approvals, exceptions, escalation handling" },
-  { role: "counselor", scope: "Lead qualification, fit guidance, coupon request initiation" },
-  { role: "finance", scope: "Coupon publishing approval, payment reconciliation, refunds" },
-  { role: "operations", scope: "Batch creation, slot allocation, learner roster" },
+  { role: "super_admin", scope: "Full access across batches, admissions, finance, and RBAC" },
+  { role: "admissions_manager", scope: "Leads, applications, counseling notes, approvals queue" },
+  { role: "finance_ops", scope: "UPI reconciliation, refunds, payment verification" },
+  { role: "batch_manager", scope: "Batch creation, slot allocation, learner roster" },
   { role: "mentor", scope: "Assigned cohorts, attendance, learner notes" },
 ];
 

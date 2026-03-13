@@ -20,8 +20,8 @@ export default function Contact() {
         <Container>
           <SectionTitle
             eyebrow="Contact"
-            title="Admissions help, counselling, enterprise cohorts, and premium support"
-            desc="Use this channel for counselling, enterprise cohorts, partnerships, or admissions support. The goal is to reduce hesitation and help the user move into the right next step quickly."
+            title="Admissions help, batch scheduling, and enterprise inquiries"
+            desc="Use this channel for counseling, enterprise cohorts, partnerships, or admissions support. Direct registrations should move through the self-registration flow."
           />
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button href="/register">Go to self-registration</Button>
@@ -43,7 +43,7 @@ export default function Contact() {
                 <div>Tracks: Everyday AI • Business AI • Tech & Data AI • Custom bundles</div>
               </div>
               <div className="mt-6 rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm text-slate-700 leading-7">
-                Tip: Use self-registration when you already know your path. Use this page when you want a counselor-guided recommendation, a custom bundle, or enterprise-style support.
+                Tip: For direct admissions, use self-registration. This form is best for custom programs, corporate training, or support requests.
               </div>
               <div className="mt-6">
                 <div className="text-xs tracking-[0.22em] uppercase text-slate-500">Quick intent</div>

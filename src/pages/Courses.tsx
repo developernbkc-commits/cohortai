@@ -19,7 +19,7 @@ export default function Courses() {
     if (filter === "Business") return "Best for founders, creators, and growth teams who want faster content, follow-up, and workflow automation.";
     if (filter === "Tech") return "Best for developers, analysts, and IT professionals who want portfolio projects and interview-ready proof.";
     if (filter === "Beginner") return "Best for students, homemakers, and first-time learners who want confidence without overload.";
-    return "Choose the path that matches your goals, confidence, and the kind of work, proof, or business outcome you want to leave with.";
+    return "Choose a track and a level based on goals, confidence, and the kind of outcomes you want to show.";
   }, [filter]);
 
   return (
@@ -28,8 +28,8 @@ export default function Courses() {
         <Container>
           <SectionTitle
             eyebrow="Courses"
-            title="Programs, tracks, and pricing that feel premium—but stay easy to choose"
-            desc={`Batches start ${site.startDate}. ${summary} Admin-defined program structures can later publish here without rewriting the site.`}
+            title="A clear ladder from starter to flagship cohort"
+            desc={`Batches start ${site.startDate}. ${summary}`}
           />
           <div className="mt-6 flex flex-wrap gap-3">
             {filters.map((item) => (

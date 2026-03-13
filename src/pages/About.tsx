@@ -10,7 +10,7 @@ const points = [
   { icon: Timer, title: "Cohort accountability", desc: "Small batches, weekly reviews, and progress tracking keep learners moving forward." },
   { icon: MapPin, title: "Hybrid access", desc: "Online + offline options across Hyderabad, Vijayawada, and Guntur." },
   { icon: Trophy, title: "Gamified momentum", desc: "XP, streaks, badges, and milestones increase completion and make learning feel dynamic." },
-  { icon: Sparkles, title: "Operator-grade polish", desc: "The site, admissions flow, and proof system are being shaped to feel like a serious learning company—not a temporary landing page." },
+  { icon: Sparkles, title: "Premium positioning", desc: "The experience is being shaped to feel high-trust, premium, and conversion-ready." },
 ];
 
 const principles = [
@@ -27,7 +27,7 @@ export default function About() {
           <SectionTitle
             eyebrow="About"
             title={`Why ${site.brand}?`}
-            desc="We built CohortAI Labs for learners who want outcomes, structure, premium guidance, and a brand experience that feels credible enough for parents, professionals, and enterprise buyers alike."
+            desc="We built CohortAI Labs for learners who want outcomes, structure, and premium guidance—not random lectures or passive video courses."
           />
         </Container>
       </section>

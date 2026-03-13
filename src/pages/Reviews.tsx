@@ -38,8 +38,8 @@ export default function Reviews() {
         <Container>
           <SectionTitle
             eyebrow="Public proof"
-            title="Collect real learner reviews with approval control and premium-proof quality"
-            desc="This flow captures a learner review, optional profile image, consent to publish, and routes the record into an approval queue before anything becomes public proof."
+            title="Let learners submit reviews and testimonials for moderation"
+            desc="This Phase B flow captures a learner review, optional profile image URL, consent to publish, and routes the record into an admin approval queue before anything goes live."
           />
         </Container>
       </section>

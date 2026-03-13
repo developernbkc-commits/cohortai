@@ -13,6 +13,8 @@ import Platform from "./pages/Platform";
 import Reviews from "./pages/Reviews";
 import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
+import ProgramStudio from "./pages/ProgramStudio";
+import CouponGovernance from "./pages/CouponGovernance";
 import StickyBar from "./components/StickyBar";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -34,6 +36,8 @@ export default function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/admin" element={<AdminConsole />} />
+            <Route path="/admin/program-studio" element={<ProgramStudio />} />
+            <Route path="/admin/coupons" element={<CouponGovernance />} />
             <Route path="/platform" element={<Platform />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
