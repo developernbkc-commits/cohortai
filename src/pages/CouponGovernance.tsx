@@ -1,14 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '../components/Container';
 import SectionTitle from '../components/SectionTitle';
-import { listCouponRequestsFallback, requestCoupon, notifyOps } from '../lib/opsApi';
-import { BadgeIndianRupee, Mail, Phone, ShieldCheck, Stamp, WalletCards } from 'lucide-react';
+import { listCouponRequests, listCouponRequestsFallback, requestCoupon, notifyOps, financePublishCoupon, CouponRequestRecord } from '../lib/opsApi';
+import { BadgeIndianRupee, Mail, Phone, ShieldCheck, Stamp, WalletCards, CheckCircle2, RefreshCw } from 'lucide-react';
 import { canPublishCoupons, canRequestCoupon, getAdminSessionRole } from '../lib/adminAuth';
 
 const financeRules = [
   'Eligible creators: Super Admin, Admissions Admin, Approver, Counselor.',
   'Finance is the publishing authority and approval is mandatory before activation.',
-  'After Finance approval, coupon publication should happen automatically.',
+  'After Finance approval, coupon publication happens automatically.',
   'Unique coupons can be bound to an exact email address or a normalized E.164 phone number.',
 ];
 
@@ -26,7 +26,26 @@ export default function CouponGovernance() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const role = getAdminSessionRole();
-  const items = useMemo(() => listCouponRequestsFallback(), [message]);
+  const [items, setItems] = useState<CouponRequestRecord[]>(listCouponRequestsFallback());
+  const [loading, setLoading] = useState(false);
+  const [dataMode, setDataMode] = useState<'remote' | 'fallback'>('fallback');
+  const [publishingId, setPublishingId] = useState<string | null>(null);
+
+  const loadItems = async () => {
+    setLoading(true);
+    const result = await listCouponRequests();
+    if (result.ok) {
+      setItems(result.data);
+      setDataMode(result.mode);
+    } else {
+      setMessage(result.error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    void loadItems();
+  }, []);
 
   const submit = async () => {
     setSaving(true);
@@ -36,10 +55,24 @@ export default function CouponGovernance() {
       await notifyOps('Coupon request submitted', `Role ${role} requested coupon ${draft.code || '[auto-code]'}.`);
       setMessage(`Coupon request saved in ${result.mode} mode. Finance approval remains mandatory before publishing.`);
       setDraft(initialDraft);
+      await loadItems();
     } else {
       setMessage(result.error);
     }
     setSaving(false);
+  };
+
+  const approveAndPublish = async (couponRequestId: string) => {
+    setPublishingId(couponRequestId);
+    const result = await financePublishCoupon(couponRequestId);
+    if (result.ok) {
+      setMessage(`Coupon approved and ${result.data.publishStatus || 'published'} in ${result.mode} mode.`);
+      await notifyOps('Coupon published', `Finance published coupon request ${couponRequestId}.`);
+      await loadItems();
+    } else {
+      setMessage(result.error);
+    }
+    setPublishingId(null);
   };
 
   return (
@@ -56,6 +89,14 @@ export default function CouponGovernance() {
 
       <section className="pb-16">
         <Container>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-[24px] border border-slate-200 bg-white/75 px-5 py-4 text-sm text-slate-700 shadow-sm">
+            <div>
+              <span className="font-semibold text-slate-950">Data source:</span> {dataMode === 'remote' ? 'Live Supabase records' : 'Fallback local data'}
+            </div>
+            <button onClick={() => void loadItems()} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-900">
+              <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Refresh
+            </button>
+          </div>
           <div className="grid gap-6 xl:grid-cols-[0.88fr_1.12fr]">
             <div className="space-y-5">
               <div className="glass rounded-[28px] p-6 ring-soft">
@@ -115,7 +156,7 @@ export default function CouponGovernance() {
                 {message && <div className="mt-4 rounded-2xl border border-cyan-200 bg-cyan-50 px-4 py-3 text-sm text-cyan-900">{message}</div>}
                 {canPublishCoupons(role) && (
                   <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
-                    Finance role detected. Finance approvals should auto-publish coupons once wired to the live backend.
+                    Finance role detected. You can approve coupon requests and the system will auto-publish them.
                   </div>
                 )}
               </div>
@@ -126,7 +167,7 @@ export default function CouponGovernance() {
                 <Stamp className="text-fuchsia-700" size={20} />
                 <h3 className="text-lg font-semibold">Coupon review queue</h3>
               </div>
-              <table className="mt-5 w-full min-w-[760px] text-sm">
+              <table className="mt-5 w-full min-w-[860px] text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 text-left text-slate-500">
                     <th className="pb-3 pr-4">Code</th>
@@ -134,25 +175,46 @@ export default function CouponGovernance() {
                     <th className="pb-3 pr-4">Requested by</th>
                     <th className="pb-3 pr-4">Status</th>
                     <th className="pb-3 pr-4">Offer</th>
-                    <th className="pb-3">Validity</th>
+                    <th className="pb-3 pr-4">Validity</th>
+                    <th className="pb-3">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {items.map((item: any) => (
-                    <tr key={item.id} className="border-b border-slate-200 text-slate-700">
-                      <td className="py-4 pr-4 font-semibold text-slate-950">{item.code}</td>
-                      <td className="py-4 pr-4">
-                        <div className="flex items-center gap-2">
-                          {item.bindType === 'email' ? <Mail size={14} className="text-cyan-700" /> : item.bindType === 'phone' ? <Phone size={14} className="text-cyan-700" /> : <Stamp size={14} className="text-cyan-700" />}
-                          <span>{item.bindValue}</span>
-                        </div>
-                      </td>
-                      <td className="py-4 pr-4">{item.requestedBy}</td>
-                      <td className="py-4 pr-4">{item.financeStatus}</td>
-                      <td className="py-4 pr-4">{item.discountLabel}</td>
-                      <td className="py-4">{item.validUntil}</td>
-                    </tr>
-                  ))}
+                  {items.map((item) => {
+                    const bindType = item.bindType || item.bind_type || 'open';
+                    const bindValue = item.bindValue || item.bind_value || 'Open audience';
+                    const status = item.financeStatus || item.finance_status || 'requested';
+                    const requestedBy = item.requestedBy || item.requested_by_role_code || 'unknown';
+                    const code = item.code || item.coupon_code || 'AUTO';
+                    return (
+                      <tr key={item.id} className="border-b border-slate-200 text-slate-700">
+                        <td className="py-4 pr-4 font-semibold text-slate-950">{code}</td>
+                        <td className="py-4 pr-4">
+                          <div className="flex items-center gap-2">
+                            {bindType === 'email' ? <Mail size={14} className="text-cyan-700" /> : bindType === 'phone' ? <Phone size={14} className="text-cyan-700" /> : <Stamp size={14} className="text-cyan-700" />}
+                            <span>{bindValue}</span>
+                          </div>
+                        </td>
+                        <td className="py-4 pr-4">{requestedBy}</td>
+                        <td className="py-4 pr-4">{status}</td>
+                        <td className="py-4 pr-4">{item.discountLabel}</td>
+                        <td className="py-4 pr-4">{item.validUntil}</td>
+                        <td className="py-4">
+                          {canPublishCoupons(role) && status !== 'approved' ? (
+                            <button
+                              onClick={() => void approveAndPublish(item.id)}
+                              disabled={publishingId === item.id}
+                              className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-3 py-2 font-semibold text-emerald-900 disabled:opacity-60"
+                            >
+                              <CheckCircle2 size={14} /> {publishingId === item.id ? 'Publishing...' : 'Approve & publish'}
+                            </button>
+                          ) : (
+                            <span className="text-xs text-slate-500">{item.publish_status || 'Awaiting Finance'}</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

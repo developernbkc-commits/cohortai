@@ -1,10 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Layers3, Sparkles, Wand2, DatabaseZap, ShieldCheck } from 'lucide-react';
+import { Layers3, Sparkles, Wand2, DatabaseZap, ShieldCheck, RefreshCw } from 'lucide-react';
 import Container from '../components/Container';
 import SectionTitle from '../components/SectionTitle';
-import { listProgramsFallback } from '../lib/opsApi';
-import { createProgram } from '../lib/opsApi';
+import { createProgram, listPrograms, listProgramsFallback, ProgramRecord } from '../lib/opsApi';
 
 const initialDraft = {
   name: '',
@@ -21,7 +20,28 @@ export default function ProgramStudio() {
   const [draft, setDraft] = useState(initialDraft);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string>('');
-  const programs = useMemo(() => listProgramsFallback(), [message]);
+  const [programs, setPrograms] = useState<ProgramRecord[]>(listProgramsFallback());
+  const [loading, setLoading] = useState(false);
+  const [dataMode, setDataMode] = useState<'remote' | 'fallback'>('fallback');
+
+  const loadPrograms = async () => {
+    setLoading(true);
+    const result = await listPrograms();
+    if (result.ok) {
+      setPrograms(result.data);
+      setDataMode(result.mode);
+      if (result.mode === 'remote') {
+        setMessage('Program Studio is now reading from the live Supabase dataset.');
+      }
+    } else {
+      setMessage(result.error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    void loadPrograms();
+  }, []);
 
   const submit = async () => {
     setSaving(true);
@@ -33,8 +53,9 @@ export default function ProgramStudio() {
     });
     setSaving(false);
     if (result.ok) {
-      setMessage(`Program saved in ${result.mode} mode. Connect Supabase for shared operator data.`);
+      setMessage(`Program saved in ${result.mode} mode.`);
       setDraft(initialDraft);
+      await loadPrograms();
       return;
     }
     setMessage(result.error);
@@ -54,15 +75,23 @@ export default function ProgramStudio() {
 
       <section className="pb-16">
         <Container>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-[24px] border border-slate-200 bg-white/75 px-5 py-4 text-sm text-slate-700 shadow-sm">
+            <div>
+              <span className="font-semibold text-slate-950">Data source:</span> {dataMode === 'remote' ? 'Live Supabase records' : 'Fallback local data'}
+            </div>
+            <button onClick={() => void loadPrograms()} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-900">
+              <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Refresh
+            </button>
+          </div>
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-5">
-              {programs.map((program: any) => (
+              {programs.map((program) => (
                 <div key={program.id} className="glass rounded-[28px] p-6 ring-soft hover:-translate-y-0.5 transition-transform">
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-800">
-                      {program.status}
+                      {program.status || program.publish_status || 'draft'}
                     </span>
-                    {program.featured && (
+                    {(program.featured || program.is_featured) && (
                       <span className="rounded-full border border-fuchsia-300/30 bg-fuchsia-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-fuchsia-800">
                         Featured
                       </span>
@@ -70,8 +99,8 @@ export default function ProgramStudio() {
                   </div>
                   <div className="mt-4 flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="text-2xl font-semibold text-slate-950">{program.name}</h3>
-                      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-700">{program.audience}</p>
+                      <h3 className="text-2xl font-semibold text-slate-950">{program.name || program.title}</h3>
+                      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-700">{program.audience || program.short_description}</p>
                     </div>
                     <div className="rounded-2xl border border-slate-200 bg-white/75 px-4 py-3 text-right text-sm text-slate-700">
                       <div>{program.mode}</div>
@@ -142,7 +171,7 @@ export default function ProgramStudio() {
                   <h3 className="text-lg font-semibold">Operator controls</h3>
                 </div>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-                  <li>• Programs will become DB-backed records so homepage sections, advisor outputs, coupon applicability, and batches all reference the same Program ID.</li>
+                  <li>• Programs are now designed to become DB-backed records so homepage sections, advisor outputs, coupon applicability, and batches all reference the same Program ID.</li>
                   <li>• Draft programs stay hidden until the operator team is ready to publish.</li>
                   <li>• Site Operators and Admins can define Programs whenever needed without shipping a new release.</li>
                 </ul>
@@ -163,14 +192,25 @@ export default function ProgramStudio() {
               <div className="rounded-[28px] border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 via-white/70 to-fuchsia-300/10 p-6 shadow-[0_20px_80px_rgba(34,211,238,0.12)]">
                 <div className="flex items-center gap-3 text-slate-950">
                   <Wand2 className="text-cyan-700" size={20} />
-                  <h3 className="text-lg font-semibold">Next operational step</h3>
+                  <h3 className="text-lg font-semibold">Where this goes next</h3>
                 </div>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  In the next pass we will bind this to live Supabase reads/writes and make public pages consume only published Programs.
-                </p>
-                <Link to="/admin" className="mt-5 inline-flex rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white">
-                  Back to Admin Console
-                </Link>
+                <div className="mt-4 text-sm leading-6 text-slate-700">
+                  Next, these program records should drive the public site, recommendation engine, registration form, pricing rules, and batch operations. Once that happens, every team works off a single source of truth.
+                </div>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Link to="/admin/coupons" className="inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">Open coupon governance</Link>
+                  <Link to="/register" className="inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">See learner registration</Link>
+                </div>
+              </div>
+
+              <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="flex items-center gap-3 text-slate-950">
+                  <Sparkles className="text-fuchsia-700" size={20} />
+                  <h3 className="text-lg font-semibold">Why this matters commercially</h3>
+                </div>
+                <div className="mt-4 text-sm leading-6 text-slate-700">
+                  Strong Program definitions improve conversion because the website, counselor team, promo logic, and batch planning all present the same offer. That reduces friction, removes confusion, and makes your brand look organized and premium.
+                </div>
               </div>
             </div>
           </div>

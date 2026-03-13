@@ -12,7 +12,7 @@ Deno.serve(async (req) => {
     .from('coupon_requests')
     .update({
       finance_status: 'approved',
-      finance_reviewer_profile_id: body.financeReviewerProfileId,
+      finance_reviewer_profile_id: body.financeReviewerProfileId ?? null,
       finance_reviewed_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
 
   const { data: couponRow, error: couponError } = await supabase
     .from('coupons')
-    .insert({ coupon_request_id: requestRow.id, publish_status: 'published' })
+    .upsert({ coupon_request_id: requestRow.id, publish_status: 'published', published_at: new Date().toISOString() }, { onConflict: 'coupon_request_id' })
     .select()
     .single();
 
@@ -35,13 +35,32 @@ Deno.serve(async (req) => {
   }
 
   await supabase.from('audit_logs').insert({
-    actor_profile_id: body.financeReviewerProfileId,
-    actor_role_code: 'finance',
+    actor_profile_id: body.financeReviewerProfileId ?? null,
+    actor_role_code: body.financeReviewerRoleCode ?? 'finance',
     entity_type: 'coupon',
     entity_id: couponRow.id,
     action: 'finance_approved_and_published_coupon',
     details: { couponRequestId: requestRow.id },
   });
+
+  const adminEmail = Deno.env.get('ADMIN_NOTIFICATION_EMAIL');
+  const resendApiKey = Deno.env.get('RESEND_API_KEY');
+  const fromEmail = Deno.env.get('PUBLIC_FROM_EMAIL') ?? 'admissions@mail.itprofessional.pro';
+  if (adminEmail && resendApiKey) {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [adminEmail],
+        subject: `Coupon published: ${requestRow.coupon_code}`,
+        html: `<p>Finance approved and auto-published coupon <strong>${requestRow.coupon_code}</strong>.</p><p>Binding: ${requestRow.bind_type} ${requestRow.bind_value ?? ''}</p>`,
+      }),
+    }).catch(() => null);
+  }
 
   return new Response(JSON.stringify({ couponId: couponRow.id, publishStatus: couponRow.publish_status }), { status: 200 });
 });

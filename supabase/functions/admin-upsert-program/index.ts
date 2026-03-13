@@ -1,4 +1,3 @@
-// Phase E1 scaffold: wire this function with service-role access and strict RBAC.
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 Deno.serve(async (req) => {
@@ -13,13 +12,13 @@ Deno.serve(async (req) => {
 
   const payload = {
     slug: body.slug,
-    title: body.title,
-    short_description: body.shortDescription,
-    long_description: body.longDescription,
+    title: body.title ?? body.name,
+    short_description: body.shortDescription ?? body.audience ?? null,
+    long_description: body.longDescription ?? null,
     mode: body.mode,
-    duration_label: body.durationLabel,
-    price_inr: body.priceInr,
-    is_featured: Boolean(body.isFeatured),
+    duration_label: body.durationLabel ?? body.duration,
+    price_inr: body.priceInr ?? 0,
+    is_featured: Boolean(body.isFeatured ?? body.featured),
     publish_status: body.publishStatus ?? 'draft',
   };
 
@@ -29,12 +28,12 @@ Deno.serve(async (req) => {
   }
 
   await supabase.from('audit_logs').insert({
-    actor_role_code: body.actorRoleCode ?? 'unknown',
+    actor_role_code: body.actorRoleCode ?? body.actorRole ?? 'unknown',
     entity_type: 'program',
     entity_id: data.id,
     action: 'upsert_program',
     details: payload,
   });
 
-  return new Response(JSON.stringify({ programId: data.id }), { status: 200 });
+  return new Response(JSON.stringify({ id: data.id, programId: data.id }), { status: 200 });
 });
