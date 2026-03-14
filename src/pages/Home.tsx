@@ -154,7 +154,7 @@ export default function Home() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="AI wow factor" title="Show the power of AI before the user even scrolls into the catalogue" desc="This surprise component turns the landing page into an interactive experience. It personalizes a learning path, demonstrates AI-style guidance, and gives the visitor an immediate next step." />
+          <SectionTitle eyebrow="AI wow factor" title="Make the first interaction feel intelligent, useful, and memorable" desc="This visual AI block gives the visitor a fast, personalized direction so the website immediately feels modern, premium, and genuinely helpful—not just decorative." />
           <div className="mt-8"><AICareerSnapshot /></div>
         </Container>
       </section>
@@ -168,7 +168,7 @@ export default function Home() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Conversion flow" title="Engineer every page toward the next confident decision" desc="We turned the homepage into a guided funnel: recommendation, proof, counselling, pricing clarity, and seat booking." />
+          <SectionTitle eyebrow="Learner journey" title="Give every serious learner a clearer next step" desc="The homepage now helps potential learners understand fit, outcomes, location options, pricing clarity, and the safest next action instead of overwhelming them with brochure-style copy." />
           <div className="mt-8"><ConversionFunnel /></div>
         </Container>
       </section>

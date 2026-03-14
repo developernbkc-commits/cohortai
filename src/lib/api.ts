@@ -6,6 +6,9 @@ export type RegistrationPayload = {
   phoneCountryCode: string;
   phoneNationalNumber: string;
   country: string;
+  city?: string;
+  instituteLocation?: string;
+  currentRole?: string;
   preferredMode: string;
   modules: string[];
   learnerGoal: string;

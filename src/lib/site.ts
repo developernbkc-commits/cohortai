@@ -1,8 +1,10 @@
 export const site = {
   brand: "CohortAI Labs",
-  tagline: "AI Coaching | Online + Offline",
-  // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
-  logoUrl: "/logo.svg",
+  tagline: "Premium AI coaching | Online + Offline",
+  companyName: "Samvida Labs Private Limited",
+  poweredBy: "This website is powered by Samvida Labs.",
+  logoUrl: "/logo-light.svg",
+  logoDarkUrl: "/logo-dark.svg",
   imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
   images: {
     hero: "hero_lab_classroom_01.jpg",
@@ -34,23 +36,57 @@ export const site = {
   phone: "8374617625",
   whatsapp: "8374617625",
   cities: ["Hyderabad", "Vijayawada", "Guntur"],
+  centers: [
+    {
+      id: "hyderabad",
+      city: "Hyderabad",
+      country: "India",
+      label: "Hyderabad Campus",
+      mode: ["Offline classroom", "Hybrid", "Weekend online"],
+      nextBatch: "22 March 2026"
+    },
+    {
+      id: "vijayawada",
+      city: "Vijayawada",
+      country: "India",
+      label: "Vijayawada Campus",
+      mode: ["Offline classroom", "Hybrid", "Weekend online"],
+      nextBatch: "29 March 2026"
+    },
+    {
+      id: "guntur",
+      city: "Guntur",
+      country: "India",
+      label: "Guntur Learning Studio",
+      mode: ["Offline classroom", "Hybrid", "Weekend online"],
+      nextBatch: "5 April 2026"
+    },
+    {
+      id: "online-global",
+      city: "Online",
+      country: "Global",
+      label: "Online Global Cohort",
+      mode: ["Weekend online", "Weekday evening online"],
+      nextBatch: "Every 2 weeks"
+    }
+  ],
   tracks: [
     {
       name: "Everyday AI",
       who: "Students, homemakers, beginners",
-      outcome: "Confidence with AI tools for daily life & career basics",
+      outcome: "Confidence with AI tools for daily life, study, and career basics",
       bullets: ["Prompting fundamentals", "AI productivity kit", "Career-ready templates"],
     },
     {
       name: "Business AI",
       who: "Self-employed, creators, marketers",
-      outcome: "AI for growth: content, leads, follow-ups & automation",
+      outcome: "AI for growth: content, leads, follow-ups, and automation",
       bullets: ["30-day content system", "Lead-to-follow-up automation", "Client-ready case studies"],
     },
     {
       name: "Tech & Data AI",
       who: "IT professionals, devs, analysts",
-      outcome: "Build portfolio projects + interview readiness",
+      outcome: "Build portfolio projects and interview readiness with mentor review",
       bullets: ["AI-assisted dev workflow", "Python + data foundations", "Project reviews & mock interviews"],
     },
   ],
@@ -64,9 +100,9 @@ export const site = {
     { price: "₹35,000", title: "Flagship Premium Cohort", duration: "8–10 weeks", highlight: "Maximum support", includes: ["Capstone + demo day", "1:1 review slot", "Placement/business support session"] },
   ],
   faqs: [
-    { q: "Is this beginner-friendly?", a: "Yes. We have an Everyday AI track designed for non-technical learners, plus guided labs and step-by-step practice." },
-    { q: "Do you offer online and offline training?", a: "Yes. We run hybrid cohorts: online sessions plus offline classroom options (city-wise schedule)." },
-    { q: "What makes CohortAI Labs different?", a: "Mentor-led cohorts, real deliverables, structured reviews, and a clear learning ladder from ₹5k to ₹35k." },
+    { q: "Is this beginner-friendly?", a: "Yes. We have an Everyday AI track designed for non-technical learners, plus guided labs, templates, and step-by-step practice." },
+    { q: "Do you offer online and offline training?", a: "Yes. We run online-first cohorts and also offer offline or hybrid batches in selected cities such as Hyderabad, Vijayawada, and Guntur." },
+    { q: "What makes CohortAI Labs different?", a: "Mentor-led cohorts, real deliverables, structured reviews, location-aware batch planning, and a clear learning ladder from starter plans to flagship cohorts." },
     { q: "Do you provide placement support?", a: "We provide interview prep, portfolio reviews, and guidance. We do not promise guaranteed placement." },
   ],
 };

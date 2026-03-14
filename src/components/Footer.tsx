@@ -9,7 +9,7 @@ export default function Footer() {
       <Container>
         <div className="py-10 grid gap-8 md:grid-cols-3">
           <div className="space-y-3">
-            <Logo size="footer" />
+            <Logo size="footer" variant="dark" />
             <p className="text-sm text-slate-600 max-w-sm leading-7">
               Mentor-led cohorts. Real projects. Hybrid learning. Built for beginners and professionals alike.
             </p>
@@ -23,6 +23,7 @@ export default function Footer() {
               <Link to="/platform" className="hover:text-slate-950">Platform</Link>
               <Link to="/admin" className="hover:text-slate-950">Admin</Link>
               <Link to="/contact" className="hover:text-slate-950">Contact</Link>
+              <Link to="/sitemap" className="hover:text-slate-950">Sitemap</Link>
             </div>
           </div>
           <div className="text-sm">
@@ -39,6 +40,7 @@ export default function Footer() {
         </div>
         <div className="pb-10 text-xs text-slate-500">
           © {new Date().getFullYear()} {site.brand}. All rights reserved.
+          <div className="mt-2">{site.poweredBy}</div>
         </div>
       </Container>
     </footer>

@@ -21,6 +21,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PaymentsOps from "./pages/admin/PaymentsOps";
 import RegistrationsOps from "./pages/admin/RegistrationsOps";
+import SitemapPage from "./pages/Sitemap";
 
 export default function App() {
   const location = useLocation();
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/admin/payments" element={<ProtectedRoute><PaymentsOps /></ProtectedRoute>} />
             <Route path="/admin/registrations" element={<ProtectedRoute><RegistrationsOps /></ProtectedRoute>} />
             <Route path="/platform" element={<Platform />} />
+            <Route path="/sitemap" element={<SitemapPage />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>
