@@ -5,15 +5,10 @@ import { site } from "../lib/site";
 import { Helmet } from "react-helmet-async";
 import { canonical, seoDefaults } from "../lib/seo";
 import { useLocation } from "react-router-dom";
-import { HeartHandshake, MessageCircle, Phone, Mail, Sparkles, AlertCircle } from "lucide-react";
-import PhoneInput from "../components/PhoneInput";
-import { useState } from "react";
+import { HeartHandshake, MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
 
 export default function Recommendation() {
   const location = useLocation();
-  const [phoneCountryCode, setPhoneCountryCode] = useState("+91");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [formError, setFormError] = useState("");
   const email = (site as any).email || "info.cohortai.labs@itprofessional.pro";
 
   const wa = `https://wa.me/91${site.whatsapp}?text=${encodeURIComponent(
@@ -98,24 +93,16 @@ export default function Recommendation() {
             <div className="text-sm text-slate-700">Need a callback?</div>
             <div className="mt-1 text-xl font-semibold text-slate-950">Request a call</div>
 
-            <form name="recommendation" method="POST" data-netlify="true" action="/thanks" className="mt-4 grid gap-3" onSubmit={(e) => { if (phoneNumber.replace(/\D/g, "").length < 7) { e.preventDefault(); setFormError("Please enter a valid callback number with country code."); } else { setFormError(""); } }}>
+            <form name="recommendation" method="POST" data-netlify="true" action="/thanks" className="mt-4 grid gap-3">
               <input type="hidden" name="form-name" value="recommendation" />
               <input className="w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm"
                 name="name" placeholder="Full name" required />
-              <PhoneInput
-                label="Phone / WhatsApp"
-                countryCode={phoneCountryCode}
-                phoneNumber={phoneNumber}
-                onCountryCodeChange={setPhoneCountryCode}
-                onPhoneNumberChange={setPhoneNumber}
-                namePrefix="phone"
-                required
-              />
+              <input className="w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm"
+                name="phone" placeholder="Phone / WhatsApp number" required />
               <input className="w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm"
                 name="city" placeholder="City (Hyderabad / Pune / …)" />
               <textarea className="w-full rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 text-sm"
                 name="message" rows={4} placeholder="Background + goal + budget (optional)" />
-              {formError ? <div className="flex items-start gap-2 rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />{formError}</div> : null}
               <Button type="submit">Get a callback</Button>
               <div className="text-xs text-slate-600">
                 Our team usually responds quickly during business hours.

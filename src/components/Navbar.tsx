@@ -41,7 +41,7 @@ export default function Navbar() {
         <Container>
           <div className="flex h-[92px] items-center justify-between gap-4">
             <Link to="/" className="group flex min-w-0 items-center" aria-label="CohortAI Labs home">
-              <Logo compact variant="dark" className="origin-left transition duration-300 group-hover:scale-[1.02]" />
+              <Logo compact className="origin-left transition duration-300 group-hover:scale-[1.02]" />
             </Link>
 
             <nav className="hidden items-center gap-2 text-sm lg:flex">

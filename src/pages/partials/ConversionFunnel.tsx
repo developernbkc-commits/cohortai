@@ -20,8 +20,8 @@ const steps = [
   },
   {
     step: "Step 3",
-    title: "Choose location and schedule",
-    desc: "Select your preferred institute location when available, or move into the online cohort if you are outside supported classroom cities.",
+    title: "Choose schedule and format",
+    desc: "Select weekday or weekend and online, offline, or hybrid learning based on your lifestyle.",
     href: "/courses",
     cta: "Compare programs",
     icon: ClipboardList,

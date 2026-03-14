@@ -15,7 +15,6 @@ import GalleryStrip from "../components/GalleryStrip";
 import ConversionFunnel from "./partials/ConversionFunnel";
 import SuccessStories from "./partials/SuccessStories";
 import GamifiedJourney from "./partials/GamifiedJourney";
-import AICareerSnapshot from "../components/AICareerSnapshot";
 
 const platformCards = [
   { icon: Database, title: "Admissions data in DB", desc: "Every lead, registration, payment, approval, and batch assignment becomes structured operational data." },
@@ -151,14 +150,6 @@ export default function Home() {
         </Container>
       </section>
 
-
-      <section className="py-14 section-divider">
-        <Container>
-          <SectionTitle eyebrow="AI wow factor" title="Make the first interaction feel intelligent, useful, and memorable" desc="This visual AI block gives the visitor a fast, personalized direction so the website immediately feels modern, premium, and genuinely helpful—not just decorative." />
-          <div className="mt-8"><AICareerSnapshot /></div>
-        </Container>
-      </section>
-
       <section id="advisor" className="py-14 section-divider scroll-mt-28">
         <Container>
           <SectionTitle eyebrow="Find your path" title="AI advisor with visible recommendations, fit score, and challenge path" desc="This section stays interactive by design: users can click through persona, goal, budget, and mode to get a recommendation they can act on immediately." />
@@ -168,7 +159,7 @@ export default function Home() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Learner journey" title="Give every serious learner a clearer next step" desc="The homepage now helps potential learners understand fit, outcomes, location options, pricing clarity, and the safest next action instead of overwhelming them with brochure-style copy." />
+          <SectionTitle eyebrow="Conversion flow" title="Engineer every page toward the next confident decision" desc="We turned the homepage into a guided funnel: recommendation, proof, counselling, pricing clarity, and seat booking." />
           <div className="mt-8"><ConversionFunnel /></div>
         </Container>
       </section>

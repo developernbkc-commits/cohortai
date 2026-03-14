@@ -9,7 +9,7 @@ export default function Footer() {
       <Container>
         <div className="py-10 grid gap-8 md:grid-cols-3">
           <div className="space-y-3">
-            <Logo size="footer" variant="dark" />
+            <Logo size="footer" />
             <p className="text-sm text-slate-600 max-w-sm leading-7">
               Mentor-led cohorts. Real projects. Hybrid learning. Built for beginners and professionals alike.
             </p>
@@ -34,13 +34,13 @@ export default function Footer() {
                 WhatsApp: +91 {site.whatsapp}
               </a>
               <div>Locations: {site.cities.join(" • ")}</div>
+              <div>Online cohorts: Available worldwide</div>
               <div>Batches start: {site.startDate}</div>
             </div>
           </div>
         </div>
         <div className="pb-10 text-xs text-slate-500">
-          © {new Date().getFullYear()} {site.brand}. All rights reserved.
-          <div className="mt-2">{site.poweredBy}</div>
+          © {new Date().getFullYear()} {site.brand}. All rights reserved. This website is powered by Samvida Labs.
         </div>
       </Container>
     </footer>

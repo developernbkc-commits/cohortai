@@ -1,73 +1,51 @@
 {
-  "version": "1.0",
-  "updatedAt": "2026-02-24",
+  "version": "1.1",
+  "updatedAt": "2026-03-16",
   "schema": "cohortai.testimonials.v1",
   "items": [
     {
-      "id": "t001",
-      "name": "Priya S.",
-      "role": "Homemaker",
-      "city": "Hyderabad",
-      "track": "Everyday AI",
-      "rating": 5,
-      "quote": "I started with zero confidence. The mentors explained tools in simple language and helped me use AI for daily tasks, content, and learning.",
-      "source": "WhatsApp",
-      "featured": true
-    },
-    {
-      "id": "t002",
-      "name": "Rahul K.",
-      "role": "Freelance Consultant",
+      "id": "t101",
+      "name": "Anand Balan",
+      "role": "Technical Lead at KhetiBuddy AgriTech",
       "city": "Pune",
-      "track": "Business AI",
+      "track": "Tech & Data AI",
       "rating": 5,
-      "quote": "The cohort helped me build follow-up automation and content workflows. I started seeing time savings within the first two weeks.",
-      "source": "Call feedback",
+      "quote": "Material is so good that it doesn't feel exhaustive or even like putting efforts. I enjoyed it as if I'm watching a Discovery documentary :). I'm handling things very professionally now and I noticed the change in me from the first few days of starting the course.",
+      "source": "Certificate holder",
       "featured": true
     },
     {
-      "id": "t003",
-      "name": "Akhila M.",
-      "role": "Software Engineer",
-      "city": "Vizag",
+      "id": "t102",
+      "name": "Ajay Cherukuri",
+      "role": "Software Engineer at Indo Mim Limited",
+      "city": "Online",
       "track": "Tech & Data AI",
       "rating": 5,
-      "quote": "The practical sessions and review feedback were the difference. I left with portfolio-ready work instead of only notes.",
-      "source": "Learner review",
-      "featured": false
-    },
-    {
-      "id": "t004",
-      "name": "Sandeep R.",
-      "role": "Small Business Owner",
-      "city": "Vijayawada",
-      "track": "Business AI",
-      "rating": 5,
-      "quote": "I joined for AI basics but stayed for the accountability. The mentors were patient and tailored examples to my business use-cases.",
-      "source": "WhatsApp",
-      "featured": false
-    },
-    {
-      "id": "t005",
-      "name": "Nandini P.",
-      "role": "College Student",
-      "city": "Guntur",
-      "track": "Everyday AI",
-      "rating": 5,
-      "quote": "The assignments were simple to start and progressively better. I now know how to write prompts and present AI-assisted outputs confidently.",
-      "source": "Form",
-      "featured": false
-    },
-    {
-      "id": "t006",
-      "name": "Vivek T.",
-      "role": "Data Analyst",
-      "city": "Hyderabad",
-      "track": "Tech & Data AI",
-      "rating": 5,
-      "quote": "Clear structure, real exercises, and mentor review. This felt like practical coaching, not generic online videos.",
-      "source": "Learner review",
+      "quote": "Thank you for the online training provided by Cohort AI Labs. I'm now a different person at work. My productivity skyrocketed and things are much easier now.",
+      "source": "Certificate holder",
       "featured": true
+    },
+    {
+      "id": "t103",
+      "name": "P. Shankar Raghavendra",
+      "role": "Aspiring ML Engineer",
+      "city": "Online",
+      "track": "Tech & Data AI",
+      "rating": 5,
+      "quote": "Thank you all for tailoring the program specially for me. I'm attending interviews with great confidence now and my SaaS project gained momentum during this course.",
+      "source": "Certificate holder",
+      "featured": false
+    },
+    {
+      "id": "t104",
+      "name": "Sai Vineeth Modugavarapu",
+      "role": "Aspiring Data Scientist",
+      "city": "Online",
+      "track": "Tech & Data AI",
+      "rating": 5,
+      "quote": "So much information to grasp during the course, but awesome illustrations and practicals made it very easy to understand. Thank you Sasikala Madam.",
+      "source": "Certificate holder",
+      "featured": false
     }
   ]
 }

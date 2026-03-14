@@ -13,27 +13,17 @@ import Platform from "./pages/Platform";
 import Reviews from "./pages/Reviews";
 import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
-import AdminProgramStudio from "./pages/admin/AdminProgramStudio";
-import AdminCouponGovernance from "./pages/admin/AdminCouponGovernance";
-import AdminAccess from "./pages/AdminAccess";
 import StickyBar from "./components/StickyBar";
 import ScrollToTop from "./components/ScrollToTop";
-import ProtectedRoute from "./components/ProtectedRoute";
-import PaymentsOps from "./pages/admin/PaymentsOps";
-import RegistrationsOps from "./pages/admin/RegistrationsOps";
-import SitemapPage from "./pages/Sitemap";
 
 export default function App() {
   const location = useLocation();
-  const isAdminSurface = location.pathname === '/admin-access' || location.pathname.startsWith('/admin');
-  const mainPadding = isAdminSurface ? '' : 'pt-16';
-
   return (
     <div className="min-h-screen font-display page-shell">
       <ScrollToTop />
-      {!isAdminSurface && <Navbar />}
+      <Navbar />
       <AnimatePresence mode="wait">
-        <motion.main key={location.pathname} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.28, ease: "easeOut" }} className={mainPadding}>
+        <motion.main key={location.pathname} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.28, ease: "easeOut" }} className="pt-16">
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
@@ -43,20 +33,14 @@ export default function App() {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
-            <Route path="/admin-access" element={<AdminAccess />} />
-            <Route path="/admin" element={<ProtectedRoute><AdminConsole /></ProtectedRoute>} />
-            <Route path="/admin/program-studio" element={<ProtectedRoute><AdminProgramStudio /></ProtectedRoute>} />
-            <Route path="/admin/coupons" element={<ProtectedRoute><AdminCouponGovernance /></ProtectedRoute>} />
-            <Route path="/admin/payments" element={<ProtectedRoute><PaymentsOps /></ProtectedRoute>} />
-            <Route path="/admin/registrations" element={<ProtectedRoute><RegistrationsOps /></ProtectedRoute>} />
+            <Route path="/admin" element={<AdminConsole />} />
             <Route path="/platform" element={<Platform />} />
-            <Route path="/sitemap" element={<SitemapPage />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
-      {!isAdminSurface && <Footer />}
-      {!isAdminSurface && <StickyBar />}
+      <Footer />
+      <StickyBar />
     </div>
   );
 }
