@@ -45,8 +45,8 @@ export default function SuccessStories() {
       <Container>
         <SectionTitle
           eyebrow="Proof of outcomes"
-          title="Real learner transformations, framed as measurable wins"
-          subtitle="Use a rigid JSON file to keep this section updated without touching layout code. Each story shows before/after context, mentor-reviewed proof, and practical outcomes."
+          title="Real learner journeys and the outcomes they are proud of"
+          subtitle="Each story highlights where a learner started, what changed during the program, and the practical outcomes they can now carry into work, interviews, or future study."
         />
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -127,9 +127,7 @@ export default function SuccessStories() {
 
         <div className="mt-6 card p-4 md:p-5">
           <p className="text-sm text-slate-700">
-            <span className="font-semibold text-slate-900">Update workflow:</span> edit{' '}
-            <code className="rounded bg-slate-100 px-1.5 py-0.5 text-xs">public/data/success_stories.json</code>{' '}
-            and deploy. Layout remains stable even as testimonials grow from 15 to more.
+            <span className="font-semibold text-slate-900">Why this matters:</span> clear learner stories help future students, working professionals, and career switchers understand what they can realistically expect from the learning journey.
           </p>
         </div>
       </Container>

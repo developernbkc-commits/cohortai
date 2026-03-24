@@ -38,8 +38,8 @@ export default function Reviews() {
         <Container>
           <SectionTitle
             eyebrow="Public proof"
-            title="Let learners submit reviews and testimonials for moderation"
-            desc="This Phase B flow captures a learner review, optional profile image URL, consent to publish, and routes the record into an admin approval queue before anything goes live."
+            title="Let learners share their experience for review and approval"
+            desc="Learners can submit their review, an optional profile image URL, and consent to publish. Every submission is reviewed by the team before it appears on the public site."
           />
         </Container>
       </section>
@@ -72,7 +72,7 @@ export default function Reviews() {
                   </select>
                 </Field>
                 <Field label="Profile image URL (optional)">
-                  <input value={form.profileImageUrl} onChange={(e) => setForm({ ...form, profileImageUrl: e.target.value })} className={inputClass} placeholder="Can later be replaced with Supabase Storage uploads" />
+                  <input value={form.profileImageUrl} onChange={(e) => setForm({ ...form, profileImageUrl: e.target.value })} className={inputClass} placeholder="Optional: add a public photo URL or profile image link" />
                 </Field>
               </div>
 
@@ -88,10 +88,10 @@ export default function Reviews() {
               {done && (
                 <div className={`rounded-2xl border px-4 py-3 text-sm ${done.error ? "border-amber-300 bg-amber-50 text-amber-900" : "border-emerald-300 bg-emerald-50 text-emerald-900"}`}>
                   {done.error
-                    ? `Remote submission failed, but the payload was saved in local fallback mode for rescue. Error: ${done.error}`
+                    ? `We could not complete the submission right now. Your review was saved in temporary mode on this browser. Please retry shortly or contact the team. Error: ${done.error}`
                     : done.mode === "remote"
-                    ? "Review saved to the real backend and queued for admin approval."
-                    : "Review saved in fallback mode. Once Supabase is wired, this form will submit to the live moderation queue."}
+                    ? "Your review was received and is now waiting for team approval."
+                    : "Your review was saved in temporary mode on this browser. Please retry shortly so the team can receive it properly."}
                 </div>
               )}
             </form>
@@ -100,10 +100,10 @@ export default function Reviews() {
               <div className="glass-pearl rounded-3xl p-6 ring-soft">
                 <div className="flex items-center gap-2 text-slate-950 font-semibold"><ShieldCheck size={18} /> Moderated trust system</div>
                 <ul className="mt-4 grid gap-3 text-sm text-slate-600">
-                  <li>• review is stored with status <strong>pending_approval</strong></li>
-                  <li>• no public testimonial appears without admin action</li>
-                  <li>• profile images can move to secure Storage later</li>
-                  <li>• approved stories strengthen premium proof and conversion</li>
+                  <li>• every review is checked before it is displayed publicly</li>
+                  <li>• nothing appears on the site without team approval</li>
+                  <li>• photo links are reviewed along with the testimonial</li>
+                  <li>• approved stories help future learners choose with confidence</li>
                 </ul>
               </div>
 
@@ -120,7 +120,7 @@ export default function Reviews() {
               <div className="glass-pearl rounded-3xl p-6 ring-soft">
                 <div className="flex items-center gap-2 text-slate-950 font-semibold"><ImagePlus size={18} /> Enterprise-ready next step</div>
                 <div className="mt-3 text-sm text-slate-600 leading-7">
-                  In the next phase, replace image URLs with signed upload flows, add richer moderation controls, and expose approved testimonials through a secure admin dashboard.
+                  As the platform grows, this section will support smoother uploads, richer moderation controls, and a stronger showcase of approved learner stories.
                 </div>
               </div>
             </div>

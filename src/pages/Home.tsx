@@ -17,9 +17,9 @@ import SuccessStories from "./partials/SuccessStories";
 import GamifiedJourney from "./partials/GamifiedJourney";
 
 const platformCards = [
-  { icon: Database, title: "Admissions data in DB", desc: "Every lead, registration, payment, approval, and batch assignment becomes structured operational data." },
+  { icon: Database, title: "Organized admissions", desc: "Registrations, payments, approvals, and batch details stay organized so learners receive a smoother experience." },
   { icon: Wallet, title: "UPI-led checkout", desc: "Registrations move into review only after verified payment, reducing manual reconciliation." },
-  { icon: UserCog, title: "RBAC admin console", desc: "Admissions, finance, mentors, and admins get role-aware dashboards and workflows." },
+  { icon: UserCog, title: "Guided team workflows", desc: "Admissions, finance, mentors, and admins can manage their responsibilities with the right tools and visibility." },
 ];
 
 const stat = [
@@ -30,9 +30,9 @@ const stat = [
 ];
 
 const proof = [
-  { icon: Star, title: "Trust-first positioning", desc: "Proof, outcomes, and clarity appear before heavy selling so the brand feels premium instead of pushy." },
-  { icon: Clock3, title: "Fast lead routing", desc: "Users always see the next step: advisor, counselling, registration, or WhatsApp—never a dead-end brochure page." },
-  { icon: BadgeCheck, title: "Visible value", desc: "Pricing, deliverables, badges, and learning milestones are engineered to reduce decision friction." },
+  { icon: Star, title: "Clarity first", desc: "Proof, outcomes, and practical guidance come first so learners can understand the value before making a decision." },
+  { icon: Clock3, title: "Easy next steps", desc: "Whether someone wants guidance, a recommendation, registration help, or WhatsApp support, the next step is always clear." },
+  { icon: BadgeCheck, title: "Know what you get", desc: "Programs, deliverables, milestones, and support are explained clearly so learners know what to expect before they enroll." },
 ];
 
 export default function Home() {
@@ -88,11 +88,11 @@ export default function Home() {
             >
               <div className="glass rounded-[36px] p-7 ring-soft">
                 <div className="text-sm tracking-[0.28em] uppercase text-cyan-300">3D cohort command center</div>
-                <div className="mt-3 text-4xl font-semibold text-white text-balance">Conversion-led premium experience</div>
+                <div className="mt-3 text-4xl font-semibold text-white text-balance">A guided, mentor-led AI learning experience</div>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   <div className="rounded-[28px] border border-white/10 bg-white/5 p-5 interactive-card">
-                    <div className="text-sm text-slate-400">Conversion stack</div>
-                    <div className="mt-3 text-3xl font-semibold text-white leading-tight">Advisor → Proof → Seat booking</div>
+                    <div className="text-sm text-slate-400">How learners usually begin</div>
+                    <div className="mt-3 text-3xl font-semibold text-white leading-tight">Advisor → Guidance → Enrolment</div>
                     <div className="mt-4 h-2 rounded-full bg-white/10 overflow-hidden">
                       <div className="h-full w-[84%] rounded-full bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300" />
                     </div>
@@ -110,7 +110,7 @@ export default function Home() {
                   <div className="text-sm text-emerald-300">Suggested starter plan</div>
                   <div className="mt-2 text-3xl font-semibold text-white">AI Productivity Pro</div>
                   <p className="mt-3 max-w-md text-slate-300 leading-7">
-                    For working people who need fast wins, visible outputs, and a clear path into higher-value projects and premium cohorts.
+                    For working professionals who want practical AI skills, stronger output at work, and a structured path into deeper projects and advanced cohorts.
                   </p>
                   <div className="mt-5 grid grid-cols-3 gap-3">
                     {[["Fit", "87%"], ["Mode", "Hybrid"], ["Start", "₹10k"]].map(([label, value]) => (
@@ -152,35 +152,35 @@ export default function Home() {
 
       <section id="advisor" className="py-14 section-divider scroll-mt-28">
         <Container>
-          <SectionTitle eyebrow="Find your path" title="AI advisor with visible recommendations, fit score, and challenge path" desc="This section stays interactive by design: users can click through persona, goal, budget, and mode to get a recommendation they can act on immediately." />
+          <SectionTitle eyebrow="Find your path" title="Use the AI advisor to discover the right starting point" desc="Choose your background, goal, budget, and learning mode to get a practical recommendation you can act on right away." />
           <div className="mt-8"><TrackFinder /></div>
         </Container>
       </section>
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Conversion flow" title="Engineer every page toward the next confident decision" desc="We turned the homepage into a guided funnel: recommendation, proof, counselling, pricing clarity, and seat booking." />
+          <SectionTitle eyebrow="How to get started" title="A clear path from first visit to confident enrolment" desc="Explore the advisor, compare tracks, speak to a counsellor, and choose the format that fits your schedule and location." />
           <div className="mt-8"><ConversionFunnel /></div>
         </Container>
       </section>
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Tracks" title="Interactive learning paths for beginners, operators, and technical talent" desc="Each card is designed to feel clickable and outcome-led so the page behaves more like a guided journey than a brochure." />
+          <SectionTitle eyebrow="Tracks" title="Learning paths for beginners, working professionals, and technical learners" desc="Each path is organized around practical outcomes so learners can choose a program that matches their current stage and future goals." />
           <div className="mt-8"><Tracks /></div>
         </Container>
       </section>
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Gamified momentum" title="Visible progress keeps learners active, consistent, and more likely to complete" desc="This section adds energy and progression so the experience feels dynamic for both first-time visitors and returning leads." />
+          <SectionTitle eyebrow="Gamified momentum" title="Small milestones make it easier to stay consistent" desc="Progress markers, challenges, and visible milestones help learners stay engaged and finish what they start." />
           <div className="mt-8"><GamifiedJourney /></div>
         </Container>
       </section>
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Course ladder" title="Start small, then level up with projects, reviews, and portfolio depth" desc="Transparent pricing from ₹5,000 to ₹35,000. Each step adds outcomes, accountability, and premium support." />
+          <SectionTitle eyebrow="Course ladder" title="Start with the right level, then grow with projects and mentor feedback" desc="Transparent pricing from ₹5,000 to ₹35,000. Each level adds deeper outcomes, stronger accountability, and more hands-on support." />
           <div className="mt-8"><Ladder /></div>
         </Container>
       </section>
@@ -190,7 +190,7 @@ export default function Home() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Platform upgrade" title="Ready for registrations, UPI payments, batch operations, and admin workflows" desc="We preserved the useful platform direction from later commits while keeping the baseline sales story intact." />
+          <SectionTitle eyebrow="Admissions and operations" title="Built to support registrations, payments, batch operations, and guided admissions" desc="The platform is evolving so learners get a smoother experience and the team can manage admissions, approvals, and schedules with more clarity." />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {platformCards.map((card) => (
               <div key={card.title} className="glass-pearl interactive-card rounded-3xl p-6 ring-soft">
@@ -209,7 +209,7 @@ export default function Home() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Social proof" title="What learners love about cohort-based learning" desc="A premium learning experience that stays focused on outcomes, accountability, and visible value." />
+          <SectionTitle eyebrow="Social proof" title="What learners value most about learning with a cohort" desc="Learners appreciate the structure, mentor support, accountability, and practical outcomes they can carry into work and future opportunities." />
           <div className="mt-8"><Testimonials /></div>
         </Container>
       </section>

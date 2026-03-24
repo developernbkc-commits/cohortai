@@ -60,8 +60,8 @@ export default function Courses() {
         <Container>
           <SectionTitle
             eyebrow="Compare"
-            title="A premium site should reduce confusion, not create it"
-            desc="This comparison view helps learners and counsellors choose the right track faster during web, WhatsApp, or call-based conversations."
+            title="Compare programs without confusion"
+            desc="This comparison view helps learners and counsellors discuss the right track clearly during web, WhatsApp, or call-based conversations."
           />
           <div className="mt-8">
             <TrackComparisonTable />
@@ -74,7 +74,7 @@ export default function Courses() {
           <SectionTitle
             eyebrow="Tracks"
             title="Choose your track"
-            desc="The same price ladder, customized outcomes per persona. Each card is intentionally interactive so users explore instead of skim."
+            desc="The same price ladder, with outcomes shaped around each persona. The cards are interactive so learners can explore and compare with confidence."
           />
           <div className="mt-8">
             <Tracks />
@@ -86,8 +86,8 @@ export default function Courses() {
         <Container>
           <SectionTitle
             eyebrow="Enrollment"
-            title="The conversion path is built into the course page too"
-            desc="Users should never need to guess what to do next after comparing tracks and pricing."
+            title="Every course page should make the next step clear"
+            desc="After comparing tracks and pricing, learners should be able to move naturally into guidance, registration, or a counsellor conversation."
           />
           <div className="mt-8">
             <ConversionFunnel />
@@ -100,7 +100,7 @@ export default function Courses() {
           <SectionTitle
             eyebrow="Pricing"
             title="Transparent pricing with deliverables and reviews"
-            desc="Outcome-first. Deliverable-driven. Mentor-reviewed. This structure is optimized for lower-friction lead conversion because users understand what each upgrade unlocks."
+            desc="Outcome-first. Deliverable-driven. Mentor-reviewed. This structure helps learners understand what each level includes before they commit."
           />
           <div className="mt-8">
             <Ladder />

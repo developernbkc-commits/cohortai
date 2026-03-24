@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils";
 const proof = [
   { label: "Designed for", value: "Beginners → Tech pros", detail: "Switch personas to see the site actively reshape recommendations around your background." },
   { label: "Batch format", value: "Online + offline hybrid", detail: "Hybrid is now part of the premium story, with flexible schedules and in-person credibility." },
-  { label: "Conversion focus", value: "Advisor-led lead capture", detail: "Sections guide visitors from curiosity to advisor to counselling with less friction." },
+  { label: "Guided support", value: "Advisor-led recommendations", detail: "Visitors can move from curiosity to guidance, counselling, and registration without feeling lost." },
   { label: "Momentum", value: "XP streaks + unlocks", detail: "Gamification nudges learners to interact, finish, and return instead of passively reading." },
 ];
 

@@ -66,8 +66,8 @@ export default function Register() {
         <Container>
           <SectionTitle
             eyebrow="Self-registration"
-            title="Let learners mix, match, register, and move into a real admissions workflow"
-            desc="Use this practical registration flow to capture learner details, current location, preferred institute location, promo/referral codes, and lead source so admissions can route learners correctly. International learners are automatically placed into the Online Global Cohort."
+            title="Choose your modules, share your goals, and register with confidence"
+            desc="Choose the modules you want, tell us where you are joining from, and share your preferred institute location or online format. Learners outside India are automatically guided into the Online Global Cohort."
           />
         </Container>
       </section>
@@ -153,9 +153,9 @@ export default function Register() {
                 <div className="flex items-start gap-3">
                   <ShieldCheck className="text-emerald-700 shrink-0" size={20} />
                   <div>
-                    <div className="text-sm font-semibold text-slate-950">Backend-ready behavior</div>
+                    <div className="text-sm font-semibold text-slate-950">What happens after you register</div>
                     <div className="mt-2 text-sm text-slate-700">
-                      With Supabase + Resend configured, submission will create the learner profile, registration, registration items, and an internal alert email to <span className="font-semibold text-slate-950">registrations@itprofessional.pro</span>. Payment verification and final enrollment mail remain a controlled admin workflow.
+                      Your details are reviewed by the admissions team, your preferred format and location are checked, and the team guides you through the next step for payment and batch allocation. You can also reach us at <span className="font-semibold text-slate-950">registrations@itprofessional.pro</span> if you need help before completing the process.
                     </div>
                   </div>
                 </div>
@@ -163,10 +163,10 @@ export default function Register() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge disabled:opacity-70">
-                  {submitting ? "Submitting..." : "Create registration"}
+                  {submitting ? "Submitting..." : "Submit registration"}
                 </button>
                 <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-900 border border-slate-300 bg-white/85">
-                  Review payment stage
+                  Preview payment stage
                 </button>
               </div>
 
@@ -174,14 +174,14 @@ export default function Register() {
                 <div className={`mt-6 rounded-3xl border p-5 ${submitted.error ? "border-amber-300/50 bg-amber-50 text-amber-900" : "border-cyan-200 bg-cyan-50 text-slate-950"}`}>
                   <div className="flex items-center gap-3 text-lg font-semibold">
                     <CheckCircle2 className={submitted.error ? "text-amber-700" : "text-emerald-700"} />
-                    {submitted.error ? "Remote save failed" : "Registration captured successfully"}
+                    {submitted.error ? "We could not complete your submission" : "Registration received"}
                   </div>
                   <div className={`mt-3 text-sm ${submitted.error ? "text-amber-900" : "text-slate-700"}`}>
                     {submitted.error
-                      ? `The payload was preserved in fallback mode. Once the backend credentials are fixed, retry submission. Error: ${submitted.error}`
+                      ? `We saved your details in temporary mode because secure submission is currently unavailable. Please retry in a few minutes or contact the team to confirm your registration. Error: ${submitted.error}`
                       : submitted.mode === "remote"
-                      ? "The learner record is now in the live admissions queue and the internal registration email should have been triggered."
-                      : "The record was stored locally as a safe fallback. Wire Supabase and Resend to move this into the real admissions queue."}
+                      ? "Your registration is now in the admissions queue. The team will review your preferences and contact you with the next steps."
+                      : "Your details were saved in temporary mode on this browser. Please retry shortly or contact the team so your registration can be confirmed."}
                   </div>
                   {submitted.paymentUrl && (
                     <a href={submitted.paymentUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">
@@ -212,13 +212,13 @@ export default function Register() {
               </div>
 
               <div className="glass-pearl rounded-3xl p-6 ring-soft">
-                <div className="text-sm font-semibold text-slate-950">Phase B live backend behavior</div>
+                <div className="text-sm font-semibold text-slate-950">What to expect next</div>
                 <ul className="mt-4 grid gap-3 text-sm text-slate-700">
-                  <li>• Create or reuse learner profile</li>
-                  <li>• Save registration + module bundle in Postgres</li>
-                  <li>• Record promo/referral intent for future pricing rules</li>
-                  <li>• Trigger internal email to registrations inbox</li>
-                  <li>• Keep payment + final enrollment as admin-controlled steps</li>
+                  <li>• Admissions reviews your selected modules and learning goals</li>
+                  <li>• The team checks your preferred location or online format</li>
+                  <li>• Eligible promo or referral codes are reviewed before payment</li>
+                  <li>• You receive guidance for payment and batch allocation</li>
+                  <li>• Final enrollment is confirmed only after review and batch assignment</li>
                 </ul>
               </div>
             </div>

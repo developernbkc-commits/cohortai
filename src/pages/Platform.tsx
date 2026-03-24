@@ -3,12 +3,12 @@ import SectionTitle from "../components/SectionTitle";
 import { Database, GitBranch, Mail, ShieldCheck, Sparkles, Wallet } from "lucide-react";
 
 const pillars = [
-  { icon: Database, title: "Admissions CRM + DB", body: "Applicants, course bundles, payments, approvals, batch assignments, mentors, and audit logs live in one system." },
+  { icon: Database, title: "Admissions CRM + DB", body: "Applications, chosen programs, payments, approvals, batch assignments, mentors, and learner updates stay organized in one place." },
   { icon: Wallet, title: "UPI-first payments", body: "Each registration creates a payable record. Payment success updates the registration state and unlocks admin review." },
   { icon: ShieldCheck, title: "RBAC and approvals", body: "Admissions, finance, mentors, and super admins each see only the functions relevant to their responsibilities." },
   { icon: Mail, title: "Controlled enrollment mails", body: "No auto-enrollment immediately after payment. Final confirmation goes out only after admin allocates a batch date and slot." },
-  { icon: GitBranch, title: "Workflow automation", body: "Use event-driven status transitions so leads move cleanly from application to payment to approval to enrollment." },
-  { icon: Sparkles, title: "Tech refresh", body: "This is the right moment to move from brochure site to product-ready platform architecture and operations workflows." },
+  { icon: GitBranch, title: "Workflow automation", body: "Keep the learner journey clear from application to payment, approval, batch allocation, and final enrollment." },
+  { icon: Sparkles, title: "Technology refresh", body: "This is the right moment to move from a brochure-style website into a more complete learning and admissions platform." },
 ];
 
 const phases = [
@@ -27,7 +27,7 @@ export default function Platform() {
           <SectionTitle
             eyebrow="Solution blueprint"
             title="From marketing website to admissions and enrollment platform"
-            desc="The right upgrade is not just a prettier frontend. It is a workflow platform that captures registrations, handles configurable programs, verifies payments, and gives admins operational control."
+            desc="The next upgrade is not only about design. It is about making registrations, payments, scheduling, and learner communication smoother for both students and the team."
           />
         </Container>
       </section>
@@ -46,14 +46,14 @@ export default function Platform() {
 
           <div className="mt-8 grid gap-8 xl:grid-cols-[0.9fr_1.1fr]">
             <div className="glass rounded-3xl p-6 ring-soft">
-              <div className="text-sm font-semibold text-white">Recommended domain model</div>
+              <div className="text-sm font-semibold text-white">What the platform should manage</div>
               <ul className="mt-4 grid gap-3 text-sm text-slate-300">
-                <li>• Users, roles, and permissions</li>
-                <li>• Learners and profile details</li>
-                <li>• Course catalog, bundles, and optional modules</li>
-                <li>• Registrations, payment attempts, and invoices</li>
-                <li>• Batches, slots, mentors, and seat allocation</li>
-                <li>• Notifications, templates, and audit logs</li>
+                <li>• Learners, teams, and access levels</li>
+                <li>• Learner details and contact preferences</li>
+                <li>• Programs, course bundles, and optional modules</li>
+                <li>• Registrations, payments, and invoices</li>
+                <li>• Batches, locations, mentors, and seat allocation</li>
+                <li>• Notifications, email templates, and key activity records</li>
               </ul>
             </div>
 

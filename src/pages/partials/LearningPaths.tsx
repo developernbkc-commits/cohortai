@@ -17,9 +17,9 @@ const paths = [
     title: "Business AI",
     icon: Wand2,
     who: "Founders, freelancers, marketing teams",
-    milestones: ["Content engine", "Lead capture system", "Follow-up automation", "Case study asset"],
-    outcome: "Best path when the goal is lead flow, faster content, and repeatable systems.",
-    vibe: "Growth systems + monetisable workflows",
+    milestones: ["Content system", "Customer follow-up setup", "Automation workflow", "Case study asset"],
+    outcome: "Best path when the goal is faster content, smoother customer follow-up, and repeatable systems.",
+    vibe: "Practical systems + repeatable workflows",
   },
   {
     id: "tech",
