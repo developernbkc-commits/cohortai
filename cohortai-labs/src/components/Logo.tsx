@@ -7,8 +7,8 @@ type LogoProps = {
 };
 
 export default function Logo({ compact = false, size = "nav", className = "" }: LogoProps) {
-  const width = compact ? 220 : size === "hero" ? 360 : size === "footer" ? 260 : 280;
-  const height = compact ? 72 : size === "hero" ? 96 : size === "footer" ? 84 : 88;
+  const width = compact ? 320 : size === "hero" ? 420 : size === "footer" ? 320 : 340;
+  const height = compact ? 96 : size === "hero" ? 118 : size === "footer" ? 98 : 104;
 
   return (
     <div className={`flex items-center ${className}`.trim()}>

@@ -23,6 +23,7 @@ export default function Footer() {
               <Link to="/platform" className="hover:text-slate-950">Platform</Link>
               <Link to="/admin" className="hover:text-slate-950">Admin</Link>
               <Link to="/contact" className="hover:text-slate-950">Contact</Link>
+              <Link to="/sitemap" className="hover:text-slate-950">Sitemap</Link>
             </div>
           </div>
           <div className="text-sm">
@@ -33,12 +34,13 @@ export default function Footer() {
                 WhatsApp: +91 {site.whatsapp}
               </a>
               <div>Locations: {site.cities.join(" • ")}</div>
+              <div>Online cohorts: Available worldwide</div>
               <div>Batches start: {site.startDate}</div>
             </div>
           </div>
         </div>
         <div className="pb-10 text-xs text-slate-500">
-          © {new Date().getFullYear()} {site.brand}. All rights reserved.
+          © {new Date().getFullYear()} {site.brand}. All rights reserved. This website is powered by Samvida Labs.
         </div>
       </Container>
     </footer>

@@ -1,6 +1,6 @@
 export const site = {
   brand: "CohortAI Labs",
-  tagline: "AI Coaching | Online + Offline",
+  tagline: "AI Coaching | Online, Offline & Hybrid",
   // Optional: set to a public URL (e.g., /logo.svg or a raw GitHub URL)
   logoUrl: "https://github.com/developernbkc-commits/cohortai_labs_images/blob/main/cohortai_labs_logo.png?raw=true",
   imageBaseUrl: "https://raw.githubusercontent.com/developernbkc-commits/cohortai_labs_images/main/",
@@ -33,7 +33,7 @@ export const site = {
   startDate: "22 March 2026",
   phone: "8374617625",
   whatsapp: "8374617625",
-  cities: ["Hyderabad", "Vijayawada", "Guntur"],
+  cities: ["Hyderabad", "Vijayawada", "Guntur", "Visakhapatnam", "Pune"],
   tracks: [
     {
       name: "Everyday AI",

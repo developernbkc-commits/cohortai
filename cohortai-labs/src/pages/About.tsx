@@ -10,7 +10,7 @@ const points = [
   { icon: Timer, title: "Cohort accountability", desc: "Small batches, weekly reviews, and progress tracking keep learners moving forward." },
   { icon: MapPin, title: "Hybrid access", desc: "Online + offline options across Hyderabad, Vijayawada, and Guntur." },
   { icon: Trophy, title: "Gamified momentum", desc: "XP, streaks, badges, and milestones increase completion and make learning feel dynamic." },
-  { icon: Sparkles, title: "Premium positioning", desc: "The experience is being shaped to feel high-trust, premium, and conversion-ready." },
+  { icon: Sparkles, title: "Thoughtful learning experience", desc: "Every part of the experience is designed to feel clear, supportive, and polished for serious learners." },
 ];
 
 const principles = [
@@ -48,7 +48,7 @@ export default function About() {
 
       <section className="py-14 section-divider">
         <Container>
-          <SectionTitle eyebrow="Brand principles" title="How the brand should feel to a learner, parent, or enterprise buyer" desc="These principles guide the design, messaging, and conversion flow in later phases." />
+          <SectionTitle eyebrow="Brand principles" title="How the brand should feel to a learner, parent, or enterprise buyer" desc="These principles guide the design, teaching style, and public messaging across the platform." />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {principles.map((item) => (
               <div key={item.title} className="glass rounded-3xl p-6 interactive-card ring-soft">

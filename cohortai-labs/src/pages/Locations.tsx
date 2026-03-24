@@ -28,13 +28,13 @@ export default function Locations() {
         <title>Locations & Schedule | CohortAI Labs</title>
         <meta
           name="description"
-          content="Find CohortAI Labs locations and upcoming batches in Hyderabad, Pune, Vijayawada, Guntur and Vizag. Online + Offline options."
+          content="Find CohortAI Labs locations and upcoming batches in Hyderabad, Vijayawada, Guntur, Visakhapatnam and Pune. Online + Offline options."
         />
         <link rel="canonical" href={canonical(location.pathname)} />
         <meta property="og:title" content="Locations & Schedule | CohortAI Labs" />
         <meta
           property="og:description"
-          content="Upcoming AI coaching batches across Hyderabad, Pune, Vijayawada, Guntur and Vizag. Online + Offline options."
+          content="Upcoming AI coaching batches across Hyderabad, Vijayawada, Guntur, Visakhapatnam and Pune. Online + Offline options."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonical(location.pathname)} />

@@ -41,12 +41,12 @@ export default function ConversionFunnel() {
     <div>
       <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <div className="text-[11px] tracking-[0.32em] text-slate-600 uppercase">Enrollment funnel</div>
+          <div className="text-[11px] tracking-[0.32em] text-slate-600 uppercase">How to begin</div>
           <h3 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight text-slate-950">
-            A low-friction path from curiosity to enrollment
+            A clear path from first visit to getting started
           </h3>
           <p className="mt-2 text-slate-600 max-w-3xl leading-7">
-            Each step reduces doubt, increases confidence, and gives the learner a clear next action instead of leaving them to guess.
+            Each step is meant to reduce uncertainty, build confidence, and show the learner the most practical next move.
           </p>
         </div>
         <a

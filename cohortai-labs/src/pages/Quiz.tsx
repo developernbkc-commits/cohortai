@@ -681,7 +681,7 @@ Please suggest the best cohort, budget option, and next batch schedule.`
                     <div className="flex items-start gap-2">
                       <Gauge size={16} className="mt-0.5 text-violet-700" />
                       <div>
-                        <div className="text-sm font-semibold text-slate-950">7-Day challenge + mentor support (conversion-focused)</div>
+                        <div className="text-sm font-semibold text-slate-950">7-Day challenge + mentor support</div>
                         <p className="mt-1 text-xs text-slate-700">
                           Next best step: use the Track Finder, unlock the 7-Day AI Challenge PDF, then WhatsApp your plan for a personalized recommendation and batch fit.
                         </p>

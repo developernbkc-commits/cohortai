@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import { submitReview } from "../lib/api";
 import { CheckCircle2, ImagePlus, ShieldCheck, Star } from "lucide-react";
+import { verifiedTestimonials } from "../lib/verifiedTestimonials";
 
 const initial = {
   fullName: "",
@@ -37,9 +38,43 @@ export default function Reviews() {
       <section className="pt-12 pb-8">
         <Container>
           <SectionTitle
-            eyebrow="Public proof"
-            title="Let learners submit reviews and testimonials for moderation"
-            desc="This Phase B flow captures a learner review, optional profile image URL, consent to publish, and routes the record into an admin approval queue before anything goes live."
+            eyebrow="Success stories"
+            title="See how learners describe their experience in their own words"
+            desc="These stories help future learners understand what changed, what they built, and how the learning experience supported them before they decide to enrol."
+          />
+        </Container>
+      </section>
+
+      <section className="pb-10">
+        <Container>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {verifiedTestimonials.map((item) => (
+              <article key={item.name} className="glass-pearl rounded-3xl p-5 ring-soft border border-white/60">
+                <div className="flex items-start gap-4">
+                  <img src={item.image} alt={item.name} className="h-20 w-20 rounded-2xl object-cover object-top shadow-md" loading="lazy" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-950">{item.name}</h3>
+                    <p className="mt-1 text-sm text-slate-600">{item.role}</p>
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-700">
+                      <span className="rounded-full bg-slate-100 px-3 py-1">{item.course}</span>
+                      <span className="rounded-full bg-slate-100 px-3 py-1">{item.duration}</span>
+                      <span className="rounded-full bg-slate-100 px-3 py-1">{item.date}</span>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-700">“{item.quote}”</p>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-4 pb-8">
+        <Container>
+          <SectionTitle
+            eyebrow="Share your experience"
+            title="Submit your review for approval"
+            desc="Learners can submit their review, an optional profile image URL, and consent to publish. Every submission is reviewed by the team before it appears on the public site."
           />
         </Container>
       </section>
@@ -58,7 +93,7 @@ export default function Reviews() {
               </div>
 
               <Field label="Headline">
-                <input value={form.headline} onChange={(e) => setForm({ ...form, headline: e.target.value })} required className={inputClass} placeholder="Example: Best AI course for practical career growth" />
+                <input value={form.headline} onChange={(e) => setForm({ ...form, headline: e.target.value })} required className={inputClass} placeholder="Example: Practical course that helped me build confidence" />
               </Field>
 
               <Field label="Review text">
@@ -72,56 +107,60 @@ export default function Reviews() {
                   </select>
                 </Field>
                 <Field label="Profile image URL (optional)">
-                  <input value={form.profileImageUrl} onChange={(e) => setForm({ ...form, profileImageUrl: e.target.value })} className={inputClass} placeholder="Can later be replaced with Supabase Storage uploads" />
+                  <input value={form.profileImageUrl} onChange={(e) => setForm({ ...form, profileImageUrl: e.target.value })} className={inputClass} placeholder="https://..." />
                 </Field>
               </div>
 
-              <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white/70 px-4 py-3 text-sm text-slate-700">
-                <input type="checkbox" checked={form.consentToPublish} onChange={(e) => setForm({ ...form, consentToPublish: e.target.checked })} className="mt-0.5" />
-                <span>I consent to my approved testimonial, name, and profile image being displayed publicly after admin review.</span>
+              <label className="flex items-start gap-3 text-sm text-slate-300">
+                <input type="checkbox" checked={form.consentToPublish} onChange={(e) => setForm({ ...form, consentToPublish: e.target.checked })} className="mt-1" />
+                <span>I confirm that this review is genuine and I allow CohortAI Labs to review and publish it after approval.</span>
               </label>
 
-              <button disabled={submitting} className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 neon-edge disabled:opacity-70">
-                {submitting ? "Submitting..." : "Submit for approval"}
-              </button>
-
-              {done && (
-                <div className={`rounded-2xl border px-4 py-3 text-sm ${done.error ? "border-amber-300 bg-amber-50 text-amber-900" : "border-emerald-300 bg-emerald-50 text-emerald-900"}`}>
-                  {done.error
-                    ? `Remote submission failed, but the payload was saved in local fallback mode for rescue. Error: ${done.error}`
-                    : done.mode === "remote"
-                    ? "Review saved to the real backend and queued for admin approval."
-                    : "Review saved in fallback mode. Once Supabase is wired, this form will submit to the live moderation queue."}
-                </div>
-              )}
+              <div className="flex flex-wrap gap-3">
+                <button disabled={submitting} className="rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-200 disabled:opacity-60">
+                  {submitting ? "Submitting..." : "Submit review"}
+                </button>
+                {done?.mode === "fallback" && (
+                  <div className="inline-flex items-center gap-2 rounded-2xl border border-amber-300/40 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
+                    <ShieldCheck size={16} /> Submitted in fallback mode. Remote storage can be enabled later.
+                  </div>
+                )}
+                {done?.mode === "remote" && !done?.error && (
+                  <div className="inline-flex items-center gap-2 rounded-2xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
+                    <CheckCircle2 size={16} /> Review submitted successfully for approval.
+                  </div>
+                )}
+                {done?.error && (
+                  <div className="inline-flex items-center gap-2 rounded-2xl border border-rose-300/40 bg-rose-400/10 px-4 py-3 text-sm text-rose-200">
+                    {done.error}
+                  </div>
+                )}
+              </div>
             </form>
 
-            <div className="space-y-6">
-              <div className="glass-pearl rounded-3xl p-6 ring-soft">
-                <div className="flex items-center gap-2 text-slate-950 font-semibold"><ShieldCheck size={18} /> Moderated trust system</div>
-                <ul className="mt-4 grid gap-3 text-sm text-slate-600">
-                  <li>• review is stored with status <strong>pending_approval</strong></li>
-                  <li>• no public testimonial appears without admin action</li>
-                  <li>• profile images can move to secure Storage later</li>
-                  <li>• approved stories strengthen premium proof and conversion</li>
-                </ul>
-              </div>
-
-              <div className="glass-pearl rounded-3xl p-6 ring-soft">
-                <div className="flex items-center gap-2 text-slate-950 font-semibold"><Star size={18} /> What strong reviews should include</div>
-                <ul className="mt-4 grid gap-3 text-sm text-slate-600">
-                  <li>• specific outcomes, not generic praise</li>
-                  <li>• confidence, project, career, or business improvements</li>
-                  <li>• mentor guidance and accountability moments</li>
-                  <li>• a clear before → after transformation</li>
-                </ul>
-              </div>
-
-              <div className="glass-pearl rounded-3xl p-6 ring-soft">
-                <div className="flex items-center gap-2 text-slate-950 font-semibold"><ImagePlus size={18} /> Enterprise-ready next step</div>
-                <div className="mt-3 text-sm text-slate-600 leading-7">
-                  In the next phase, replace image URLs with signed upload flows, add richer moderation controls, and expose approved testimonials through a secure admin dashboard.
+            <div className="space-y-5">
+              <div className="glass rounded-3xl p-6 ring-soft">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300/20 text-cyan-200 border border-cyan-300/20">
+                  <Star size={20} />
                 </div>
+                <div className="mt-4 text-lg font-semibold text-white">What makes a strong review?</div>
+                <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                  <li>• Explain what changed for you during or after the program.</li>
+                  <li>• Mention practical outcomes such as confidence, projects, work impact, or interviews.</li>
+                  <li>• Keep it specific, honest, and easy for a future learner to relate to.</li>
+                </ul>
+              </div>
+
+              <div className="glass rounded-3xl p-6 ring-soft">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-300/20 text-violet-200 border border-violet-300/20">
+                  <ImagePlus size={20} />
+                </div>
+                <div className="mt-4 text-lg font-semibold text-white">Publishing process</div>
+                <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                  <li>• Reviews are checked before they go live.</li>
+                  <li>• The team may shorten or lightly edit text for clarity while preserving the meaning.</li>
+                  <li>• Profile images are optional and should be clear, respectful, and appropriate for a public site.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -134,10 +173,10 @@ export default function Reviews() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <div className="text-xs text-slate-500">{label}</div>
-      <div className="mt-2">{children}</div>
+      <div className="mb-2 text-sm text-slate-300">{label}</div>
+      {children}
     </label>
   );
 }
 
-const inputClass = "w-full rounded-2xl bg-white/80 border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-100";
+const inputClass = "w-full rounded-2xl border border-slate-700/80 bg-slate-950/60 px-4 py-3 text-slate-50 outline-none focus:border-cyan-300/70 focus:ring-2 focus:ring-cyan-300/20";
